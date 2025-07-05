@@ -18,7 +18,7 @@ export default function PapersPage() {
               <Link href="/" className="text-gray-600 hover:text-gray-900 fancy">Main</Link>
               <Link href="/papers" className="text-gray-600 hover:text-gray-900 fancy">Papers</Link>
               <Link href="/talks" className="text-gray-600 hover:text-gray-900 fancy">Talks</Link>
-              <Link href="/code" className="text-gray-600 hover:text-gray-900 fancy">Code</Link>
+              <Link href="https://baichengdanny.github.io/doc/CV_Danny.pdf" className="text-gray-600 hover:text-gray-900 fancy">CV</Link>
               <Link href="/writing" className="text-gray-600 hover:text-gray-900 fancy">Writing</Link>
             </nav>
           </div>
@@ -54,11 +54,11 @@ export default function PapersPage() {
                     <h4 className="text-lg text-red-600 hover:text-red-800 mb-2">
                       <a href="https://www.scitepress.org/Papers/2024/129509/129509.pdf">Federated Learning-Based EfficientNet in Brain Tumor Classification</a>
                     </h4>
-                    <p className="text-sm text-gray-600 mb-2">
-                      2024 International Conference on Engineering Management, Information Technology and Intelligence (EMITI, 2024).
-                    </p>
                     <p className="text-sm mb-2">
                       <strong>Baicheng Chen</strong>.
+                    </p>
+                    <p className="text-sm text-gray-600 mb-2">
+                      2024 International Conference on Engineering Management, Information Technology and Intelligence (EMITI, 2024).
                     </p>
                     {/* <p className="text-gray-700 leading-relaxed">
                       We introduce the first model-stealing attack that extracts precise, nontrivial information from black-box production language models like OpenAI's ChatGPT or Google's PaLM-2. Specifically, our attack recovers the embedding projection layer (up to symmetries) of a transformer model, given typical API access. For under $20 USD, our attack extracts the entire projection matrix of OpenAI's Ada and Babbage language models.
