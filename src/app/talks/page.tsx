@@ -26,7 +26,7 @@ export default function TalksPage() {
       </div>
 
       {/* Main Content */}
-      <div className="max-w-6xl mx-auto px-4 py-8">
+      <div className="max-w-6xl mx-auto px-4 py-8 fancy">
         <div className="space-y-6">
           <div className="space-y-4">
             <p>

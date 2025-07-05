@@ -83,12 +83,12 @@ export default async function ArticlePage({ params }: { params: Promise<{ id: st
       </div>
 
       {/* Main Content */}
-      <div className="max-w-4xl mx-auto px-4 py-8">
+      <div className="max-w-4xl mx-auto px-4 py-8 fancy">
         <div className="mb-6">
           <Link href="/writing" className="text-red-600 hover:text-red-800 text-sm">← Back to Writing</Link>
         </div>
 
-        <article className="prose prose-lg max-w-none">
+        <article className="prose prose-lg max-w-none fancy">
           <ReactMarkdown
             remarkPlugins={[remarkGfm]}
             components={{
@@ -105,7 +105,7 @@ export default async function ArticlePage({ params }: { params: Promise<{ id: st
           </ReactMarkdown>
         </article>
 
-        <div className="mt-8 pt-6 border-t text-sm text-gray-500">
+        <div className="mt-8 pt-6 border-t text-sm text-gray-500 fancy">
           <p>Published: {article.date} | Year: {article.year}</p>
         </div>
       </div>

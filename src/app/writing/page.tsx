@@ -111,7 +111,7 @@ export default function WritingPage() {
       </div>
 
       {/* Main Content */}
-      <div className="max-w-6xl mx-auto px-4 py-8">
+      <div className="max-w-6xl mx-auto px-4 py-8 fancy">
         <div className="grid grid-cols-1 lg:grid-cols-4 gap-8">
           {/* Left Navigation */}
           <div className="lg:col-span-1">
@@ -143,7 +143,7 @@ export default function WritingPage() {
             <div className="space-y-8">
               {years.map(year => (
                 <div key={year} id={year.toString()}>
-                  <h2 className="text-xl font-bold serif mb-4">{year}</h2>
+                  <h2 className="text-xl font-bold serif mb-4 fancy">{year}</h2>
                   <div className="space-y-4">
                     {groupedArticles[year].map(article => (
                       <div key={article.id}>
