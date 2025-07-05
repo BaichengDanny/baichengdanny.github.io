@@ -10,15 +10,20 @@
     "format": "bunx biome format --write"
   },
   "dependencies": {
+    "@types/react-syntax-highlighter": "^15.5.13",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
+    "fuse.js": "^7.1.0",
     "gray-matter": "^4.0.3",
     "lucide-react": "^0.475.0",
     "next": "^15.3.2",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-markdown": "^10.1.0",
+    "react-syntax-highlighter": "^15.6.1",
+    "rehype-katex": "^7.0.1",
     "remark-gfm": "^4.0.1",
+    "remark-math": "^6.0.0",
     "same-runtime": "^0.0.1",
     "tailwind-merge": "^3.3.0",
     "tailwindcss-animate": "^1.0.7"

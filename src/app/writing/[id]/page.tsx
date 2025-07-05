@@ -1,5 +1,9 @@
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
+import remarkMath from "remark-math";
+import rehypeKatex from "rehype-katex";
+import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
+import { tomorrow } from 'react-syntax-highlighter/dist/esm/styles/prism';
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import fs from 'node:fs';
@@ -95,7 +99,8 @@ export default async function ArticlePage({ params }: { params: Promise<{ id: st
 
         <article className="prose prose-lg max-w-none">
           <ReactMarkdown
-            remarkPlugins={[remarkGfm]}
+            remarkPlugins={[remarkGfm, remarkMath]}
+            rehypePlugins={[[rehypeKatex, { strict: false }]]}
             components={{
               h1: ({children}) => <h1 className="text-3xl font-bold serif mb-6">{children}</h1>,
               h2: ({children}) => <h2 className="text-2xl font-bold serif mt-8 mb-4">{children}</h2>,
@@ -111,11 +116,23 @@ export default async function ArticlePage({ params }: { params: Promise<{ id: st
                 <blockquote className="border-l-4 border-gray-300 pl-4 italic my-4">{children}</blockquote>
               ),
               code: ({children, className}) => {
-                const isInline = !className;
-                if (isInline) {
+                const match = /language-(\w+)/.exec(className || '');
+                const language = match ? match[1] : '';
+
+                if (!match) {
                   return <code className="bg-gray-100 px-1 rounded font-mono text-sm">{children}</code>;
                 }
-                return <pre className="bg-gray-100 p-4 rounded overflow-x-auto"><code>{children}</code></pre>;
+
+                return (
+                  <SyntaxHighlighter
+                    style={tomorrow as any}
+                    language={language}
+                    PreTag="div"
+                    className="rounded-lg my-4"
+                  >
+                    {String(children).replace(/\n$/, '')}
+                  </SyntaxHighlighter>
+                );
               }
             }}
           >

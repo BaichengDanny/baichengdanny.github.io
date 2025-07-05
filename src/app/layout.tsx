@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Inter, Libre_Baskerville } from "next/font/google";
 import "./globals.css";
+import "katex/dist/katex.min.css";
 import ClientBody from "./ClientBody";
 import Script from "next/script";
 
