@@ -170,7 +170,7 @@ export default function Home() {
 
         {/* Recent News Section */}
         <div className="mt-16">
-          <h2 className="text-2xl font-bold serif mb-6 text-blue-600">Recent News</h2>
+          <h2 className="text-2xl font-bold serif mb-6">Recent News</h2>
           <div className="border-l-4 border-red-600 pl-6">
             <div className="space-y-4">
               

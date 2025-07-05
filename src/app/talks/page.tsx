@@ -33,7 +33,7 @@ export default function TalksPage() {
               A Study Guide for Computer Science.{" "}
               <em>Week 3 AA Meeting, School of Data Science</em>.{" "}
               {/* <a href="#" className="text-red-600 hover:text-red-800">Talk.</a>{" "} */}
-              <a href="https://baichengdanny.github.io/public/doc/Week_3_Meeting_SDS.pdf" className="text-red-600 hover:text-red-800">Slides.</a>
+              <a href="https://github.com/BaichengDanny/baichengdanny.github.io/raw/main/public/doc/Week_3_Meeting_SDS.pdf" className="text-red-600 hover:text-red-800">Slides.</a>
             </p>
           </div>
         </div>
