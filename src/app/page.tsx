@@ -54,7 +54,7 @@ export default function Home() {
             <div className="bg-gray-50 p-6 rounded-lg text-center">
               <div className="mb-4">
                 <Image
-                  src="https://baichengdanny.github.io/danny.jpg?raw=true"
+                  src="https://github.com/BaichengDanny/baichengdanny.github.io/raw/main/danny.jpg"
                   alt="Baicheng Chen"
                   width={200}
                   height={200}
@@ -173,96 +173,14 @@ export default function Home() {
           <h2 className="text-2xl font-bold serif mb-6 text-blue-600">Recent News</h2>
           <div className="border-l-4 border-red-600 pl-6">
             <div className="space-y-4">
+              
               <div className="flex items-start">
                 <div className="w-2 h-2 bg-red-600 rounded-full mr-3 mt-2 flex-shrink-0"></div>
                 <span className="text-lg">
-                  <strong>[2025.06]</strong> Our paper "Adversarial Network Optimization under Bandit Feedback: Maximizing Utility in Non-Stationary Multi-Hop Networks" received the{" "}
-                  <strong>best paper award</strong> from ACM Sigmetrics 2025!
+                  <strong>[2025.07]</strong> My new personal website is now available! 🎉
                 </span>
               </div>
-              <div className="flex items-start">
-                <div className="w-2 h-2 bg-red-600 rounded-full mr-3 mt-2 flex-shrink-0"></div>
-                <span className="text-lg">
-                  <strong>[2025.06]</strong> I am invited to serve as the TPC Co-Chair for ACM Sigmetrics 2027!
-                </span>
-              </div>
-              <div className="flex items-start">
-                <div className="w-2 h-2 bg-red-600 rounded-full mr-3 mt-2 flex-shrink-0"></div>
-                <span className="text-lg">
-                  <strong>[2025.05]</strong> Paper "Finite-Time Analysis of Discrete-Time Stochastic Interpolants" accepted to ICML 2025!
-                </span>
-              </div>
-              <div className="flex items-start">
-                <div className="w-2 h-2 bg-red-600 rounded-full mr-3 mt-2 flex-shrink-0"></div>
-                <span className="text-lg">
-                  <strong>[2025.02]</strong> Congratulations to group alumni{" "}
-                  <a href="#" className="text-blue-600 hover:text-blue-800">Dr. Yihan Du</a>{" "}
-                  for joining Singapore University of Technology and Design (SUTD) as a tenure-track assistant professor!
-                </span>
-              </div>
-              <div className="flex items-start">
-                <div className="w-2 h-2 bg-red-600 rounded-full mr-3 mt-2 flex-shrink-0"></div>
-                <span className="text-lg">
-                  <strong>[2025.01]</strong> Three papers accepted to ICLR 2025 (Two spotlights)!
-                </span>
-              </div>
-              <div className="flex items-start">
-                <div className="w-2 h-2 bg-red-600 rounded-full mr-3 mt-2 flex-shrink-0"></div>
-                <span className="text-lg">
-                  <strong>[2024.09]</strong> Paper "Adversarial Network Optimization under Bandit Feedback: Maximizing Utility in Non-Stationary Multi-Hop Networks" accepted to Sigmetrics 2025!
-                </span>
-              </div>
-              <div className="flex items-start">
-                <div className="w-2 h-2 bg-red-600 rounded-full mr-3 mt-2 flex-shrink-0"></div>
-                <span className="text-lg">
-                  <strong>[2024.09]</strong> Paper "Value-Based Deep Multi-Agent Reinforcement Learning with Dynamic Sparse Training" accepted to NeurIPS 2024!
-                </span>
-              </div>
-              <div className="flex items-start">
-                <div className="w-2 h-2 bg-red-600 rounded-full mr-3 mt-2 flex-shrink-0"></div>
-                <span className="text-lg">
-                  <strong>[2024.05]</strong> Three papers accepted to ICML 2024!
-                </span>
-              </div>
-              <div className="flex items-start">
-                <div className="w-2 h-2 bg-red-600 rounded-full mr-3 mt-2 flex-shrink-0"></div>
-                <span className="text-lg">
-                  <strong>[2024.02]</strong> Paper "When Lyapunov Drift Based Queue Scheduling Meets Adversarial Bandit Learning" accepted to IEEE/ACM Transactions on Networking!
-                </span>
-              </div>
-              <div className="flex items-start">
-                <div className="w-2 h-2 bg-red-600 rounded-full mr-3 mt-2 flex-shrink-0"></div>
-                <span className="text-lg">
-                  <strong>[2024.01]</strong> I am invited to serve as the TPC Co-Chair for IEEE WiOpt 2024. Please consider submitting your work!
-                </span>
-              </div>
-              <div className="flex items-start">
-                <div className="w-2 h-2 bg-red-600 rounded-full mr-3 mt-2 flex-shrink-0"></div>
-                <span className="text-lg">
-                  <strong>[2024.01]</strong> I am invited to serve as an area chair for{" "}
-                  <a href="#" className="text-blue-600 hover:text-blue-800">UAI 2024</a>! Please consider submitting your work!
-                </span>
-              </div>
-              <div className="flex items-start">
-                <div className="w-2 h-2 bg-red-600 rounded-full mr-3 mt-2 flex-shrink-0"></div>
-                <span className="text-lg">
-                  <strong>[2024.01]</strong> Two papers accepted to ICLR 2024!
-                </span>
-              </div>
-              <div className="flex items-start">
-                <div className="w-2 h-2 bg-red-600 rounded-full mr-3 mt-2 flex-shrink-0"></div>
-                <span className="text-lg">
-                  <strong>[2023.12]</strong> Paper "Multi-User Delay-Constrained Scheduling with Deep Recurrent Reinforcement Learning" accepted to IEEE/ACM Transactions on Networking!
-                </span>
-              </div>
-              <div className="flex items-start">
-                <div className="w-2 h-2 bg-red-600 rounded-full mr-3 mt-2 flex-shrink-0"></div>
-                <span className="text-lg">
-                  <strong>[2023.08]</strong> Congratulations to{" "}
-                  <a href="#" className="text-blue-600 hover:text-blue-800">Dr. Pan Ling</a>{" "}
-                  for joining ECE@HKUST as a tenure-track Assistant Professor in Spring 2024!
-                </span>
-              </div>
+              
             </div>
           </div>
         </div>
