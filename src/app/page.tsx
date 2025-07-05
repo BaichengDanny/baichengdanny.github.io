@@ -54,7 +54,7 @@ export default function Home() {
             <div className="bg-gray-50 p-6 rounded-lg text-center">
               <div className="mb-4">
                 <Image
-                  src="homepage/baichengdanny.github.io/danny.jpg"
+                  src="https://baichengdanny.github.io/danny.jpg?raw=true"
                   alt="Baicheng Chen"
                   width={200}
                   height={200}
@@ -172,17 +172,16 @@ export default function Home() {
         <div className="mt-16">
           <h2 className="text-2xl font-bold serif mb-6">Recent News</h2>
           <div className="border-l-4 border-red-600 pt-6">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
-            <ul className="space-y-3">
-              <li className="flex">
-                <span className="mr-2">•</span>
-                <span>
+            <div className="space-y-4">
+
+              <div className="flex items-start">
+                <div className="w-2 h-2 bg-red-600 rounded-full mr-3 mt-2 flex-shrink-0"></div>
+                <span className="text-lg">
                   <strong>[2025.07]</strong> My new personal website is now online! 🎉
                 </span>
-              </li>
+              </div>
               
-            </ul>
-          </div>
+            </div>
           </div>
         </div>
       </div>
