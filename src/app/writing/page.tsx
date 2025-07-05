@@ -1,7 +1,7 @@
-"use client";
-
-import { useState, useEffect } from "react";
 import Link from "next/link";
+import fs from 'node:fs';
+import path from 'node:path';
+import matter from 'gray-matter';
 
 interface Article {
   id: string;
@@ -12,67 +12,50 @@ interface Article {
   filename: string;
 }
 
-export default function WritingPage() {
-  const [articles, setArticles] = useState<Article[]>([]);
-  const [loading, setLoading] = useState(true);
+// Get all articles from the articles directory
+function getArticles(): Article[] {
+  try {
+    const articlesDirectory = path.join(process.cwd(), 'public', 'articles');
 
-  // Sample articles that would be read from the articles folder
-  // In a real implementation, this would be generated at build time
-  useEffect(() => {
-    const sampleArticles: Article[] = [
-      {
-        id: "machines-ruthless-efficiency",
-        title: "Machines of Ruthless Efficiency",
-        year: 2025,
-        description: "Future LLMs have the potential to cause significant harm due to their ruthless efficiency. I'm worried this will happen, and discuss the ways in which it might.",
-        date: "2025-01-15",
-        filename: "machines-ruthless-efficiency.md"
-      },
-      {
-        id: "ai-forecasting-retrospective",
-        title: "AI forecasting retrospective",
-        year: 2025,
-        description: "By studying the results of my forecasting survey from last year, I find almost everyone is over confident.",
-        date: "2025-01-10",
-        filename: "ai-forecasting-retrospective.md"
-      },
-      {
-        id: "forecasting-future-ai",
-        title: "Forecasting the future of AI",
-        year: 2024,
-        description: "A set of 30 questions about the future of AI you can answer, and I'll tell you how you did in a few years.",
-        date: "2024-12-01",
-        filename: "forecasting-future-ai.md"
-      },
-      {
-        id: "how-i-use-ai",
-        title: "How I Use AI",
-        year: 2024,
-        description: "Fifty different examples of how I've used LLMs to meaningfully improve my ability to write code and perform research.",
-        date: "2024-11-15",
-        filename: "how-i-use-ai.md"
-      },
-      {
-        id: "chess-llm",
-        title: "Playing chess with large language models",
-        year: 2023,
-        description: "I built a bot to play chess by querying a text language model. It sees the sequence of moves in order (as text!), and predicts which move comes next. It's better than me.",
-        date: "2023-08-20",
-        filename: "chess-llm.md"
-      },
-      {
-        id: "doom-clone-javascript",
-        title: "Yet Another Doom Clone (In 13kb of JavaScript)",
-        year: 2019,
-        description: "exactly what it sounds like; an entry for js13k 2019.",
-        date: "2019-09-15",
-        filename: "doom-clone-javascript.md"
+    if (!fs.existsSync(articlesDirectory)) {
+      return [];
+    }
+
+    const filenames = fs.readdirSync(articlesDirectory);
+    const articles: Article[] = [];
+
+    for (const filename of filenames) {
+      if (!filename.endsWith('.md')) continue;
+
+      try {
+        const fullPath = path.join(articlesDirectory, filename);
+        const fileContents = fs.readFileSync(fullPath, 'utf8');
+        const { data } = matter(fileContents);
+
+        const id = filename.replace(/\.md$/, '');
+
+        articles.push({
+          id,
+          title: data.title || id,
+          year: data.year || new Date().getFullYear(),
+          description: data.description || '',
+          date: data.date || new Date().toISOString().split('T')[0],
+          filename
+        });
+      } catch (error) {
+        console.warn(`Could not parse article ${filename}:`, error);
       }
-    ];
+    }
 
-    setArticles(sampleArticles);
-    setLoading(false);
-  }, []);
+    return articles;
+  } catch (error) {
+    console.error('Error reading articles directory:', error);
+    return [];
+  }
+}
+
+export default function WritingPage() {
+  const articles = getArticles();
 
   const groupedArticles = articles.reduce((acc, article) => {
     if (!acc[article.year]) {
@@ -83,14 +66,6 @@ export default function WritingPage() {
   }, {} as Record<number, Article[]>);
 
   const years = Object.keys(groupedArticles).map(Number).sort((a, b) => b - a);
-
-  if (loading) {
-    return (
-      <div className="min-h-screen bg-white flex items-center justify-center">
-        <div className="text-gray-500">Loading articles...</div>
-      </div>
-    );
-  }
 
   return (
     <div className="min-h-screen bg-white">
@@ -139,28 +114,38 @@ export default function WritingPage() {
 
           {/* Right Content */}
           <div className="lg:col-span-3">
-            {/* Articles List */}
             <div className="space-y-8">
-              {years.map(year => (
-                <div key={year} id={year.toString()}>
-                  <h2 className="text-xl font-bold serif mb-4 fancy">{year}</h2>
-                  <div className="space-y-4">
-                    {groupedArticles[year].map(article => (
-                      <div key={article.id}>
-                        <Link
-                          href={`/writing/${article.id}`}
-                          className="text-red-600 hover:text-red-800 font-medium"
-                        >
-                          {article.title}
-                        </Link>
-                        :{" "}
-                        {article.description}
-                        <br />
-                      </div>
-                    ))}
-                  </div>
+              {articles.length === 0 ? (
+                <div className="text-center py-12">
+                  <p className="text-gray-500 text-lg">No articles found.</p>
+                  <p className="text-gray-400 text-sm mt-2">
+                    Add .md files to the <code className="bg-gray-100 px-1 rounded">public/articles/</code> directory.
+                  </p>
                 </div>
-              ))}
+              ) : (
+                years.map(year => (
+                  <div key={year} id={year.toString()}>
+                    <h2 className="text-xl font-bold serif mb-4">{year}</h2>
+                    <div className="space-y-6">
+                      {groupedArticles[year].map(article => (
+                        <div key={article.id} className="border-l-2 border-gray-100 pl-4">
+                          <h3 className="text-lg text-red-600 hover:text-red-800 mb-2">
+                            <Link href={`/writing/${article.id}`}>
+                              {article.title}
+                            </Link>
+                          </h3>
+                          <p className="text-sm text-gray-600 mb-2">
+                            {article.date}
+                          </p>
+                          <p className="text-gray-700 leading-relaxed">
+                            {article.description}
+                          </p>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                ))
+              )}
             </div>
           </div>
         </div>

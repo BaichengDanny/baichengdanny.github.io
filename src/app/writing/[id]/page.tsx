@@ -2,6 +2,9 @@ import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import fs from 'node:fs';
+import path from 'node:path';
+import matter from 'gray-matter';
 
 interface Article {
   id: string;
@@ -12,57 +15,59 @@ interface Article {
   content: string;
 }
 
-// Sample articles metadata
-const articlesMetadata: Record<string, Omit<Article, "content">> = {
-  "machines-ruthless-efficiency": {
-    id: "machines-ruthless-efficiency",
-    title: "Machines of Ruthless Efficiency",
-    year: 2025,
-    description: "Future LLMs have the potential to cause significant harm due to their ruthless efficiency.",
-    date: "2025-01-15"
-  },
-  "sample": {
-    id: "sample",
-    title: "Sample Article",
-    year: 2025,
-    description: "This is a sample article for demonstration.",
-    date: "2025-01-01"
+// Get all article IDs from the articles directory
+function getArticleIds(): string[] {
+  const articlesDirectory = path.join(process.cwd(), 'public', 'articles');
+
+  if (!fs.existsSync(articlesDirectory)) {
+    return [];
   }
-};
 
-// Sample markdown content
-const sampleMarkdownContent: Record<string, string> = {
-  "machines-ruthless-efficiency": `# Machines of Ruthless Efficiency
+  const filenames = fs.readdirSync(articlesDirectory);
+  return filenames
+    .filter(name => name.endsWith('.md'))
+    .map(name => name.replace(/\.md$/, ''));
+}
 
-Future LLMs have the potential to cause significant harm due to their ruthless efficiency.
+// Read and parse a single article
+function getArticle(id: string): Article | null {
+  try {
+    const articlesDirectory = path.join(process.cwd(), 'public', 'articles');
+    const fullPath = path.join(articlesDirectory, `${id}.md`);
 
-## The Problem
-As large language models become more capable, they also become more efficient at achieving their goals.`,
+    if (!fs.existsSync(fullPath)) {
+      return null;
+    }
 
-  "sample": `# Sample Article
+    const fileContents = fs.readFileSync(fullPath, 'utf8');
+    const { data, content } = matter(fileContents);
 
-This is a sample article for demonstration purposes.
-
-## Introduction
-This demonstrates how articles work in the writing section.`
-};
+    return {
+      id,
+      title: data.title || id,
+      year: data.year || new Date().getFullYear(),
+      description: data.description || '',
+      date: data.date || new Date().toISOString().split('T')[0],
+      content
+    };
+  } catch (error) {
+    console.error(`Error reading article ${id}:`, error);
+    return null;
+  }
+}
 
 export async function generateStaticParams() {
-  return Object.keys(articlesMetadata).map((id) => ({ id }));
+  const articleIds = getArticleIds();
+  return articleIds.map((id) => ({ id }));
 }
 
 export default async function ArticlePage({ params }: { params: Promise<{ id: string }> }) {
   const { id } = await params;
-  const metadata = articlesMetadata[id];
+  const article = getArticle(id);
 
-  if (!metadata || !sampleMarkdownContent[id]) {
+  if (!article) {
     notFound();
   }
-
-  const article = {
-    ...metadata,
-    content: sampleMarkdownContent[id]
-  };
 
   return (
     <div className="min-h-screen bg-white">
@@ -72,11 +77,11 @@ export default async function ArticlePage({ params }: { params: Promise<{ id: st
           <div className="flex justify-between items-center">
             <h1 className="text-2xl serif">Writing</h1>
             <nav className="flex space-x-8">
-              <Link href="/" className="text-gray-600 hover:text-gray-900">Main</Link>
-              <Link href="/papers" className="text-gray-600 hover:text-gray-900">Papers</Link>
-              <Link href="/talks" className="text-gray-600 hover:text-gray-900">Talks</Link>
-              <Link href="/code" className="text-gray-600 hover:text-gray-900">Code</Link>
-              <Link href="/writing" className="text-gray-600 hover:text-gray-900">Writing</Link>
+              <Link href="/" className="text-gray-600 hover:text-gray-900 fancy">Main</Link>
+              <Link href="/papers" className="text-gray-600 hover:text-gray-900 fancy">Papers</Link>
+              <Link href="/talks" className="text-gray-600 hover:text-gray-900 fancy">Talks</Link>
+              <Link href="/code" className="text-gray-600 hover:text-gray-900 fancy">Code</Link>
+              <Link href="/writing" className="text-gray-600 hover:text-gray-900 fancy">Writing</Link>
             </nav>
           </div>
         </div>
@@ -88,7 +93,7 @@ export default async function ArticlePage({ params }: { params: Promise<{ id: st
           <Link href="/writing" className="text-red-600 hover:text-red-800 text-sm">← Back to Writing</Link>
         </div>
 
-        <article className="prose prose-lg max-w-none fancy">
+        <article className="prose prose-lg max-w-none">
           <ReactMarkdown
             remarkPlugins={[remarkGfm]}
             components={{
@@ -99,14 +104,30 @@ export default async function ArticlePage({ params }: { params: Promise<{ id: st
               a: ({href, children}) => (
                 <a href={href} className="text-red-600 hover:text-red-800">{children}</a>
               ),
+              ul: ({children}) => <ul className="list-disc list-inside mb-4 space-y-2">{children}</ul>,
+              ol: ({children}) => <ol className="list-decimal list-inside mb-4 space-y-2">{children}</ol>,
+              li: ({children}) => <li className="text-lg leading-relaxed">{children}</li>,
+              blockquote: ({children}) => (
+                <blockquote className="border-l-4 border-gray-300 pl-4 italic my-4">{children}</blockquote>
+              ),
+              code: ({children, className}) => {
+                const isInline = !className;
+                if (isInline) {
+                  return <code className="bg-gray-100 px-1 rounded font-mono text-sm">{children}</code>;
+                }
+                return <pre className="bg-gray-100 p-4 rounded overflow-x-auto"><code>{children}</code></pre>;
+              }
             }}
           >
             {article.content}
           </ReactMarkdown>
         </article>
 
-        <div className="mt-8 pt-6 border-t text-sm text-gray-500 fancy">
+        <div className="mt-8 pt-6 border-t text-sm text-gray-500">
           <p>Published: {article.date} | Year: {article.year}</p>
+          {article.description && (
+            <p className="mt-2 italic">{article.description}</p>
+          )}
         </div>
       </div>
     </div>
