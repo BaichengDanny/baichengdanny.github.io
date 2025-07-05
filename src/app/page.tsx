@@ -172,7 +172,8 @@ export default function Home() {
         <div className="mt-16">
           <h2 className="text-2xl font-bold serif mb-6">Recent News</h2>
           <div className="border-l-4 border-red-600 pt-6">
-            <ul className="space-y-3 text-lg">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
+            <ul className="space-y-3">
               <li className="flex">
                 <span className="mr-2">•</span>
                 <span>
@@ -181,6 +182,7 @@ export default function Home() {
               </li>
               
             </ul>
+          </div>
           </div>
         </div>
       </div>
