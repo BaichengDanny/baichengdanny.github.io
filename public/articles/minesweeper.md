@@ -10,7 +10,7 @@ description: "Solution of Minesweeper Problem in OJ."
 
 ### DESCRIPTION
 
-Suppose we are playing Minesweeper in a $$2 × N$$ map, where there are some mines buried in the grids in the first row but none in the second row. If a grid have no mine, it will display the number of mines that is adjacent to it in 8 directions.
+Suppose we are playing Minesweeper in a $$ 2 × N $$ map, where there are some mines buried in the grids in the first row but none in the second row. If a grid have no mine, it will display the number of mines that is adjacent to it in 8 directions.
 
 Given an array $$A$$ indicates the numbers each grids in the second row display, you need to calculate the number of all valid layout of mines in the first row.
 
