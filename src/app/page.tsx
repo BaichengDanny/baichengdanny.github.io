@@ -72,7 +72,7 @@ export default function Home() {
             </div>
 
             {/* Mobile contact info */}
-            {/* <div className="lg:hidden mt-8 text-center space-y-2">
+            <div className="lg:hidden mt-8 text-center space-y-2">
               <div className="font-bold">Nicholas Carlini</div>
               <div>Research Scientist, Anthropic</div>
               <div className="text-sm">nicholas [at] carlini [dot] com</div>
@@ -80,7 +80,7 @@ export default function Home() {
                 <a href="#" className="text-red-600 hover:text-red-800">GitHub</a>
                 <span>|</span>
                 <a href="#" className="text-red-600 hover:text-red-800">Google Scholar</a>
-              </div> */}
+              </div>
             </div>
           </div>
         </div>
