@@ -106,9 +106,90 @@ export default function Home() {
           </div>
         </div>
 
+        {/* Academic Background Section */}
+        <div className="mt-16">
+          <h2 className="text-2xl font-bold serif mb-6">Academic Background</h2>
+          <div className="border-l-4 border-red-600 pl-6">
+            <div className="space-y-4">
+              <div className="flex flex-col sm:flex-row sm:items-center">
+                <div className="font-semibold text-lg text-gray-900 sm:min-w-48">
+                  Sep 2023 - Now
+                </div>
+                <div className="text-lg leading-relaxed">
+                  The Chinese University of Hong Kong, Shenzhen
+                </div>
+              </div>
+
+              <div className="flex flex-col sm:flex-row sm:items-center">
+                <div className="font-semibold text-lg text-gray-900 sm:min-w-48">
+                  June 2024 - Aug 2024
+                </div>
+                <div className="text-lg leading-relaxed">
+                  University of California, Berkeley (Summer Session)
+                </div>
+              </div>
+
+              <div className="flex flex-col sm:flex-row sm:items-center">
+                <div className="font-semibold text-lg text-gray-900 sm:min-w-48">
+                  Sep 2020 - June 2023
+                </div>
+                <div className="text-lg leading-relaxed">
+                  Qingdao NO. 9 High School
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Research Interests Section */}
+        <div className="mt-16">
+          <h2 className="text-2xl font-bold serif mb-6">Research Interests</h2>
+          <div className="border-l-4 border-red-600 pl-6">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
+              <ul className="space-y-3">
+                <li className="flex items-center">
+                  <div className="w-2 h-2 bg-red-600 rounded-full mr-3"></div>
+                  <span className="text-lg">Machine Learning</span>
+                </li>
+                <li className="flex items-center">
+                  <div className="w-2 h-2 bg-red-600 rounded-full mr-3"></div>
+                  <span className="text-lg">AI Security and Privacy</span>
+                </li>
+                <li className="flex items-center">
+                  <div className="w-2 h-2 bg-red-600 rounded-full mr-3"></div>
+                  <span className="text-lg">Deepfake Detection</span>
+                </li>
+              </ul>
+              <ul className="space-y-3">
+                <li className="flex items-center">
+                  <div className="w-2 h-2 bg-red-600 rounded-full mr-3"></div>
+                  <span className="text-lg">Federated Learning</span>
+                </li>
+                <li className="flex items-center">
+                  <div className="w-2 h-2 bg-red-600 rounded-full mr-3"></div>
+                  <span className="text-lg">Computer Vision</span>
+                </li>
+                <li className="flex items-center">
+                  <div className="w-2 h-2 bg-red-600 rounded-full mr-3"></div>
+                  <span className="text-lg">Deep Learning</span>
+                </li>
+              </ul>
+            </div>
+
+            <div className="bg-gray-50 p-6 rounded-lg border-l-4 border-red-600">
+              <p className="text-lg leading-relaxed text-gray-800">
+                My current research focuses on <span className="font-semibold text-red-700">Deepfake Detection</span>.
+                The course <span className="font-semibold">Computer Security</span> I took in the summer particularly impressed me
+                by unfolding the severe consequences of private data being breached and the increasingly serious security issues
+                in the rapid development of AI (e.g. deepfake) reinforcing my determination to learn how to solve these issues.
+              </p>
+            </div>
+          </div>
+        </div>
+
         {/* Selected Recent Work Section */}
         <div className="mt-16">
-          <h2 className="header mb-8">Selected Recent Work</h2>
+          <h2 className="text-2xl font-bold serif mb-8">Selected Recent Work</h2>
 
           <div className="space-y-12">
             {/* ICML Alignment Workshop */}
