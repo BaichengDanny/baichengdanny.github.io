@@ -26,7 +26,7 @@ export default function Home() {
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
           {/* Left Content */}
           <div className="lg:col-span-2">
-            <div className="prose prose-lg max-w-none">
+            <div className="prose prose-lg max-w-none fancy">
               <p className="text-lg leading-relaxed">
                 Hi! This is Baicheng Chen (Danny, 陈柏成).
                 I am a sophomore majoring in Computer Science and Engineering (CSE) at the School of Data Science, The Chinese University of Hong Kong, Shenzhen (CUHK-Shenzhen). 
@@ -88,7 +88,7 @@ export default function Home() {
         </div>
 
         {/* Academic Background Section */}
-        <div className="mt-16">
+        <div className="mt-16 fancy">
           <h2 className="text-2xl font-bold serif mb-6">Academic Background</h2>
           <div className="border-l-4 border-red-600 pl-6">
             <div className="space-y-6">
@@ -123,7 +123,7 @@ export default function Home() {
         </div>
 
         {/* Research Interests Section */}
-        <div className="mt-16">
+        <div className="mt-16 fancy">
           <h2 className="text-2xl font-bold serif mb-6">Research Interests</h2>
           <div className="border-l-4 border-red-600 pl-6">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
@@ -169,7 +169,7 @@ export default function Home() {
         </div>
 
         {/* Recent News Section */}
-        <div className="mt-16">
+        <div className="mt-16 fancy">
           <h2 className="text-2xl font-bold serif mb-6">Recent News</h2>
           <div className="border-l-4 border-red-600 pl-6">
             <div className="space-y-4">
