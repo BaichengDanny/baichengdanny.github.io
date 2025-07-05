@@ -27,10 +27,11 @@ export default function Home() {
           <div className="lg:col-span-2">
             <div className="prose prose-lg max-w-none">
               <p className="text-lg leading-relaxed">
+                Hi! This is Baicheng Chen (Danny, 陈柏成).
                 I am a sophomore majoring in Computer Science and Engineering (CSE) at the School of Data Science, The Chinese University of Hong Kong, Shenzhen (CUHK-Shenzhen). 
                 In our university, I'm also a student at Minerva College (厚含书院). 
-                Furthermore, I'm a video Editor and Colorist working in the Student Union currently (You can follow the{" "}
-                <a href="https://space.bilibili.com/508002687" className="text-red-600 hover:text-red-800">Bilibili account of the Student Union🔗</a> to watch our works).
+                Furthermore, I'm a video Editor and Colorist working in the Student Union currently (You can follow the{" "} 
+                  <a href="https://space.bilibili.com/508002687" className="text-red-600 hover:text-red-800">Bilibili account of the Student Union🔗</a> to watch our works).
               </p>
 
               <p className="text-lg leading-relaxed">
@@ -42,7 +43,7 @@ export default function Home() {
               </p>
 
               <p className="text-lg leading-relaxed">
-                If you are interested in any aspect of me, would like to chat with me further, please email me at baichengchen[at]link[dot]cuhk[dot]edu[dot]cn. I'm looking for like-minded people!
+                If you are interested in any aspect of me, would like to chat with me further, please email me at <i>baichengchen[at]link[dot]cuhk[dot]edu[dot]cn</i>. I'm looking for like-minded people!
               </p>
             </div>
           </div>
@@ -52,7 +53,7 @@ export default function Home() {
             <div className="bg-gray-50 p-6 rounded-lg text-center">
               <div className="mb-4">
                 <Image
-                  src="https://github.com/BaichengDanny/BaichengDanny-website-old/blob/main/danny.jpg"
+                  src="https://baichengdanny.github.io/danny.jpg?raw=true"
                   alt="Baicheng Chen"
                   width={200}
                   height={200}
@@ -71,17 +72,17 @@ export default function Home() {
               </div>
             </div>
 
-            {/* Mobile contact info */}
+            {/* Mobile contact info
             <div className="lg:hidden mt-8 text-center space-y-2">
-              <div className="font-bold">Nicholas Carlini</div>
-              <div>Research Scientist, Anthropic</div>
+              <div className="font-bold">Baicheng Chen</div>
+              <div>Sophomore, CUHK-Shenzhen</div>
               <div className="text-sm">nicholas [at] carlini [dot] com</div>
               <div className="flex justify-center space-x-2 text-sm">
                 <a href="#" className="text-red-600 hover:text-red-800">GitHub</a>
                 <span>|</span>
                 <a href="#" className="text-red-600 hover:text-red-800">Google Scholar</a>
               </div>
-            </div>
+            </div> */}
           </div>
         </div>
 
@@ -89,30 +90,30 @@ export default function Home() {
         <div className="mt-16">
           <h2 className="text-2xl font-bold serif mb-6">Academic Background</h2>
           <div className="border-l-4 border-red-600 pl-6">
-            <div className="space-y-4">
-              <div className="flex flex-col sm:flex-row sm:items-center">
-                <div className="font-semibold text-lg text-gray-900 sm:min-w-48">
+            <div className="space-y-6">
+              <div className="grid grid-cols-1 md:grid-cols-4 gap-2 md:gap-4">
+                <div className="font-semibold text-lg text-gray-900 md:col-span-1">
                   Sep 2023 - Now
                 </div>
-                <div className="text-lg leading-relaxed">
+                <div className="text-lg leading-relaxed md:col-span-3">
                   The Chinese University of Hong Kong, Shenzhen
                 </div>
               </div>
 
-              <div className="flex flex-col sm:flex-row sm:items-center">
-                <div className="font-semibold text-lg text-gray-900 sm:min-w-48">
+              <div className="grid grid-cols-1 md:grid-cols-4 gap-2 md:gap-4">
+                <div className="font-semibold text-lg text-gray-900 md:col-span-1">
                   June 2024 - Aug 2024
                 </div>
-                <div className="text-lg leading-relaxed">
+                <div className="text-lg leading-relaxed md:col-span-3">
                   University of California, Berkeley (Summer Session)
                 </div>
               </div>
 
-              <div className="flex flex-col sm:flex-row sm:items-center">
-                <div className="font-semibold text-lg text-gray-900 sm:min-w-48">
+              <div className="grid grid-cols-1 md:grid-cols-4 gap-2 md:gap-4">
+                <div className="font-semibold text-lg text-gray-900 md:col-span-1">
                   Sep 2020 - June 2023
                 </div>
-                <div className="text-lg leading-relaxed">
+                <div className="text-lg leading-relaxed md:col-span-3">
                   Qingdao NO. 9 High School
                 </div>
               </div>
@@ -128,7 +129,7 @@ export default function Home() {
               <ul className="space-y-3">
                 <li className="flex items-center">
                   <div className="w-2 h-2 bg-red-600 rounded-full mr-3"></div>
-                  <span className="text-lg">Machine Learning</span>
+                  <span className="text-lg">Trustworthy AI</span>
                 </li>
                 <li className="flex items-center">
                   <div className="w-2 h-2 bg-red-600 rounded-full mr-3"></div>
@@ -136,17 +137,13 @@ export default function Home() {
                 </li>
                 <li className="flex items-center">
                   <div className="w-2 h-2 bg-red-600 rounded-full mr-3"></div>
-                  <span className="text-lg">Deepfake Detection</span>
+                  <span className="text-lg">Generative Model</span>
                 </li>
               </ul>
               <ul className="space-y-3">
                 <li className="flex items-center">
                   <div className="w-2 h-2 bg-red-600 rounded-full mr-3"></div>
-                  <span className="text-lg">Federated Learning</span>
-                </li>
-                <li className="flex items-center">
-                  <div className="w-2 h-2 bg-red-600 rounded-full mr-3"></div>
-                  <span className="text-lg">Computer Vision</span>
+                  <span className="text-lg">Deepfake Detection</span>
                 </li>
                 <li className="flex items-center">
                   <div className="w-2 h-2 bg-red-600 rounded-full mr-3"></div>
@@ -157,7 +154,7 @@ export default function Home() {
 
             <div className="bg-gray-50 p-6 rounded-lg border-l-4 border-red-600">
               <p className="text-lg leading-relaxed text-gray-800">
-                My current research focuses on <span className="font-semibold text-red-700">Deepfake Detection</span>.
+                My current research focuses on <span className="font-semibold text-red-700">Trustworthy AI</span>.
                 The course <span className="font-semibold">Computer Security</span> I took in the summer particularly impressed me
                 by unfolding the severe consequences of private data being breached and the increasingly serious security issues
                 in the rapid development of AI (e.g. deepfake) reinforcing my determination to learn how to solve these issues.
@@ -166,190 +163,19 @@ export default function Home() {
           </div>
         </div>
 
-        {/* Selected Recent Work Section */}
+        {/* Recent News Section */}
         <div className="mt-16">
-          <h2 className="text-2xl font-bold serif mb-8">Selected Recent Work</h2>
-
-          <div className="space-y-12">
-            {/* ICML Alignment Workshop */}
-            <div className="flex flex-col lg:flex-row gap-6">
-              <div className="lg:w-1/3">
-                <video
-                  controls
-                  poster="https://ext.same-assets.com/3995253316/2182514803.jpeg"
-                  className="w-full rounded-lg shadow-md"
-                  preload="none"
-                >
-                  <source src="/talks/2024_alignment_lessons.mp4" type="video/mp4" />
-                </video>
-              </div>
-              <div className="lg:w-2/3">
-                <p className="text-lg leading-relaxed">
-                  At the ICML alignment workshop last year I gave a short talk discussing what we can
-                  (and can't) learn from adversarial machine learning, for people who work on "alignment"
-                  of large language models. This talk tries to explain the difficulties that we have had
-                  in making machine learning models robust to adversaries, and explains how these difficulties
-                  will carry over to those who are trying to make large language models that generally are
-                  helpful and harmless.
-                </p>
-              </div>
-            </div>
-
-            {/* Practical Poisoning */}
-            <div className="flex flex-col lg:flex-row-reverse gap-6">
-              <div className="lg:w-1/3">
-                <video
-                  controls
-                  poster="https://ext.same-assets.com/3995253316/840045437.jpeg"
-                  className="w-full rounded-lg shadow-md"
-                  preload="none"
-                >
-                  <source src="/talks/2023_practical_poisoning.mp4" type="video/mp4" />
-                </video>
-              </div>
-              <div className="lg:w-2/3">
-                <p className="text-lg leading-relaxed">
-                  Earlier last year I introduced a recent paper of ours developing the first practical{" "}
-                  <em>poisoning attack</em> on large-scale machine learning models. With our attack I could
-                  have poisoned the training dataset for anyone who has used LAION-400M (or other popular datasets)
-                  in the last six months. Our attack is trivial: I bought expired domains corressponding to URLs
-                  in popular image datasets. This gave us control over 0.01% of each of these datasets.
-                  In this talk (given at the Stanford MLSys seminar) discuss how the attack works, the consequences
-                  of this attack, and potential defenses. More broadly, we hope machine learning researchers will
-                  study other simple but practical attacks on the machine learning pipeline.
-                </p>
-              </div>
-            </div>
-
-            {/* Extracting Training Data */}
-            <div className="flex flex-col lg:flex-row gap-6">
-              <div className="lg:w-1/3">
-                <video
-                  controls
-                  poster="https://ext.same-assets.com/3995253316/2391361194.jpeg"
-                  className="w-full rounded-lg shadow-md"
-                  preload="none"
-                >
-                  <source src="/talks/2021_extracting_training_data.mp4" type="video/mp4" />
-                </video>
-              </div>
-              <div className="lg:w-2/3">
-                <p className="text-lg leading-relaxed">
-                  In 2021, at USENIX Security, I presented a paper that was the result of a massive collaboration
-                  with ten co-authors to measure the privacy of large language models. It's been academically known
-                  for quite some time that if you train a machine learning model on a sensitive dataset, it's
-                  mathematically possible that releasing the model could violate the privacy of the users from the
-                  training data. But this has remained mostly something theory people say <em>could</em> happen,
-                  because math says so. In this paper we show that large language models actually <em>do</em> leak
-                  individual training examples from datasets they were trained on. To do this we show that given
-                  query access to GPT-2, it's possible to recover hundreds of training datapoints including PII,
-                  random numbers, and URLs from leaked email dumps.
-                </p>
-              </div>
-            </div>
-
-            {/* Cryptanalytic Extraction */}
-            <div className="flex flex-col lg:flex-row-reverse gap-6">
-              <div className="lg:w-1/3">
-                <video
-                  controls
-                  poster="https://ext.same-assets.com/3995253316/1349848504.jpeg"
-                  className="w-full rounded-lg shadow-md"
-                  preload="none"
-                >
-                  <source src="/talks/2020_crypto_extraction.mp4" type="video/mp4" />
-                </video>
-              </div>
-              <div className="lg:w-2/3">
-                <p className="text-lg leading-relaxed">
-                  At CRYPTO'20, I presented a paper I wrote with Matthew Jagielski and Ilya Mironov
-                  that introduces an improved model stealing attack. Given query access to a remote neural network,
-                  we are able to extract out an almost identical copy of the parameters, layer-by-layer, one at a time.
-                  For models we extract, we cam prove that the stolen copy is identical up to 30 bits of precision
-                  with respect to the original model. (If you're a ML person, you might want to skip the background,
-                  where I explain to the crypto audience what a fully connected neural network is.)
-                </p>
-              </div>
-            </div>
-
-            {/* Doom Clone Game */}
-            <div className="flex flex-col lg:flex-row gap-6">
-              <div className="lg:w-1/3">
-                <video
-                  controls
-                  loop
-                  className="w-full rounded-lg shadow-md"
-                  preload="metadata"
-                >
-                  <source src="https://ext.same-assets.com/3995253316/1538345779.mp4" type="video/mp4" />
-                </video>
-              </div>
-              <div className="lg:w-2/3">
-                <p className="text-lg leading-relaxed">
-                  In 2019 I <a href="#" className="text-red-600 hover:text-red-800">made a doom clone in JavaScript</a>.
-                  Until recently all content on this website was research, and while writing papers can be
-                  fun<span className="text-xs text-muted-foreground">
-                    <a href="#" className="text-red-600">[a]</a>
-                  </span>, sometimes you just need to blow off a little steam. The entire game fits in 13k---the
-                  3d renderer, shadow mapper, game engine, levels, enemies, and music. The post talks about the
-                  process of designing the game and how to make it all happen under the constraints.
-                </p>
-              </div>
-            </div>
-
-            {/* CAMLIS Talk */}
-            <div className="flex flex-col lg:flex-row-reverse gap-6">
-              <div className="lg:w-1/3">
-                <video
-                  controls
-                  poster="https://ext.same-assets.com/3995253316/2640208664.jpeg"
-                  className="w-full rounded-lg shadow-md"
-                  preload="none"
-                >
-                  <source src="/talks/2019_camlis_evaluatingadversarial.mp4" type="video/mp4" />
-                </video>
-                <div className="mt-2 text-center">
-                  <a href="#" className="text-red-600 hover:text-red-800 text-sm">[View on YouTube]</a>
-                </div>
-              </div>
-              <div className="lg:w-2/3">
-                <p className="text-lg leading-relaxed">
-                  At <a href="#" className="text-red-600 hover:text-red-800">CAMLIS</a> 2019 I gave a talk covering
-                  what it means to evaluate adversarial robustness. This is a much higher-level talk for an audience
-                  that isn't deeply familiar with the area of adversarial machine learning research. (For a more
-                  technical version of this talk, see my recent{" "}
-                  <a href="#" className="text-red-600 hover:text-red-800">USENIX Security invited talk</a> that discusses
-                  these same topics in more depth.) The talk covers what adversarial examples are, how to generate them,
-                  how to (try to) defend against them, and finally what the future may hold.
-                </p>
-              </div>
-            </div>
-
-            {/* Obfuscated Gradients */}
-            <div className="flex flex-col lg:flex-row gap-6">
-              <div className="lg:w-1/3">
-                <video
-                  controls
-                  poster="https://ext.same-assets.com/3995253316/1128544978.jpeg"
-                  className="w-full rounded-lg shadow-md"
-                  preload="none"
-                >
-                  <source src="/talks/2018_icml_obfuscatedgradients.mp4" type="video/mp4" />
-                </video>
-              </div>
-              <div className="lg:w-2/3">
-                <p className="text-lg leading-relaxed">
-                  At ICML 2018, I presented a paper I wrote with Anish Athalye and my advisor David Wagner:{" "}
-                  <a href="#" className="text-red-600 hover:text-red-800">Obfuscated Gradients Give a False Sense of Security:
-                  Circumventing Defenses to Adversarial Examples</a>. In this paper, we demonstrate that most of the
-                  ICLR'18 adversarial example defenses were, in fact, ineffective at defending against attack and in
-                  fact just broke existing attack algorithms. We introduce stronger attacks that work in the presence
-                  of what we call "obfuscated gradients". Because we won best paper, we were able to give two talks,
-                  the talk linked here is plenary talk where I argue that the evaluation methodology used widely in
-                  the community today is insufficient, and can be improved.
-                </p>
-              </div>
-            </div>
+          <h2 className="text-2xl font-bold serif mb-6 text-blue-600">Recent News</h2>
+          <div className="border-t border-gray-300 pt-4">
+            <ul className="space-y-3 text-lg">
+              <li className="flex">
+                <span className="mr-2">•</span>
+                <span>
+                  <strong>[2025.07]</strong> My new personal website is now online! 🎉
+                </span>
+              </li>
+              
+            </ul>
           </div>
         </div>
       </div>
