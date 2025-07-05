@@ -215,10 +215,11 @@ export default function WritingClient({ articles }: WritingClientProps) {
             {/* Instructions */}
             <div className="pt-4 border-t border-gray-200 dark:border-gray-700">
               <div className="text-xs text-gray-500 dark:text-gray-400 space-y-2">
-                <p className="font-medium">How to add articles:</p>
+                {/* <p className="font-medium">How to add articles:</p>
                 <p>1. Place .md files in <code className="bg-gray-100 dark:bg-gray-800 px-1 rounded">public/articles/</code></p>
                 <p>2. Include frontmatter with title, date, year, description, category, tags</p>
-                <p>3. Rebuild the site to see changes</p>
+                <p>3. Rebuild the site to see changes</p> */}
+                <p className="font-medium">I'll keep updating the content ... </p>
               </div>
             </div>
           </div>
