@@ -39,6 +39,7 @@ const talksData: Talk[] = [
 export default function TalksPage() {
   const [selectedType, setSelectedType] = useState<string>('all');
   const [selectedYear, setSelectedYear] = useState<number | 'all'>('all');
+  const [showMobileFilters, setShowMobileFilters] = useState(false);
 
   // Get all unique types and years
   const allTypes = useMemo(() => {
@@ -84,15 +85,25 @@ export default function TalksPage() {
       <div className="border-b border-gray-200 dark:border-gray-700">
         <div className="max-w-6xl mx-auto px-4 py-4">
           <div className="flex justify-between items-center">
-            <h1 className="text-2xl serif dark:text-gray-100">Baicheng Chen</h1>
-            <div className="flex items-center space-x-4">
-              <nav className="flex space-x-8">
+            <h1 className="text-xl md:text-2xl serif dark:text-gray-100">Talks</h1>
+            <div className="flex items-center space-x-2 md:space-x-4">
+              {/* Desktop Navigation */}
+              <nav className="hidden md:flex space-x-6 lg:space-x-8">
                 <Link href="/" className="text-gray-600 hover:text-gray-900 dark:text-gray-300 dark:hover:text-gray-100 fancy">Main</Link>
                 <Link href="/papers" className="text-gray-600 hover:text-gray-900 dark:text-gray-300 dark:hover:text-gray-100 fancy">Papers</Link>
                 <Link href="/talks" className="text-gray-600 hover:text-gray-900 dark:text-gray-300 dark:hover:text-gray-100 fancy">Talks</Link>
                 <Link href="https://baichengdanny.github.io/doc/CV_Danny.pdf" className="text-gray-600 hover:text-gray-900 dark:text-gray-300 dark:hover:text-gray-100 fancy">CV</Link>
                 <Link href="/writing" className="text-gray-600 hover:text-gray-900 dark:text-gray-300 dark:hover:text-gray-100 fancy">Writing</Link>
               </nav>
+
+              {/* Mobile Navigation */}
+              <nav className="flex md:hidden space-x-3 text-sm">
+                <Link href="/" className="text-gray-600 hover:text-gray-900 dark:text-gray-300 dark:hover:text-gray-100 fancy">Main</Link>
+                <Link href="/papers" className="text-gray-600 hover:text-gray-900 dark:text-gray-300 dark:hover:text-gray-100 fancy">Papers</Link>
+                <Link href="https://baichengdanny.github.io/doc/CV_Danny.pdf" className="text-gray-600 hover:text-gray-900 dark:text-gray-300 dark:hover:text-gray-100 fancy">CV</Link>
+                <Link href="/writing" className="text-gray-600 hover:text-gray-900 dark:text-gray-300 dark:hover:text-gray-100 fancy">Writing</Link>
+              </nav>
+
               <ThemeToggle />
             </div>
           </div>
@@ -101,9 +112,116 @@ export default function TalksPage() {
 
       {/* Main Content */}
       <div className="max-w-6xl mx-auto px-4 py-8 fancy">
+        {/* Mobile Filter Toggle */}
+        <div className="lg:hidden mb-6">
+          <button
+            onClick={() => setShowMobileFilters(!showMobileFilters)}
+            className="w-full flex items-center justify-between px-4 py-3 bg-gray-50 dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700"
+          >
+            <span className="text-sm font-medium dark:text-gray-300">
+              Filters {filteredTalks.length !== talksData.length && `(${filteredTalks.length} results)`}
+            </span>
+            <svg
+              className={`w-5 h-5 transform transition-transform ${showMobileFilters ? 'rotate-180' : ''}`}
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+            </svg>
+          </button>
+        </div>
+
+        {/* Mobile Filters Panel */}
+        {showMobileFilters && (
+          <div className="lg:hidden mb-6">
+            <div className="bg-gray-50 dark:bg-gray-800 rounded-lg p-4 border border-gray-200 dark:border-gray-700">
+              <div className="text-sm space-y-4 serif">
+                {/* Year Filter */}
+                <div>
+                  <div className="font-bold dark:text-gray-300 mb-2">By Year</div>
+                  <div className="grid grid-cols-3 gap-2">
+                    <button
+                      onClick={() => setSelectedYear('all')}
+                      className={`text-left px-3 py-2 rounded border text-sm ${
+                        selectedYear === 'all'
+                          ? 'bg-red-600 text-white border-red-600'
+                          : 'bg-white dark:bg-gray-700 text-red-600 dark:text-red-400 border-gray-300 dark:border-gray-600'
+                      }`}
+                    >
+                      All ({talksData.length})
+                    </button>
+                    {allYears.map(year => {
+                      const count = talksData.filter(t => t.year === year).length;
+                      return (
+                        <button
+                          key={year}
+                          onClick={() => setSelectedYear(year)}
+                          className={`text-left px-3 py-2 rounded border text-sm ${
+                            selectedYear === year
+                              ? 'bg-red-600 text-white border-red-600'
+                              : 'bg-white dark:bg-gray-700 text-red-600 dark:text-red-400 border-gray-300 dark:border-gray-600'
+                          }`}
+                        >
+                          {year} ({count})
+                        </button>
+                      );
+                    })}
+                  </div>
+                </div>
+
+                {/* Type Filter */}
+                <div>
+                  <div className="font-bold dark:text-gray-300 mb-2">By Type</div>
+                  <div className="grid grid-cols-2 gap-2">
+                    <button
+                      onClick={() => setSelectedType('all')}
+                      className={`text-left px-3 py-2 rounded border text-sm ${
+                        selectedType === 'all'
+                          ? 'bg-red-600 text-white border-red-600'
+                          : 'bg-white dark:bg-gray-700 text-red-600 dark:text-red-400 border-gray-300 dark:border-gray-600'
+                      }`}
+                    >
+                      All ({talksData.length})
+                    </button>
+                    {allTypes.map(type => {
+                      const count = talksData.filter(t => t.type === type).length;
+                      return (
+                        <button
+                          key={type}
+                          onClick={() => setSelectedType(type)}
+                          className={`text-left px-3 py-2 rounded border text-sm ${
+                            selectedType === type
+                              ? 'bg-red-600 text-white border-red-600'
+                              : 'bg-white dark:bg-gray-700 text-red-600 dark:text-red-400 border-gray-300 dark:border-gray-600'
+                          }`}
+                        >
+                          {type} ({count})
+                        </button>
+                      );
+                    })}
+                  </div>
+                </div>
+
+                {/* Clear Filters Button */}
+                {(selectedType !== 'all' || selectedYear !== 'all') && (
+                  <div className="pt-2 border-t border-gray-200 dark:border-gray-700">
+                    <button
+                      onClick={clearFilters}
+                      className="w-full px-3 py-2 text-sm bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300 rounded hover:bg-gray-300 dark:hover:bg-gray-600"
+                    >
+                      Clear All Filters
+                    </button>
+                  </div>
+                )}
+              </div>
+            </div>
+          </div>
+        )}
+
         <div className="grid grid-cols-1 lg:grid-cols-4 gap-8">
-          {/* Left Navigation */}
-          <div className="lg:col-span-1">
+          {/* Left Navigation - Desktop */}
+          <div className="hidden lg:block lg:col-span-1">
             <div className="text-sm space-y-4 serif sticky top-4">
               {/* Active Filters */}
               {(selectedType !== 'all' || selectedYear !== 'all') && (

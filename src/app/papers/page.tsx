@@ -23,77 +23,14 @@ interface Paper {
 // Sample papers data
 const papersData: Paper[] = [
   {
-    id: "universal-adversarial-attacks-2024",
-    title: "Universal and Transferable Adversarial Attacks on Aligned Language Models",
-    authors: "Andy Zou, Zifan Wang, Nicholas Carlini, Milad Nasr, J. Zico Kolter, Matt Fredrikson",
-    venue: "ICML",
+    id: "fl-brain-2024",
+    title: "Federated Learning-Based EfficientNet in Brain Tumor Classification",
+    authors: "Baicheng Chen",
+    venue: "EMITI",
     year: 2024,
-    description: "We propose a simple and effective approach to generate adversarial prompts that can jailbreak aligned language models. Our method is based on the observation that aligned models exhibit specific failure modes when presented with certain prompt patterns.",
-    links: { pdf: "#", code: "#" }
-  },
-  {
-    id: "extracting-training-data-diffusion-2024",
-    title: "Extracting Training Data from Diffusion Models",
-    authors: "Nicholas Carlini, Jamie Hayes, Milad Nasr, Matthew Jagielski, Vikash Sehwag, Florian Tramèr, Borja Balle, Daphne Ippolito, Eric Wallace",
-    venue: "USENIX Security",
-    year: 2024,
-    description: "We show that diffusion models memorize individual images from their training data and emit them at generation time. We develop methods to extract these training images and demonstrate that diffusion models exhibit a high level of memorization.",
-    links: { pdf: "#", code: "#" }
-  },
-  {
-    id: "poisoning-web-scale-datasets-2024",
-    title: "Poisoning Web-Scale Training Datasets is Practical",
-    authors: "Nicholas Carlini, Matthew Jagielski, Christopher A. Choquette-Choo, Daniel Paleka, Will Pearce, Hyrum Anderson, Andreas Terzis, Kurt Thomas, Florian Tramèr",
-    venue: "NeurIPS",
-    year: 2024,
-    description: "We demonstrate that poisoning attacks against web-scale datasets used to train large language models are not only possible but practical. Our work shows vulnerabilities in current data collection practices.",
-    links: { pdf: "#" }
-  },
-  {
-    id: "aligned-networks-adversarially-aligned-2023",
-    title: "Are aligned neural networks adversarially aligned?",
-    authors: "Nicholas Carlini, Milad Nasr, Christopher A. Choquette-Choo, Matthew Jagielski, Irena Gao, Anas Awadalla, Pang Wei Koh, Daphne Ippolito, Katherine Lee, Florian Tramèr, Ludwig Schmidt",
-    venue: "NeurIPS",
-    year: 2023,
-    description: "We investigate whether neural networks that are aligned with human preferences using reinforcement learning from human feedback (RLHF) remain aligned when facing adversarial inputs.",
-    links: { pdf: "#" }
-  },
-  {
-    id: "quantifying-memorization-language-models-2023",
-    title: "Quantifying Memorization Across Neural Language Models",
-    authors: "Nicholas Carlini, Daphne Ippolito, Matthew Jagielski, Katherine Lee, Milad Nasr, Chiyuan Zhang",
-    venue: "ICLR",
-    year: 2023,
-    description: "We study memorization in neural language models by examining to what extent these models memorize rare snippets of their training data, and develop techniques to measure memorization across different model sizes and datasets.",
-    links: { pdf: "#", code: "#" }
-  },
-  {
-    id: "membership-inference-attacks-2022",
-    title: "Membership Inference Attacks From First Principles",
-    authors: "Nicholas Carlini, Steve Chien, Milad Nasr, Shuang Song, Andreas Terzis, Florian Tramèr",
-    venue: "IEEE S&P",
-    year: 2022,
-    description: "We develop new membership inference attacks that are orders of magnitude more effective than existing attacks and show that these attacks are feasible on large-scale machine learning models.",
-    links: { pdf: "#", code: "#" }
-  },
-  {
-    id: "cryptanalytic-extraction-neural-networks-2020",
-    title: "Cryptanalytic Extraction of Neural Networks",
-    authors: "Nicholas Carlini, Matthew Jagielski, Ilya Mironov",
-    venue: "CRYPTO",
-    year: 2020,
-    description: "We show how to extract the exact weights of neural networks through novel cryptanalytic techniques, demonstrating significant vulnerabilities in current ML deployment practices.",
-    links: { pdf: "#", code: "#" }
-  },
-  {
-    id: "evaluating-robustness-neural-networks-2017",
-    title: "Towards Evaluating the Robustness of Neural Networks",
-    authors: "Nicholas Carlini, David Wagner",
-    venue: "IEEE S&P",
-    year: 2017,
-    description: "We introduce the C&W attack, a powerful method for generating adversarial examples that is effective against many proposed defenses.",
-    links: { pdf: "#", code: "#" },
-    awards: ["Best Paper Award"]
+    description: "",
+    links: { pdf: "https://www.scitepress.org/Papers/2024/129509/129509.pdf", code: "#" },
+    awards: []
   }
 ];
 
@@ -153,7 +90,7 @@ export default function PapersPage() {
                 <Link href="/" className="text-gray-600 hover:text-gray-900 dark:text-gray-300 dark:hover:text-gray-100 fancy">Main</Link>
                 <Link href="/papers" className="text-gray-600 hover:text-gray-900 dark:text-gray-300 dark:hover:text-gray-100 fancy">Papers</Link>
                 <Link href="/talks" className="text-gray-600 hover:text-gray-900 dark:text-gray-300 dark:hover:text-gray-100 fancy">Talks</Link>
-                <Link href="/code" className="text-gray-600 hover:text-gray-900 dark:text-gray-300 dark:hover:text-gray-100 fancy">Code</Link>
+                <Link href="https://baichengdanny.github.io/doc/CV_Danny.pdf" className="text-gray-600 hover:text-gray-900 dark:text-gray-300 dark:hover:text-gray-100 fancy">CV</Link>
                 <Link href="/writing" className="text-gray-600 hover:text-gray-900 dark:text-gray-300 dark:hover:text-gray-100 fancy">Writing</Link>
               </nav>
 
@@ -161,7 +98,7 @@ export default function PapersPage() {
               <nav className="flex md:hidden space-x-3 text-sm">
                 <Link href="/" className="text-gray-600 hover:text-gray-900 dark:text-gray-300 dark:hover:text-gray-100 fancy">Main</Link>
                 <Link href="/talks" className="text-gray-600 hover:text-gray-900 dark:text-gray-300 dark:hover:text-gray-100 fancy">Talks</Link>
-                <Link href="/code" className="text-gray-600 hover:text-gray-900 dark:text-gray-300 dark:hover:text-gray-100 fancy">Code</Link>
+                <Link href="https://baichengdanny.github.io/doc/CV_Danny.pdf" className="text-gray-600 hover:text-gray-900 dark:text-gray-300 dark:hover:text-gray-100 fancy">CV</Link>
                 <Link href="/writing" className="text-gray-600 hover:text-gray-900 dark:text-gray-300 dark:hover:text-gray-100 fancy">Writing</Link>
               </nav>
 
@@ -385,6 +322,9 @@ export default function PapersPage() {
           {/* Right Content */}
           <div className="lg:col-span-3">
             <div className="space-y-8">
+              <div>
+                <h1 className="text-lg font-bold serif mb-4">List of Publications</h1>
+              </div>
               {filteredPapers.length === 0 ? (
                 <div className="text-center py-12">
                   <p className="text-gray-500 dark:text-gray-400 text-lg">No papers found with current filters.</p>
@@ -415,7 +355,7 @@ export default function PapersPage() {
                           <p
                             className="text-sm text-gray-600 dark:text-gray-400 mb-2"
                             dangerouslySetInnerHTML={{
-                              __html: paper.authors.replace(/Nicholas Carlini/g, '<strong>Nicholas Carlini</strong>')
+                              __html: paper.authors.replace(/Baicheng Chen/g, '<strong>Baicheng Chen</strong>')
                             }}
                           />
                           <div className="flex flex-wrap items-center gap-2 mb-2">
