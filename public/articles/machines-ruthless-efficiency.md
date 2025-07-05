@@ -3,6 +3,8 @@ title: "Machines of Ruthless Efficiency"
 date: "2025-01-15"
 year: 2025
 description: "Future LLMs have the potential to cause significant harm due to their ruthless efficiency. I'm worried this will happen, and discuss the ways in which it might."
+category: "AI Safety"
+tags: ["AI", "machine learning", "safety", "ethics", "LLM"]
 ---
 
 # Machines of Ruthless Efficiency
