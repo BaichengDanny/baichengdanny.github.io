@@ -8,7 +8,7 @@ export default function Home() {
       <div className="border-b border-gray-200">
         <div className="max-w-6xl mx-auto px-4 py-4">
           <div className="flex justify-between items-center">
-            <h1 className="text-2xl serif">Nicholas Carlini</h1>
+            <h1 className="text-2xl serif">Baicheng Chen</h1>
             <nav className="flex space-x-8">
               <Link href="/" className="text-gray-600 hover:text-gray-900 fancy">Main</Link>
               <Link href="/papers" className="text-gray-600 hover:text-gray-900 fancy">Papers</Link>
@@ -27,43 +27,22 @@ export default function Home() {
           <div className="lg:col-span-2">
             <div className="prose prose-lg max-w-none">
               <p className="text-lg leading-relaxed">
-                I am a researcher working at the intersection of machine learning and computer security.
-                Currently I work at Anthropic studying what bad things you could do with, or do to, language models.
-                Previously, I was a research scientist at Google Brain (from 2018-2023) and DeepMind (from 2023-2025).
-                I hold a Ph.D. from UC Berkeley under David Wagner, and a B.A. in computer science and mathematics
-                (also from Berkeley).
+                I am a sophomore majoring in Computer Science and Engineering (CSE) at the School of Data Science, The Chinese University of Hong Kong, Shenzhen (CUHK-Shenzhen). 
+                In our university, I'm also a student at Minerva College (厚含书院). 
+                Furthermore, I'm a video Editor and Colorist working in the Student Union currently (You can follow the{" "}
+                <a href="https://space.bilibili.com/508002687" className="text-red-600 hover:text-red-800">Bilibili account of the Student Union🔗</a> to watch our works).
               </p>
 
               <p className="text-lg leading-relaxed">
-                My papers developing flaws in machine learning models have received best paper awards at
-                IEEE S&P (once<sup><a href="#" className="text-red-600">1</a></sup>),
-                USENIX Security (twice<sup><a href="#" className="text-red-600">1</a>,<a href="#" className="text-red-600">2</a></sup>),
-                and ICML (three times<sup><a href="#" className="text-red-600">1</a>,<a href="#" className="text-red-600">2</a>,<a href="#" className="text-red-600">3</a></sup>),
-                and have been covered in the popular press by{" "}
-                <a href="#" className="text-red-600 hover:text-red-800">the New York Times</a>, {" "}
-                <a href="#" className="text-red-600 hover:text-red-800">the BBC</a>, {" "}
-                <a href="#" className="text-red-600 hover:text-red-800">Nature Magazine</a>, {" "}
-                <a href="#" className="text-red-600 hover:text-red-800">Science Magazine</a>, {" "}
-                <a href="#" className="text-red-600 hover:text-red-800">Wired</a>, and {" "}
-                <a href="#" className="text-red-600 hover:text-red-800">Popular Science</a>.
+                I have learned several programming languages like C++, Java, Python and Go, familiar with lots of commonly used Python libraries for machine learning, deep learning and data analysis such as pytorch, numpy, pandas, matplotlib and sklearn. I also mastered the grammar of LaTex and Markdown. Moreover, in middle school, I used to attend NOIP programming contests and learned many Algorithms. The experience also triggers my interest in computer science and algorithms.
               </p>
 
               <p className="text-lg leading-relaxed">
-                When not otherwise busy with research, I write lots of useless code ranging from an{" "}
-                <a href="#" className="text-red-600 hover:text-red-800">obfuscated Tic-Tac-Toe Game</a>{" "}
-                written in a single call to <code className="bg-gray-100 px-1 rounded font-mono">printf</code>{" "}
-                (which won the IOCCC 2020 Best of Show), to a{" "}
-                <a href="#" className="text-red-600 hover:text-red-800">Doom clone</a> in 13k of WebGL + JavaScript,
-                to a fully functional{" "}
-                <a href="#" className="text-red-600 hover:text-red-800">CPU built on top of Conway's Game of Life</a>,
-                to a{" "}
-                <a href="#" className="text-red-600 hover:text-red-800">2-ply chess engine implemented with a sequence of regular expressions</a>.
+                My hobbies include many fields. Except for computer science and research, I like literature, music (singing and piano) and swimming. I'm interested in reading and thinking, empathizing with the characters in the book, and writing thoughts and experiences of me.
               </p>
 
               <p className="text-lg leading-relaxed">
-                A complete list of my <a href="#" className="text-red-600 hover:text-red-800">publications</a> are online,
-                along with some of my <a href="#" className="text-red-600 hover:text-red-800">code</a>,
-                and some extra <a href="#" className="text-red-600 hover:text-red-800">writings</a>.
+                If you are interested in any aspect of me, would like to chat with me further, please email me at baichengchen[at]link[dot]cuhk[dot]edu[dot]cn. I'm looking for like-minded people!
               </p>
             </div>
           </div>
@@ -81,11 +60,11 @@ export default function Home() {
                 />
               </div>
               <div className="text-center fancy space-y-2">
-                <div className="font-bold">Nicholas Carlini</div>
-                <div>Research Scientist, Anthropic</div>
-                <div className="text-sm">nicholas [at] carlini [dot] com</div>
+                <div className="font-bold">Baicheng Chen</div>
+                <div>Sophomore, CUHK-Shenzhen</div>
+                <div className="text-sm">baichengchen [at] link [dot] cuhk [dot] edu [dot] com</div>
                 <div className="flex justify-center space-x-2 text-sm">
-                  <a href="#" className="text-red-600 hover:text-red-800">GitHub</a>
+                  <a href="https://github.com/BaichengDanny" className="text-red-600 hover:text-red-800">GitHub</a>
                   <span>|</span>
                   <a href="#" className="text-red-600 hover:text-red-800">Google Scholar</a>
                 </div>
@@ -93,7 +72,7 @@ export default function Home() {
             </div>
 
             {/* Mobile contact info */}
-            <div className="lg:hidden mt-8 text-center space-y-2">
+            {/* <div className="lg:hidden mt-8 text-center space-y-2">
               <div className="font-bold">Nicholas Carlini</div>
               <div>Research Scientist, Anthropic</div>
               <div className="text-sm">nicholas [at] carlini [dot] com</div>
@@ -101,7 +80,7 @@ export default function Home() {
                 <a href="#" className="text-red-600 hover:text-red-800">GitHub</a>
                 <span>|</span>
                 <a href="#" className="text-red-600 hover:text-red-800">Google Scholar</a>
-              </div>
+              </div> */}
             </div>
           </div>
         </div>
