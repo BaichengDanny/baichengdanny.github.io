@@ -58,7 +58,7 @@ export default function Home() {
               </p>
 
               <p className="text-lg leading-relaxed dark:text-gray-300">
-                If you are interested in any aspect of me, would like to chat with me further, please email me at <i>baichengchen[at]link[dot]cuhk[dot]edu[dot]cn</i>. I'm looking for like-minded people!
+                If you are interested in any aspect of me, would like to chat with me further, please email me. I'm looking for like-minded people!
               </p>
             </div>
           </div>
@@ -171,9 +171,9 @@ export default function Home() {
               </ul>
             </div>
 
-            <div className="bg-gray-50 p-6 rounded-lg border-l-4 border-red-600">
-              <p className="text-lg leading-relaxed text-gray-800">
-                My current research focuses on <span className="font-semibold text-red-700">Trustworthy AI</span>.
+            <div className="bg-gray-50 dark:bg-gray-800 p-6 rounded-lg border-l-4 border-red-600">
+              <p className="text-lg leading-relaxed text-gray-800 dark:text-gray-100">
+                My current research focuses on <span className="font-semibold text-red-700 dark:text-red-500">Trustworthy AI</span>.
                 The course <span className="font-semibold">Computer Security</span> I took in the summer particularly impressed me
                 by unfolding the severe consequences of private data being breached and the increasingly serious security issues
                 in the rapid development of AI (e.g. deepfake) reinforcing my determination to learn how to solve these issues.
