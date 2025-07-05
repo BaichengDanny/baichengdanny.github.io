@@ -22,6 +22,7 @@ export default function Home() {
 
       {/* Main Content */}
       <div className="max-w-6xl mx-auto px-4 py-8">
+        <h2 className="text-2xl font-bold serif mb-6">About</h2>
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
           {/* Left Content */}
           <div className="lg:col-span-2">
@@ -53,7 +54,7 @@ export default function Home() {
             <div className="bg-gray-50 p-6 rounded-lg text-center">
               <div className="mb-4">
                 <Image
-                  src="https://baichengdanny.github.io/danny.jpg?raw=true"
+                  src="homepage/baichengdanny.github.io/danny.jpg"
                   alt="Baicheng Chen"
                   width={200}
                   height={200}
@@ -149,6 +150,10 @@ export default function Home() {
                   <div className="w-2 h-2 bg-red-600 rounded-full mr-3"></div>
                   <span className="text-lg">Deep Learning</span>
                 </li>
+                <li className="flex items-center">
+                  <div className="w-2 h-2 bg-red-600 rounded-full mr-3"></div>
+                  <span className="text-lg">Federated Learning</span>
+                </li>
               </ul>
             </div>
 
@@ -165,8 +170,8 @@ export default function Home() {
 
         {/* Recent News Section */}
         <div className="mt-16">
-          <h2 className="text-2xl font-bold serif mb-6 text-blue-600">Recent News</h2>
-          <div className="border-t border-gray-300 pt-4">
+          <h2 className="text-2xl font-bold serif mb-6">Recent News</h2>
+          <div className="border-l-4 border-red-600 pt-6">
             <ul className="space-y-3 text-lg">
               <li className="flex">
                 <span className="mr-2">•</span>
