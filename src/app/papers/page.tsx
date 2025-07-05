@@ -23,20 +23,84 @@ interface Paper {
 // Sample papers data
 const papersData: Paper[] = [
   {
-    id: "fl-brain-2024",
-    title: "Federated Learning-Based EfficientNet in Brain Tumor Classification",
-    authors: "Baicheng Chen",
-    venue: "EMITI",
+    id: "universal-adversarial-attacks-2024",
+    title: "Universal and Transferable Adversarial Attacks on Aligned Language Models",
+    authors: "Andy Zou, Zifan Wang, Nicholas Carlini, Milad Nasr, J. Zico Kolter, Matt Fredrikson",
+    venue: "ICML",
     year: 2024,
-    description: "",
-    links: { pdf: "https://www.scitepress.org/Papers/2024/129509/129509.pdf", code: "#" },
-    awards: []
+    description: "We propose a simple and effective approach to generate adversarial prompts that can jailbreak aligned language models. Our method is based on the observation that aligned models exhibit specific failure modes when presented with certain prompt patterns.",
+    links: { pdf: "#", code: "#" }
+  },
+  {
+    id: "extracting-training-data-diffusion-2024",
+    title: "Extracting Training Data from Diffusion Models",
+    authors: "Nicholas Carlini, Jamie Hayes, Milad Nasr, Matthew Jagielski, Vikash Sehwag, Florian Tramèr, Borja Balle, Daphne Ippolito, Eric Wallace",
+    venue: "USENIX Security",
+    year: 2024,
+    description: "We show that diffusion models memorize individual images from their training data and emit them at generation time. We develop methods to extract these training images and demonstrate that diffusion models exhibit a high level of memorization.",
+    links: { pdf: "#", code: "#" }
+  },
+  {
+    id: "poisoning-web-scale-datasets-2024",
+    title: "Poisoning Web-Scale Training Datasets is Practical",
+    authors: "Nicholas Carlini, Matthew Jagielski, Christopher A. Choquette-Choo, Daniel Paleka, Will Pearce, Hyrum Anderson, Andreas Terzis, Kurt Thomas, Florian Tramèr",
+    venue: "NeurIPS",
+    year: 2024,
+    description: "We demonstrate that poisoning attacks against web-scale datasets used to train large language models are not only possible but practical. Our work shows vulnerabilities in current data collection practices.",
+    links: { pdf: "#" }
+  },
+  {
+    id: "aligned-networks-adversarially-aligned-2023",
+    title: "Are aligned neural networks adversarially aligned?",
+    authors: "Nicholas Carlini, Milad Nasr, Christopher A. Choquette-Choo, Matthew Jagielski, Irena Gao, Anas Awadalla, Pang Wei Koh, Daphne Ippolito, Katherine Lee, Florian Tramèr, Ludwig Schmidt",
+    venue: "NeurIPS",
+    year: 2023,
+    description: "We investigate whether neural networks that are aligned with human preferences using reinforcement learning from human feedback (RLHF) remain aligned when facing adversarial inputs.",
+    links: { pdf: "#" }
+  },
+  {
+    id: "quantifying-memorization-language-models-2023",
+    title: "Quantifying Memorization Across Neural Language Models",
+    authors: "Nicholas Carlini, Daphne Ippolito, Matthew Jagielski, Katherine Lee, Milad Nasr, Chiyuan Zhang",
+    venue: "ICLR",
+    year: 2023,
+    description: "We study memorization in neural language models by examining to what extent these models memorize rare snippets of their training data, and develop techniques to measure memorization across different model sizes and datasets.",
+    links: { pdf: "#", code: "#" }
+  },
+  {
+    id: "membership-inference-attacks-2022",
+    title: "Membership Inference Attacks From First Principles",
+    authors: "Nicholas Carlini, Steve Chien, Milad Nasr, Shuang Song, Andreas Terzis, Florian Tramèr",
+    venue: "IEEE S&P",
+    year: 2022,
+    description: "We develop new membership inference attacks that are orders of magnitude more effective than existing attacks and show that these attacks are feasible on large-scale machine learning models.",
+    links: { pdf: "#", code: "#" }
+  },
+  {
+    id: "cryptanalytic-extraction-neural-networks-2020",
+    title: "Cryptanalytic Extraction of Neural Networks",
+    authors: "Nicholas Carlini, Matthew Jagielski, Ilya Mironov",
+    venue: "CRYPTO",
+    year: 2020,
+    description: "We show how to extract the exact weights of neural networks through novel cryptanalytic techniques, demonstrating significant vulnerabilities in current ML deployment practices.",
+    links: { pdf: "#", code: "#" }
+  },
+  {
+    id: "evaluating-robustness-neural-networks-2017",
+    title: "Towards Evaluating the Robustness of Neural Networks",
+    authors: "Nicholas Carlini, David Wagner",
+    venue: "IEEE S&P",
+    year: 2017,
+    description: "We introduce the C&W attack, a powerful method for generating adversarial examples that is effective against many proposed defenses.",
+    links: { pdf: "#", code: "#" },
+    awards: ["Best Paper Award"]
   }
 ];
 
 export default function PapersPage() {
   const [selectedVenue, setSelectedVenue] = useState<string>('all');
   const [selectedYear, setSelectedYear] = useState<number | 'all'>('all');
+  const [showMobileFilters, setShowMobileFilters] = useState(false);
 
   // Get all unique venues and years
   const allVenues = useMemo(() => {
@@ -82,15 +146,25 @@ export default function PapersPage() {
       <div className="border-b border-gray-200 dark:border-gray-700">
         <div className="max-w-6xl mx-auto px-4 py-4">
           <div className="flex justify-between items-center">
-            <h1 className="text-2xl serif dark:text-gray-100">Baicheng Chen</h1>
-            <div className="flex items-center space-x-4">
-              <nav className="flex space-x-8">
+            <h1 className="text-xl md:text-2xl serif dark:text-gray-100">Papers</h1>
+            <div className="flex items-center space-x-2 md:space-x-4">
+              {/* Desktop Navigation */}
+              <nav className="hidden md:flex space-x-6 lg:space-x-8">
                 <Link href="/" className="text-gray-600 hover:text-gray-900 dark:text-gray-300 dark:hover:text-gray-100 fancy">Main</Link>
                 <Link href="/papers" className="text-gray-600 hover:text-gray-900 dark:text-gray-300 dark:hover:text-gray-100 fancy">Papers</Link>
                 <Link href="/talks" className="text-gray-600 hover:text-gray-900 dark:text-gray-300 dark:hover:text-gray-100 fancy">Talks</Link>
-                <Link href="https://baichengdanny.github.io/doc/CV_Danny.pdf" className="text-gray-600 hover:text-gray-900 dark:text-gray-300 dark:hover:text-gray-100 fancy">CV</Link>
+                <Link href="/code" className="text-gray-600 hover:text-gray-900 dark:text-gray-300 dark:hover:text-gray-100 fancy">Code</Link>
                 <Link href="/writing" className="text-gray-600 hover:text-gray-900 dark:text-gray-300 dark:hover:text-gray-100 fancy">Writing</Link>
               </nav>
+
+              {/* Mobile Navigation */}
+              <nav className="flex md:hidden space-x-3 text-sm">
+                <Link href="/" className="text-gray-600 hover:text-gray-900 dark:text-gray-300 dark:hover:text-gray-100 fancy">Main</Link>
+                <Link href="/talks" className="text-gray-600 hover:text-gray-900 dark:text-gray-300 dark:hover:text-gray-100 fancy">Talks</Link>
+                <Link href="/code" className="text-gray-600 hover:text-gray-900 dark:text-gray-300 dark:hover:text-gray-100 fancy">Code</Link>
+                <Link href="/writing" className="text-gray-600 hover:text-gray-900 dark:text-gray-300 dark:hover:text-gray-100 fancy">Writing</Link>
+              </nav>
+
               <ThemeToggle />
             </div>
           </div>
@@ -99,9 +173,116 @@ export default function PapersPage() {
 
       {/* Main Content */}
       <div className="max-w-6xl mx-auto px-4 py-8 fancy">
+        {/* Mobile Filter Toggle */}
+        <div className="lg:hidden mb-6">
+          <button
+            onClick={() => setShowMobileFilters(!showMobileFilters)}
+            className="w-full flex items-center justify-between px-4 py-3 bg-gray-50 dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700"
+          >
+            <span className="text-sm font-medium dark:text-gray-300">
+              Filters {filteredPapers.length !== papersData.length && `(${filteredPapers.length} results)`}
+            </span>
+            <svg
+              className={`w-5 h-5 transform transition-transform ${showMobileFilters ? 'rotate-180' : ''}`}
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+            </svg>
+          </button>
+        </div>
+
+        {/* Mobile Filters Panel */}
+        {showMobileFilters && (
+          <div className="lg:hidden mb-6">
+            <div className="bg-gray-50 dark:bg-gray-800 rounded-lg p-4 border border-gray-200 dark:border-gray-700">
+              <div className="text-sm space-y-4 serif">
+                {/* Year Filter */}
+                <div>
+                  <div className="font-bold dark:text-gray-300 mb-2">By Year</div>
+                  <div className="grid grid-cols-3 gap-2">
+                    <button
+                      onClick={() => setSelectedYear('all')}
+                      className={`text-left px-3 py-2 rounded border text-sm ${
+                        selectedYear === 'all'
+                          ? 'bg-red-600 text-white border-red-600'
+                          : 'bg-white dark:bg-gray-700 text-red-600 dark:text-red-400 border-gray-300 dark:border-gray-600'
+                      }`}
+                    >
+                      All ({papersData.length})
+                    </button>
+                    {allYears.map(year => {
+                      const count = papersData.filter(p => p.year === year).length;
+                      return (
+                        <button
+                          key={year}
+                          onClick={() => setSelectedYear(year)}
+                          className={`text-left px-3 py-2 rounded border text-sm ${
+                            selectedYear === year
+                              ? 'bg-red-600 text-white border-red-600'
+                              : 'bg-white dark:bg-gray-700 text-red-600 dark:text-red-400 border-gray-300 dark:border-gray-600'
+                          }`}
+                        >
+                          {year} ({count})
+                        </button>
+                      );
+                    })}
+                  </div>
+                </div>
+
+                {/* Venue Filter */}
+                <div>
+                  <div className="font-bold dark:text-gray-300 mb-2">By Venue</div>
+                  <div className="grid grid-cols-2 gap-2">
+                    <button
+                      onClick={() => setSelectedVenue('all')}
+                      className={`text-left px-3 py-2 rounded border text-sm ${
+                        selectedVenue === 'all'
+                          ? 'bg-red-600 text-white border-red-600'
+                          : 'bg-white dark:bg-gray-700 text-red-600 dark:text-red-400 border-gray-300 dark:border-gray-600'
+                      }`}
+                    >
+                      All ({papersData.length})
+                    </button>
+                    {allVenues.map(venue => {
+                      const count = papersData.filter(p => p.venue === venue).length;
+                      return (
+                        <button
+                          key={venue}
+                          onClick={() => setSelectedVenue(venue)}
+                          className={`text-left px-3 py-2 rounded border text-sm ${
+                            selectedVenue === venue
+                              ? 'bg-red-600 text-white border-red-600'
+                              : 'bg-white dark:bg-gray-700 text-red-600 dark:text-red-400 border-gray-300 dark:border-gray-600'
+                          }`}
+                        >
+                          {venue} ({count})
+                        </button>
+                      );
+                    })}
+                  </div>
+                </div>
+
+                {/* Clear Filters Button */}
+                {(selectedVenue !== 'all' || selectedYear !== 'all') && (
+                  <div className="pt-2 border-t border-gray-200 dark:border-gray-700">
+                    <button
+                      onClick={clearFilters}
+                      className="w-full px-3 py-2 text-sm bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300 rounded hover:bg-gray-300 dark:hover:bg-gray-600"
+                    >
+                      Clear All Filters
+                    </button>
+                  </div>
+                )}
+              </div>
+            </div>
+          </div>
+        )}
+
         <div className="grid grid-cols-1 lg:grid-cols-4 gap-8">
-          {/* Left Navigation */}
-          <div className="lg:col-span-1">
+          {/* Left Navigation - Desktop */}
+          <div className="hidden lg:block lg:col-span-1">
             <div className="text-sm space-y-4 serif sticky top-4">
               {/* Active Filters */}
               {(selectedVenue !== 'all' || selectedYear !== 'all') && (
@@ -204,9 +385,6 @@ export default function PapersPage() {
           {/* Right Content */}
           <div className="lg:col-span-3">
             <div className="space-y-8">
-              <div>
-                <h1 className="text-lg font-bold serif mb-4">List of Publications</h1>
-              </div>
               {filteredPapers.length === 0 ? (
                 <div className="text-center py-12">
                   <p className="text-gray-500 dark:text-gray-400 text-lg">No papers found with current filters.</p>
@@ -237,7 +415,7 @@ export default function PapersPage() {
                           <p
                             className="text-sm text-gray-600 dark:text-gray-400 mb-2"
                             dangerouslySetInnerHTML={{
-                              __html: paper.authors.replace(/Baicheng Chen/g, '<strong>Baicheng Chen</strong>')
+                              __html: paper.authors.replace(/Nicholas Carlini/g, '<strong>Nicholas Carlini</strong>')
                             }}
                           />
                           <div className="flex flex-wrap items-center gap-2 mb-2">
