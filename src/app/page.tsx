@@ -52,8 +52,8 @@ export default function Home() {
             <div className="bg-gray-50 p-6 rounded-lg text-center">
               <div className="mb-4">
                 <Image
-                  src="https://ext.same-assets.com/3995253316/1504311476.jpeg"
-                  alt="Nicholas Carlini"
+                  src="https://github.com/BaichengDanny/BaichengDanny-website-old/blob/main/danny.jpg"
+                  alt="Baicheng Chen"
                   width={200}
                   height={200}
                   className="rounded-lg mx-auto"
