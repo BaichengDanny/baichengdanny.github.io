@@ -78,7 +78,7 @@ export default function Home() {
               <div className="text-center fancy space-y-2">
                 <div className="font-bold dark:text-gray-100">Baicheng Chen</div>
                 <div className="dark:text-gray-300">Sophomore, CUHK-Shenzhen</div>
-                <div className="text-sm dark:text-gray-400">baichengchen [at] link [dot] cuhk [dot] edu [dot] com</div>
+                <div className="text-sm dark:text-gray-400">baichengchen [at] link [dot] cuhk [dot] edu [dot] cn</div>
                 <div className="flex justify-center space-x-2 text-sm">
                   <a href="https://github.com/BaichengDanny" className="text-red-600 hover:text-red-800 dark:text-red-400 dark:hover:text-red-300">GitHub</a>
                   <span>|</span>
