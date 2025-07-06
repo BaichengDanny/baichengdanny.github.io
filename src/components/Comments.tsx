@@ -51,9 +51,9 @@ export default function Comments({ articleId }: CommentsProps) {
   return (
     <div className="mt-12 pt-8 border-t border-gray-200 dark:border-gray-700">
       <div className="mb-6">
-        <h3 className="text-lg md:text-xl font-bold serif dark:text-gray-100 mb-2">评论区</h3>
+        <h3 className="text-lg md:text-xl font-bold serif dark:text-gray-100 mb-2">Discussions</h3>
         <p className="text-sm text-gray-600 dark:text-gray-400">
-          基于 GitHub Discussions 的评论系统，需要 GitHub 账号登录
+          Based on GitHub Discussions system, need your GitHub account to log in.
         </p>
       </div>
       <div ref={ref} />
