@@ -20,17 +20,17 @@ export default function Comments({ articleId }: CommentsProps) {
     scriptElem.crossOrigin = 'anonymous';
 
     scriptElem.setAttribute('data-repo', 'baichengdanny/baichengdanny.github.io');
-    scriptElem.setAttribute('data-repo-id', 'R_kgDONGYlQA');
-    scriptElem.setAttribute('data-category', 'General');
-    scriptElem.setAttribute('data-category-id', 'DIC_kwDONGYlQM4CkrLt');
-    scriptElem.setAttribute('data-mapping', 'title');
+    scriptElem.setAttribute('data-repo-id', 'R_kgDOPHKpWA');
+    scriptElem.setAttribute('data-category', 'Announcements');
+    scriptElem.setAttribute('data-category-id', 'DIC_kwDOPHKpWM4CsjSX');
+    scriptElem.setAttribute('data-mapping', 'pathname');
     scriptElem.setAttribute('data-strict', '0');
     scriptElem.setAttribute('data-reactions-enabled', '1');
     scriptElem.setAttribute('data-emit-metadata', '0');
-    scriptElem.setAttribute('data-input-position', 'top');
+    scriptElem.setAttribute('data-input-position', 'bottom');
     scriptElem.setAttribute('data-theme', theme === 'dark' ? 'dark' : 'light');
     scriptElem.setAttribute('data-lang', 'zh-CN');
-    scriptElem.setAttribute('data-loading', 'lazy');
+    scriptElem.setAttribute('data-loading', 'anonymous');
 
     ref.current.appendChild(scriptElem);
   }, [articleId]);
