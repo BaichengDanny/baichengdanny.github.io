@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { useTheme } from 'next-themes';
 
 interface CommentsProps {
@@ -10,6 +10,7 @@ interface CommentsProps {
 export default function Comments({ articleId }: CommentsProps) {
   const ref = useRef<HTMLDivElement>(null);
   const { theme } = useTheme();
+  const [showSetup, setShowSetup] = useState(false);
 
   useEffect(() => {
     if (!ref.current || ref.current.hasChildNodes()) return;
@@ -23,7 +24,7 @@ export default function Comments({ articleId }: CommentsProps) {
     scriptElem.setAttribute('data-repo-id', 'R_kgDOPHKpWA');
     scriptElem.setAttribute('data-category', 'General');
     scriptElem.setAttribute('data-category-id', 'DIC_kwDOPHKpWM4CsjSY');
-    scriptElem.setAttribute('data-mapping', 'pathname');
+    scriptElem.setAttribute('data-mapping', 'title');
     scriptElem.setAttribute('data-strict', '0');
     scriptElem.setAttribute('data-reactions-enabled', '1');
     scriptElem.setAttribute('data-emit-metadata', '0');
@@ -33,7 +34,7 @@ export default function Comments({ articleId }: CommentsProps) {
     scriptElem.setAttribute('data-loading', 'lazy');
 
     ref.current.appendChild(scriptElem);
-  }, [articleId]);
+  }, [articleId, theme]);
 
   // Update theme when it changes
   useEffect(() => {
