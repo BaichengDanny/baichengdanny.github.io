@@ -19,7 +19,7 @@ export default function Comments({ articleId }: CommentsProps) {
     scriptElem.async = true;
     scriptElem.crossOrigin = 'anonymous';
 
-    scriptElem.setAttribute('data-repo', 'baichengdanny/baichengdanny.github.io');
+    scriptElem.setAttribute('data-repo', 'BaichengDanny/baichengdanny.github.io');
     scriptElem.setAttribute('data-repo-id', 'R_kgDOPHKpWA');
     scriptElem.setAttribute('data-category', 'General');
     scriptElem.setAttribute('data-category-id', 'DIC_kwDOPHKpWM4CsjSY');
@@ -30,7 +30,7 @@ export default function Comments({ articleId }: CommentsProps) {
     scriptElem.setAttribute('data-input-position', 'bottom');
     scriptElem.setAttribute('data-theme', theme === 'dark' ? 'dark' : 'light');
     scriptElem.setAttribute('data-lang', 'zh-CN');
-    scriptElem.setAttribute('data-loading', 'anonymous');
+    scriptElem.setAttribute('data-loading', 'lazy');
 
     ref.current.appendChild(scriptElem);
   }, [articleId]);
