@@ -21,8 +21,8 @@ export default function Comments({ articleId }: CommentsProps) {
 
     scriptElem.setAttribute('data-repo', 'baichengdanny/baichengdanny.github.io');
     scriptElem.setAttribute('data-repo-id', 'R_kgDOPHKpWA');
-    scriptElem.setAttribute('data-category', 'Announcements');
-    scriptElem.setAttribute('data-category-id', 'DIC_kwDOPHKpWM4CsjSX');
+    scriptElem.setAttribute('data-category', 'General');
+    scriptElem.setAttribute('data-category-id', 'DIC_kwDOPHKpWM4CsjSY');
     scriptElem.setAttribute('data-mapping', 'pathname');
     scriptElem.setAttribute('data-strict', '0');
     scriptElem.setAttribute('data-reactions-enabled', '1');
