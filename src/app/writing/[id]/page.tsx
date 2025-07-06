@@ -221,13 +221,12 @@ export default async function ArticlePage({ params }: { params: Promise<{ id: st
           </ReactMarkdown>
             </article>
 
-            {/* Comments Section */}
-            <Comments articleId={article.id} />
-            
             <div className="mt-6 md:mt-8 pt-4 md:pt-6 border-t border-gray-200 dark:border-gray-700 text-xs md:text-sm text-gray-500 dark:text-gray-400">
               <p>Published: {article.date} | Year: {article.year}</p>
             </div>
-
+            
+            {/* Comments Section */}
+            <Comments articleId={article.id} />
             
           </div>
 
