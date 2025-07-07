@@ -30,8 +30,8 @@ const notoSerifSC = Noto_Serif_SC({
 });
 
 export const metadata: Metadata = {
-  title: "Nicholas Carlini",
-  description: "Nicholas Carlini is a research scientist at Anthropic working at the intersection of machine learning and computer security.",
+  title: "Baicheng Chen",
+  description: "Baicheng Chen is a sophomore student at CUHK-Shenzhen working on Trustworthy AI.",
 };
 
 export default function RootLayout({
