@@ -4,6 +4,7 @@ import path from 'node:path';
 import matter from 'gray-matter';
 import WritingClient from './WritingClient';
 import { ThemeToggle } from '../../components/ThemeToggle';
+import Footer from "../../components/Footer";
 
 interface Article {
   id: string;
@@ -98,6 +99,7 @@ export default function WritingPage() {
 
       {/* Main Content with Search */}
       <WritingClient articles={articles} />
+      <Footer />
     </div>
   );
 }

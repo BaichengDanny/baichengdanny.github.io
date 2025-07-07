@@ -8,6 +8,7 @@ import Link from "next/link";
 import { TableOfContents } from "../../../components/TableOfContents";
 import { ThemeToggle } from "../../../components/ThemeToggle";
 import Comments from "../../../components/Comments";
+import Footer from "../../../components/Footer";
 import { calculateReadingTime, formatReadingTime } from "../../../utils/readingTime";
 import { notFound } from "next/navigation";
 import fs from 'node:fs';
@@ -236,6 +237,7 @@ export default async function ArticlePage({ params }: { params: Promise<{ id: st
           </div>
         </div>
       </div>
+      <Footer />
     </div>
   );
 }

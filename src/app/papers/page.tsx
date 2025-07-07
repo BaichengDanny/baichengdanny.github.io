@@ -4,6 +4,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { useState, useMemo } from "react";
 import { ThemeToggle } from "../../components/ThemeToggle";
+import Footer from "../../components/Footer";
 
 interface Paper {
   id: string;
@@ -403,6 +404,7 @@ export default function PapersPage() {
           </div>
         </div>
       </div>
+      <Footer />
     </div>
   );
 }
