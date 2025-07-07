@@ -12,10 +12,10 @@ export default function Footer() {
             <p className="fancy">
               © {currentYear} Baicheng Chen. All rights reserved.
             </p>
-            <p className="text-xs mt-1">
-              Built with Next.js, Tailwind CSS, and deployed on GitHub Pages
+            <p className="text-xs mt-1 fancy">
+              Built with Next.js, Tailwind CSS, and deployed on GitHub Pages.
             </p>
-            <p className="text-xs mt-1">
+            <p className="text-xs mt-1 fancy">
               Last updated: {new Date().toLocaleDateString('en-US', {
                 year: 'numeric',
                 month: 'long',
