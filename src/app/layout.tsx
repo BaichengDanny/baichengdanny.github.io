@@ -32,6 +32,27 @@ const notoSerifSC = Noto_Serif_SC({
 export const metadata: Metadata = {
   title: "Baicheng Chen",
   description: "Baicheng Chen is a sophomore student at CUHK-Shenzhen working on Trustworthy AI.",
+  icons: {
+    icon: [
+      { url: '/head.jpg', type: 'image/jpeg', sizes: 'any' },
+    ],
+    shortcut: '/head.jpg',
+    apple: [
+      { url: '/head.jpg', sizes: '180x180', type: 'image/jpeg' },
+    ],
+    other: [
+      {
+        rel: 'icon',
+        type: 'image/jpeg',
+        url: '/head.jpg',
+      },
+      {
+        rel: 'manifest',
+        url: '/manifest.json',
+      },
+    ],
+  },
+  themeColor: '#3b82f6',
 };
 
 export default function RootLayout({
