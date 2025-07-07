@@ -13,7 +13,7 @@ export default function Footer() {
               © {currentYear} Baicheng Chen. All rights reserved.
             </p>
             <p className="text-xs mt-1 fancy">
-              Built with Next.js, Tailwind CSS, and deployed on GitHub Pages.
+              Built with Next.js, Tailwind CSS, and deployed on GitHub Pages. The website is inspired by the design of <Link href="https://nicholas.carlini.com/" className="text-red-600 hover:text-red-800">Nicholas Carlini</Link>.
             </p>
             <p className="text-xs mt-1 fancy">
               Last updated: {new Date().toLocaleDateString('en-US', {
