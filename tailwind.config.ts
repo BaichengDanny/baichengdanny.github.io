@@ -59,6 +59,10 @@ export default {
       fontFamily: {
         'inter': ['var(--font-inter)', 'sans-serif'],
         'libre-baskerville': ['var(--font-libre-baskerville)', 'serif'],
+        'noto-sans-sc': ['var(--font-noto-sans-sc)', 'sans-serif'],
+        'noto-serif-sc': ['var(--font-noto-serif-sc)', 'serif'],
+        'sans': ['var(--font-inter)', 'var(--font-noto-sans-sc)', '-apple-system', 'BlinkMacSystemFont', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Helvetica Neue', 'Helvetica', 'Arial', 'sans-serif'],
+        'serif': ['var(--font-libre-baskerville)', 'var(--font-noto-serif-sc)', 'Georgia', 'Times New Roman', 'STSong', 'SimSun', 'serif'],
       },
       container: {
       center: true,
@@ -81,4 +85,3 @@ export default {
   },
   plugins: [require("tailwindcss-animate")],
 } satisfies Config;
-

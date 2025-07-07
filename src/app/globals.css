@@ -64,26 +64,32 @@
     @apply border-border;
   }
   body {
-    @apply bg-background text-foreground;
-    font-family: var(--font-inter);
+    @apply bg-background text-foreground font-sans;
   }
 }
 
 @layer components {
   .serif {
-    font-family: var(--font-libre-baskerville);
+    @apply font-serif;
   }
 
   .header {
-    @apply text-lg font-bold;
-    font-family: var(--font-libre-baskerville);
+    @apply text-lg font-bold font-serif;
   }
 
   .fancy {
-    font-family: var(--font-libre-baskerville);
+    @apply font-serif;
   }
 
   .footnote {
     @apply text-xs text-muted-foreground;
+  }
+
+  .chinese-text {
+    @apply font-noto-sans-sc;
+  }
+
+  .chinese-serif {
+    @apply font-noto-serif-sc;
   }
 }

@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Inter, Libre_Baskerville } from "next/font/google";
+import { Inter, Libre_Baskerville, Noto_Sans_SC, Noto_Serif_SC } from "next/font/google";
 import "./globals.css";
 import "katex/dist/katex.min.css";
 import ClientBody from "./ClientBody";
@@ -17,9 +17,21 @@ const libreBaskerville = Libre_Baskerville({
   weight: ["400", "700"],
 });
 
+const notoSansSC = Noto_Sans_SC({
+  variable: "--font-noto-sans-sc",
+  subsets: ["latin"],
+  weight: ["300", "400", "500", "700"],
+});
+
+const notoSerifSC = Noto_Serif_SC({
+  variable: "--font-noto-serif-sc",
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
+});
+
 export const metadata: Metadata = {
-  title: "Baicheng Chen",
-  description: "Baicheng Chen is a sophomore student at CUHK-Shenzhen working on Trustworthy AI.",
+  title: "Nicholas Carlini",
+  description: "Nicholas Carlini is a research scientist at Anthropic working at the intersection of machine learning and computer security.",
 };
 
 export default function RootLayout({
@@ -28,7 +40,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${inter.variable} ${libreBaskerville.variable}`} suppressHydrationWarning>
+    <html lang="en" className={`${inter.variable} ${libreBaskerville.variable} ${notoSansSC.variable} ${notoSerifSC.variable}`} suppressHydrationWarning>
       <head>
         <Script
           crossOrigin="anonymous"
