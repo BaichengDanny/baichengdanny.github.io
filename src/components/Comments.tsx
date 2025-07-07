@@ -13,7 +13,9 @@ export default function Comments({ articleId }: CommentsProps) {
   const [showSetup, setShowSetup] = useState(false);
 
   useEffect(() => {
-    if (!ref.current || ref.current.hasChildNodes()) return;
+    if (!ref.current) return;
+
+    ref.current.innerHTML = ''
 
     const scriptElem = document.createElement('script');
     scriptElem.src = 'https://giscus.app/client.js';
@@ -24,7 +26,8 @@ export default function Comments({ articleId }: CommentsProps) {
     scriptElem.setAttribute('data-repo-id', 'R_kgDOPHKpWA');
     scriptElem.setAttribute('data-category', 'General');
     scriptElem.setAttribute('data-category-id', 'DIC_kwDOPHKpWM4CsjSY');
-    scriptElem.setAttribute('data-mapping', 'title');
+    scriptElem.setAttribute('data-mapping', 'specific');
+    scriptElem.setAttribute('data-term', 'article-${articleId}');
     scriptElem.setAttribute('data-strict', '0');
     scriptElem.setAttribute('data-reactions-enabled', '1');
     scriptElem.setAttribute('data-emit-metadata', '0');
