@@ -15,8 +15,8 @@ export default function Footer() {
             <p className="text-xs mt-1">
               Built with Next.js, Tailwind CSS, and deployed on GitHub Pages
             </p>
-            <p>
-              Last updated: {new Date().toLocaleDateString('zh-CN', {
+            <p className="text-xs mt-1">
+              Last updated: {new Date().toLocaleDateString('en-US', {
                 year: 'numeric',
                 month: 'long',
                 day: 'numeric'
