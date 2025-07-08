@@ -56,7 +56,7 @@ function getArticles(): Article[] {
       }
     }
 
-    return articles;
+    return articles.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
   } catch (error) {
     console.error('Error reading articles directory:', error);
     return [];

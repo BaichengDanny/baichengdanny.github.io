@@ -65,3 +65,223 @@ v. 耗尽
 近：exhaust, drain
 depletion n. 耗尽
 
+11. **capricious**: change frequently or suddently
+adj. 善变的
+记：砍价
+a capricious woman
+近：whimsical, mercurial, volatile, impulsive, erratic, fickle
+caprice n. 奇思妙想
+
+12. **unqualified**: complete and total
+adj. 完全的，彻底的 -> 没有保留
+记：qualified adj. 限制（表达），话别说的太满
+unqualified support
+近：unalloyed, absolute
+
+13. **ambivalent**: having a mixture of opposing feelings
+adj. 矛盾的
+an ambivalent attitude to marriage
+近：contradictory
+
+14. **construe**: understand
+v. 理解
+construe the apporach as a hostile act（不友善的行为）
+近：interpret
+misconstrue v. 误解
+
+15. **deteriorate**: worse
+v. 恶化
+deteriorating economic conditions
+近：worsen, decline, degenerate, regress
+deterioration n. 恶化
+
+16. **insular**: limited in outlook and narrow-minded
+adj. 狭隘的，没见过世面的
+an insular foreign policy
+近：parochial, provincial, sectarian
+反：open-minded, cosmopolitan（眼界开阔，见过世面）
+
+17. **shackle**: limit the freedom
+v. 束缚，阻碍
+shackle by poverty and ignorance（无知）
+近：stifle, manacle, trammel, rein
+
+18. **cumbersome**: large and heacy
+adj. 笨重的
+cumbersome machinery
+近：ponderous, unwieldy
+cumber v. 阻碍
+
+19. **speculate**: make guesses
+v. 推测
+speculate about what might happen
+近：conjecture
+speculation n. 推测，speculative adj. 猜测的
+
+20. **dogmatic**: expressing personal opinions strongly as if they were correct
+adj. 武断的，自以为是的
+记：dogged adj. 意志坚定
+hold rigidly dogmatic views
+近：doctrinaire, opinionated, subjective
+
+21. **conducive**: make something easy or likely to happen = conductive
+adj. 有助益的
+conducive to education
+近：favorable
+
+22. **pedantic**: too worried about small details or rules
+adj. 书呆子的
+pedantic about punctuation
+
+23. **vociferous**: loudly
+adj. 喧哗的，声音大
+a vociferous opponent
+近：clamorous, boisterous
+
+24. **perfunctory**: lacking in interest
+adj. 不走心的，呵呵的，敷衍
+perfunctory smile
+近：cursory, casual
+
+25. **draconian**: very strict 惧怕/严厉的感觉
+adj. 十分严厉的
+draconian regulation
+近：rigorous, stringent, severe
+
+26. **hodgepodge**: mixture
+n. 混合，大杂烩
+记：hotpot 火锅
+a hodgepodge of styles
+近：patchwork, pastiche (pasta)
+
+27. **whimsical**: unusual, playful and unpredictable
+adj. 反复无常的
+记：whim 灵光乍现 -> 老是灵光乍现
+近：capricious, fickle
+
+28. **tenacious**: very determined
+adj. 坚定的，执着的
+a tenacious advocate of civil rights
+近：pertinacious, resolve, steadfast
+
+29. **skulduggery**: dishonest or illegal
+n. 欺骗
+commercial skulduggery
+近：chicanery, artfice
+
+30. **ameliorate**: make it better
+v. 改善
+ameliorate living standards
+近：refine, improve
+
+31. **extirpate**: destory or remove completely
+v. 根除
+记：extir 根茎
+extirpate the smoking habit
+近：eradicate, eliminate, exterminate
+extirpation n. 根除
+
+32. **fallacy**: a wrong belief
+n. 错误，谬论
+记：fall = false
+common fallacy
+近：erroneousness (err = error), falsehood, myth (神话 -> 虚构)
+fallacious adj. 错误的
+
+33. **grandiose**: impressive but not practical
+adj. 浮夸的，华而不实的
+记：grand 体积、数量大
+近：ostentatious, pretenticous, pompous
+
+34. **corroborate**: provide evidence to support something
+v. 证实
+记：rob <- robust 强
+corroborate these results
+近：substantiate, buttress
+
+35. **vexation**: annoyance
+n. 烦恼
+vexation of everyday things
+近：chagrin
+vex v. 使烦恼 (v ex 五个前任 -> 烦恼)
+
+36. **obeisance**: respect
+n. 尊重
+pay obeisance to the Prince
+近：homage
+
+37. **prying**: trying to find about other people's private lives
+adj. 爱打听的，窥探的
+记：pry v. 打听
+pryig eyes
+近：inquisitive（好奇，十万个为什么）, officious（多管闲事）
+
+38. **censorious**: criticizing and expressing disapproval
+adj. 爱挑剔的，苛刻的
+censorious comments
+近：captious, fastidious
+censure v. 指责
+
+39. **peripatetic**: walking about
+adj. 漫游的
+记：per 四周 + pat = ped 脚 -> 走来走去
+a peripatetic lifestyle 四处游历的生活方式
+近：nomadic（游牧民族）, itinerant
+
+40. **indict**: to officially charge（指控） someone
+v. 控告，起诉
+indict him for murder
+近：excoriate, incriminate
+
+41. **misnomer**: a wrong use of a name
+n. 用词不当，误称
+'slient movie' is a misnomer since the movies usually had a musical accompaniment
+
+42. **wary**: careful
+adj. 小心谨慎的
+记：ware -> aware 时刻意识清醒
+be wary of strangers
+近：chary, circumspect, cautious
+
+43. **exhilarate**: happy
+v. 使高兴
+记：hilar 希拉里 -> 开心
+exhilarated by her success
+
+44. **predicament**: a difficult situation
+n. 困境
+a financial predicament
+近：dilemma, plight, quandary
+
+45. **jar**: conflict
+v. 冲突
+His opinion jarred with ours.
+jarring adj. 相冲突的，刺耳的
+
+46. **opulent**: grand and expensive
+adj. 豪华的
+opulent venue 
+近：luxurious
+
+47. **malady**: illness
+n. 疾病
+记：mal = terrible
+a fatal malady 致命的疾病
+近：ailment, condition, complaint
+
+48. **clandestine**: secret
+adj. 秘密的
+clandestine love affair 秘密的恋情
+近：convert（盖住）, furtive, surreptitious
+
+49. **knotty**: complex
+adj. 复杂的
+an array of knotty issues
+近：intricate, convoluted, involved, labyrinthine, complicated
+
+50. **dichotomy**: opposition
+n. 对立，矛盾
+记：hoto 切
+a dichotomy between his public and private lives
+近：contradiction
+
