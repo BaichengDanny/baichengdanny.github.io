@@ -39,31 +39,6 @@ export default function Home() {
       <div className="max-w-6xl mx-auto px-4 py-8">
         <h2 className="text-2xl font-bold serif mb-6">About</h2>
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-          {/* Left Content */}
-          <div className="lg:col-span-2">
-            <div className="prose prose-lg max-w-none fancy">
-              <p className="text-lg leading-relaxed dark:text-gray-300">
-                Hi! This is Baicheng Chen (Danny, 陈柏成).
-                I am a sophomore majoring in Computer Science and Engineering (CSE) at the School of Data Science, The Chinese University of Hong Kong, Shenzhen (CUHK-Shenzhen). 
-                In our university, I'm also a student at Minerva College (厚含书院). 
-                Furthermore, I'm a video Editor and Colorist working in the Student Union currently (You can follow the{" "} 
-                  <a href="https://space.bilibili.com/508002687" className="text-red-600 hover:text-red-800 dark:text-red-400 dark:hover:text-red-300">Bilibili account of the Student Union🔗</a> to watch our works).
-              </p>
-
-              <p className="text-lg leading-relaxed dark:text-gray-300">
-                I have learned several programming languages like C++, Java, Python and Go, familiar with lots of commonly used Python libraries for machine learning, deep learning and data analysis such as pytorch, numpy, pandas, matplotlib and sklearn. I also mastered the grammar of LaTex and Markdown. Moreover, in middle school, I used to attend NOIP programming contests and learned many Algorithms. The experience also triggers my interest in computer science and algorithms.
-              </p>
-
-              <p className="text-lg leading-relaxed dark:text-gray-300">
-                My hobbies include many fields. Except for computer science and research, I like literature, music (singing and piano) and swimming. I'm interested in reading and thinking, empathizing with the characters in the book, and writing thoughts and experiences of me.
-              </p>
-
-              <p className="text-lg leading-relaxed dark:text-gray-300">
-                If you are interested in any aspect of me, would like to chat with me further, please email me. I'm looking for like-minded people!
-              </p>
-            </div>
-          </div>
-
           {/* Right Sidebar */}
           <div className="lg:col-span-1">
             <div className="bg-gray-50 dark:bg-gray-800 p-6 rounded-lg text-center transition-colors">
@@ -100,6 +75,32 @@ export default function Home() {
               </div>
             </div> */}
           </div>
+          
+          {/* Left Content */}
+          <div className="lg:col-span-2">
+            <div className="prose prose-lg max-w-none fancy">
+              <p className="text-lg leading-relaxed dark:text-gray-300">
+                Hi! This is Baicheng Chen (Danny, 陈柏成).
+                I am a sophomore majoring in Computer Science and Engineering (CSE) at the School of Data Science, The Chinese University of Hong Kong, Shenzhen (CUHK-Shenzhen). 
+                In our university, I'm also a student at Minerva College (厚含书院). 
+                Furthermore, I'm a video Editor and Colorist working in the Student Union currently (You can follow the{" "} 
+                  <a href="https://space.bilibili.com/508002687" className="text-red-600 hover:text-red-800 dark:text-red-400 dark:hover:text-red-300">Bilibili account of the Student Union🔗</a> to watch our works).
+              </p>
+
+              <p className="text-lg leading-relaxed dark:text-gray-300">
+                I have learned several programming languages like C++, Java, Python and Go, familiar with lots of commonly used Python libraries for machine learning, deep learning and data analysis such as pytorch, numpy, pandas, matplotlib and sklearn. I also mastered the grammar of LaTex and Markdown. Moreover, in middle school, I used to attend NOIP programming contests and learned many Algorithms. The experience also triggers my interest in computer science and algorithms.
+              </p>
+
+              <p className="text-lg leading-relaxed dark:text-gray-300">
+                My hobbies include many fields. Except for computer science and research, I like literature, music (singing and piano) and swimming. I'm interested in reading and thinking, empathizing with the characters in the book, and writing thoughts and experiences of me.
+              </p>
+
+              <p className="text-lg leading-relaxed dark:text-gray-300">
+                If you are interested in any aspect of me, would like to chat with me further, please email me. I'm looking for like-minded people!
+              </p>
+            </div>
+          </div>
+
         </div>
 
         {/* Academic Background Section */}
