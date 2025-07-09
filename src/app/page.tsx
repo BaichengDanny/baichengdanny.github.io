@@ -40,7 +40,7 @@ export default function Home() {
         <h2 className="text-2xl font-bold serif mb-6">About</h2>
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
           {/* Right Sidebar */}
-          <div className="lg:col-span-1">
+          <div className="lg:col-span-1 lg:order-2">
             <div className="bg-gray-50 dark:bg-gray-800 p-6 rounded-lg text-center transition-colors">
               <div className="mb-4">
                 <Image
@@ -77,7 +77,7 @@ export default function Home() {
           </div>
           
           {/* Left Content */}
-          <div className="lg:col-span-2">
+          <div className="lg:col-span-2 lg:order-1">
             <div className="prose prose-lg max-w-none fancy">
               <p className="text-lg leading-relaxed dark:text-gray-300">
                 Hi! This is Baicheng Chen (Danny, 陈柏成).
