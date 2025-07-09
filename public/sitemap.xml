@@ -9,7 +9,78 @@
 
 <url>
   <loc>https://baichengdanny.github.io/</loc>
-  <lastmod>2025-07-09T04:39:56+00:00</lastmod>
+  <lastmod>2025-07-09T04:44:16+00:00</lastmod>
+  <priority>1.00</priority>
+</url>
+<url>
+  <loc>https://baichengdanny.github.io/papers/</loc>
+  <lastmod>2025-07-09T04:44:16+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://baichengdanny.github.io/talks/</loc>
+  <lastmod>2025-07-09T04:44:16+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://baichengdanny.github.io/doc/CV_Danny.pdf</loc>
+  <lastmod>2025-07-09T04:44:16+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://baichengdanny.github.io/writing/</loc>
+  <lastmod>2025-07-09T04:44:16+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://baichengdanny.github.io/doc/Week_3_Meeting_SDS.pdf</loc>
+  <lastmod>2025-07-09T04:44:16+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://baichengdanny.github.io/writing/gre-vocabulary/</loc>
+  <lastmod>2025-07-09T04:44:16+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://baichengdanny.github.io/writing/gre-long-sentence/</loc>
+  <lastmod>2025-07-09T04:44:16+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://baichengdanny.github.io/writing/machines-ruthless-efficiency/</loc>
+  <lastmod>2025-07-09T04:44:16+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://baichengdanny.github.io/writing/ai-forecasting-retrospective/</loc>
+  <lastmod>2025-07-09T04:44:16+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://baichengdanny.github.io/writing/code-and-math-test/</loc>
+  <lastmod>2025-07-09T04:44:16+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://baichengdanny.github.io/writing/neural-network-security/</loc>
+  <lastmod>2025-07-09T04:44:16+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://baichengdanny.github.io/writing/getting-started-with-pytorch/</loc>
+  <lastmod>2025-07-09T04:44:16+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://baichengdanny.github.io/writing/minesweeper/</loc>
+  <lastmod>2025-07-09T04:44:16+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://baichengdanny.github.io/writing/recursion/</loc>
+  <lastmod>2025-07-09T04:44:16+00:00</lastmod>
+  <priority>0.64</priority>
 </url>
 
 
