@@ -1,6 +1,6 @@
 ---
 title: "Minesweeper Problem Solution"
-date: "2024-09-01"
+date: "2024-03-01"
 year: 2024
 description: "Solution of Minesweeper Problem in OJ."
 ---
