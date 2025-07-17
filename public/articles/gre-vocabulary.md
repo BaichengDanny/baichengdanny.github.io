@@ -4,7 +4,7 @@ date: "2025-07-08"
 year: 2025
 description: "This is a memo of GRE Vocabulary for exam preparation. I'll keep updating this page for 50 words every day."
 category: "GRE"
-tags: ["study"]
+tags: ["study", "exam preparation"]
 ---
 
 为了方便，我不会按照字母表顺序进行整理，背到哪个单词就整理哪个。从2025.7.8开始每天整理50个单词，希望可以坚持下去✊！

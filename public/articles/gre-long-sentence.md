@@ -4,7 +4,7 @@ date: "2025-07-07"
 year: 2025
 description: "This is a memo of GRE sentences for exam preparation. I'll keep updating this page for 5 sentences every day."
 category: "GRE"
-tags: ["study"]
+tags: ["study", "exam preparation"]
 ---
 
 ## 方法论
