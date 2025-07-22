@@ -4,7 +4,7 @@ date: "2024-09-10"
 year: 2024
 description: "A comprehensive beginner's guide to PyTorch, notes and implementation of the Assignment 1 of EECS498 from UMich."
 category: "Tutorial"
-tags: ["PyTorch", "deep learning", "tutorial", "python", "course note"]
+tags: ["PyTorch", "deep learning", "tutorial", "python", "EECS498", "course note"]
 ---
 
 这里是UMich EECS498第一次作业Pytorch 101的笔记和题目的Solution。同时，我也会在这个文档中加入补充更多PyTorch的知识。
