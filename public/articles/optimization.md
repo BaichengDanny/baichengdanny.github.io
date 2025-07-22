@@ -9,9 +9,9 @@ tags: ["optimization", "deep learning", "tutorial", "course note", "EECS498"]
 
 To minimizing the loss function, we should computing gradients, \<u>in practice\</u>, always use analytic gradient (exact, fast, error-prone), but check implementation with numerical gradient (approximate, slow, easy to write). This is called a **gradient check**. There are gradcheck and also gradgradcheck function in pytorch!
 
-![](https://github.com/BaichengDanny/baichengdanny.github.io/blob/main/public/articles/assets/kzSfMONHgM33NyN78n8_LTI-0K75Ai4ua4fBGTS_4oo=.png)
+![](https://raw.githubusercontent.com/BaichengDanny/baichengdanny.github.io/main/public/articles/assets/kzSfMONHgM33NyN78n8_LTI-0K75Ai4ua4fBGTS_4oo=.png)
 
-![](https://github.com/BaichengDanny/baichengdanny.github.io/blob/main/public/articles/assets/rpm9aNGcWUw_LGEZaV6bWlG3w1ZZcBalLXJ4qE_tqIk=.png)
+![](https://raw.githubusercontent.com/BaichengDanny/baichengdanny.github.io/main/public/articles/assets/rpm9aNGcWUw_LGEZaV6bWlG3w1ZZcBalLXJ4qE_tqIk=.png)
 
 ## Gradient Descent
 
@@ -80,7 +80,7 @@ However, there also some situations that this basic version of SGD might run us 
 
 1.
 
-![](https://github.com/BaichengDanny/baichengdanny.github.io/blob/main/public/articles/assets/D2BxKL6zE63qsROuB6HcQ8sPtdUPeIv6Ik4U4QBcK_0=.png)
+![](https://raw.githubusercontent.com/BaichengDanny/baichengdanny.github.io/main/public/articles/assets/D2BxKL6zE63qsROuB6HcQ8sPtdUPeIv6Ik4U4QBcK_0=.png)
 
 * **Hessian 矩阵 (Hessian Matrix)：**&#x5728;优化中，Hessian 矩阵（记为 H）是损失函数的**二阶导数矩阵**。它描述了函数在某一点的局部曲率信息。具体来说：
   * Hessian 矩阵的特征向量（Eigenvectors）指向损失函数曲面的**主曲率方向**。
@@ -90,19 +90,19 @@ However, there also some situations that this basic version of SGD might run us 
 
 1. What if the loss function has a local minimum or saddle point?
 
-![](https://github.com/BaichengDanny/baichengdanny.github.io/blob/main/public/articles/assets/Da234KPbJmsL9QbIYMZPZGE_aLxjHKYiyKBiLxQUl2w=.png)
+![](https://raw.githubusercontent.com/BaichengDanny/baichengdanny.github.io/main/public/articles/assets/Da234KPbJmsL9QbIYMZPZGE_aLxjHKYiyKBiLxQUl2w=.png)
 
 Zero gradient, gradient descent gets stuck!
 
 1. For stochatic part, our gradients come from minibatches so they can be noisy!
 
-![](https://github.com/BaichengDanny/baichengdanny.github.io/blob/main/public/articles/assets/FCjJ6Ce5ewNeQfEU-k05Vk6JKHnhDMApoupCCm-k0eE=.png)
+![](https://raw.githubusercontent.com/BaichengDanny/baichengdanny.github.io/main/public/articles/assets/FCjJ6Ce5ewNeQfEU-k05Vk6JKHnhDMApoupCCm-k0eE=.png)
 
 ## SGD + Momentum
 
 So, to address these kinds of problems, instead of using the simple vanilla gradient descent, we use SGD + Momentum.
 
-![](https://github.com/BaichengDanny/baichengdanny.github.io/blob/main/public/articles/assets/bv3dZf8Dl-Lv6FIEIf8WNh0STZ_yhGb3e-wlYtveXeo=.png)
+![](https://raw.githubusercontent.com/BaichengDanny/baichengdanny.github.io/main/public/articles/assets/bv3dZf8Dl-Lv6FIEIf8WNh0STZ_yhGb3e-wlYtveXeo=.png)
 
 * Build up "velocity" as a runing mean of gradients
 * Rho gives "friction"; typically rho = 0.9 or 0.99
@@ -110,13 +110,13 @@ So, to address these kinds of problems, instead of using the simple vanilla grad
 
 ## Nesterov Momentum
 
-![](https://github.com/BaichengDanny/baichengdanny.github.io/blob/main/public/articles/assets/F3lhTPEH8r36k81sfvPcDhiurA6U8p5qiMfNoZo7xFM=.png)
+![](https://raw.githubusercontent.com/BaichengDanny/baichengdanny.github.io/main/public/articles/assets/F3lhTPEH8r36k81sfvPcDhiurA6U8p5qiMfNoZo7xFM=.png)
 
 * Nesterov 动量在当前位置**θ**看速度**v**，预判“如果我按当前速度滑一步，**我会滑到哪里 (θ\_lookahead)**？”，然后它**在那个预判的位置 (θ\_lookahead)**&#x770B;梯度，思考“**如果我真滑到那里了，从那个地方我该怎么走？**”。
 * 这个前瞻的梯度**g**包含了关于**即将到来的地形变化**的信息。如果根据当前速度**v**滑下去会冲上一个坡（导致损失增加），那么在前瞻点**θ\_lookahead**计算出的梯度**g**就会指向**阻止这个上冲**的方向。
 * 当这个前瞻梯度**g**被用来更新速度**v**时，它有效地**提前施加了刹车或进行了转向**。它不是在参数已经冲上坡后才被拉回来，而是**在冲上坡之前就根据预判调整了方向**。
 
-![](https://github.com/BaichengDanny/baichengdanny.github.io/blob/main/public/articles/assets/XK673fsneonYTiwmhWFyXruwcDjWMYk9xaoGMZFRbBg=.png)
+![](https://raw.githubusercontent.com/BaichengDanny/baichengdanny.github.io/main/public/articles/assets/XK673fsneonYTiwmhWFyXruwcDjWMYk9xaoGMZFRbBg=.png)
 
 ## AdaGrad
 
@@ -141,7 +141,7 @@ Our grad squared will just continue accumulating, which means that we're going t
 
 To fix,
 
-![](https://github.com/BaichengDanny/baichengdanny.github.io/blob/main/public/articles/assets/jsxQHIO0HhTstaKDpXjCCUJeR5SqaIoR33v2IgMztG0=.png)
+![](https://raw.githubusercontent.com/BaichengDanny/baichengdanny.github.io/main/public/articles/assets/jsxQHIO0HhTstaKDpXjCCUJeR5SqaIoR33v2IgMztG0=.png)
 
 RMSProp is like to add extra friction with AdaGrad to decay our running average of square gradients.
 
@@ -151,7 +151,7 @@ We get two really good ideas in above parts, why not add them up?
 
 Adam is basically RMSProp + Momentum.
 
-![](https://github.com/BaichengDanny/baichengdanny.github.io/blob/main/public/articles/assets/hRySfx7QYWVh1zhczdTV3Qwiu4v4Wy8KMbCSHG0WDv8=.png)
+![](https://raw.githubusercontent.com/BaichengDanny/baichengdanny.github.io/main/public/articles/assets/hRySfx7QYWVh1zhczdTV3Qwiu4v4Wy8KMbCSHG0WDv8=.png)
 
 > Q: What happens at t=0? (Assume beta2 = 0.999)
 > moment2$\rightarrow$0
@@ -160,13 +160,13 @@ Adam is basically RMSProp + Momentum.
 
 The full from of Adam has the third good idea which is to add a bit of bias correction. **Bias correction** for the fact that first and second moment estimates start at zero.
 
-![](https://github.com/BaichengDanny/baichengdanny.github.io/blob/main/public/articles/assets/TiDGp5vv418jMU38WlOFhR74Sdv6zTcSR4ILjJG1JeU=.png)
+![](https://raw.githubusercontent.com/BaichengDanny/baichengdanny.github.io/main/public/articles/assets/TiDGp5vv418jMU38WlOFhR74Sdv6zTcSR4ILjJG1JeU=.png)
 
 Adam with beta1 = 0.9, beta2 = 0.999, and learning\_rate = 1e-3, 5e-4, 1e-4 is a great starting point for many models!
 
 ## Conclusion
 
-![](https://github.com/BaichengDanny/baichengdanny.github.io/blob/main/public/articles/assets/oYJ4RiU8ZrsnyLUgB62ERUfPkPaJxajCbBl6lKKGwG0=.png)
+![](https://raw.githubusercontent.com/BaichengDanny/baichengdanny.github.io/main/public/articles/assets/oYJ4RiU8ZrsnyLUgB62ERUfPkPaJxajCbBl6lKKGwG0=.png)
 
 ## Second-Order Optimization
 
@@ -182,7 +182,7 @@ For Second-Order Optimization:
 1. Use gradient and Hessian to make quadratic approximation
 2. Step to minimize the approximation
 
-![](https://github.com/BaichengDanny/baichengdanny.github.io/blob/main/public/articles/assets/jHPFpvRPyP2XF3Wk8zxBptZqr9IUl_YPHRjMT46DZt4=.png)
+![](https://raw.githubusercontent.com/BaichengDanny/baichengdanny.github.io/main/public/articles/assets/jHPFpvRPyP2XF3Wk8zxBptZqr9IUl_YPHRjMT46DZt4=.png)
 
 In practice:
 
