@@ -34,6 +34,17 @@ const talksData: Talk[] = [
     month: "September",
     description: "A comprehensive overview of computer science study in university and experience sharing at the third AA Meeting for SDS Group 13.",
     links: { slides: "https://baichengdanny.github.io/doc/Week_3_Meeting_SDS.pdf", video: "#", paper: "#" }
+  },
+  {
+    id: "mcp-meeting-2025",
+    title: "Introduction to Model Context Protocol (MCP)",
+    type: "Tutorial",
+    venue: "SCLBD Group Meeting",
+    location: "Shenzhen, China",
+    year: 2025,
+    month: "June",
+    description: "An introduction to the Model Context Protocol (MCP), focusing on the basic concepts and comparison with traditional function calling.",
+    links: { slides: "#", video: "#", paper: "#" }
   }
 ];
 

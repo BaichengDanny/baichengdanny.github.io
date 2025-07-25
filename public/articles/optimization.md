@@ -78,7 +78,7 @@ $\begin{aligned}
 
 However, there also some situations that this basic version of SGD might run us into trouble.
 
-1.
+1. 
 
 ![](https://raw.githubusercontent.com/BaichengDanny/baichengdanny.github.io/main/public/articles/assets/D2BxKL6zE63qsROuB6HcQ8sPtdUPeIv6Ik4U4QBcK_0=.png)
 
@@ -88,13 +88,13 @@ However, there also some situations that this basic version of SGD might run us 
 * **奇异值 (Singular Values)：**&#x5BF9;于实对称矩阵（Hessian 矩阵通常是实对称的），其奇异值（Singular Values）就等于其**特征值的绝对值**。所以这里讨论 Hessian 的奇异值，本质上就是在讨论其特征值的绝对值。
 * **条件数 (Condition Number)：**&#x77E9;阵的条件数通常定义为该矩阵**最大奇异值与最小奇异值的比值**。即 **κ(H) = σ\_max(H) / σ\_min(H)**。
 
-1. What if the loss function has a local minimum or saddle point?
+2. What if the loss function has a local minimum or saddle point?
 
 ![](https://raw.githubusercontent.com/BaichengDanny/baichengdanny.github.io/main/public/articles/assets/Da234KPbJmsL9QbIYMZPZGE_aLxjHKYiyKBiLxQUl2w=.png)
 
 Zero gradient, gradient descent gets stuck!
 
-1. For stochatic part, our gradients come from minibatches so they can be noisy!
+3. For stochatic part, our gradients come from minibatches so they can be noisy!
 
 ![](https://raw.githubusercontent.com/BaichengDanny/baichengdanny.github.io/main/public/articles/assets/FCjJ6Ce5ewNeQfEU-k05Vk6JKHnhDMApoupCCm-k0eE=.png)
 
