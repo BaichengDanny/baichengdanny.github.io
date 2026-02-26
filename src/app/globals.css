@@ -64,21 +64,24 @@
     @apply border-border;
   }
   body {
-    @apply bg-background text-foreground font-sans;
+    @apply bg-background text-foreground;
+    font-family: var(--font-lato), var(--font-noto-serif-sc), 'Calibri', 'Candara', 'Segoe', 'Segoe UI', 'Optima', 'Arial', sans-serif;
+    font-weight: 500;
   }
 }
 
 @layer components {
   .serif {
-    @apply font-serif;
+    font-family: var(--font-lato), var(--font-noto-serif-sc), 'Calibri', 'Candara', 'Segoe', 'Segoe UI', 'Optima', 'Arial', sans-serif;
   }
 
   .header {
-    @apply text-lg font-bold font-serif;
+    font-family: var(--font-lato), var(--font-noto-serif-sc), 'Calibri', 'Candara', 'Segoe', 'Segoe UI', 'Optima', 'Arial', sans-serif;
+    @apply text-lg font-bold;
   }
 
   .fancy {
-    @apply font-serif;
+    font-family: var(--font-lato), var(--font-noto-serif-sc), 'Calibri', 'Candara', 'Segoe', 'Segoe UI', 'Optima', 'Arial', sans-serif;
   }
 
   .footnote {
@@ -91,5 +94,10 @@
 
   .chinese-serif {
     @apply font-noto-serif-sc;
+  }
+
+  /* Navigation links - larger font size */
+  nav a.fancy {
+    @apply text-base md:text-lg;
   }
 }

@@ -5,6 +5,7 @@ import Link from "next/link";
 import { useState, useMemo } from "react";
 import { ThemeToggle } from "../../components/ThemeToggle";
 import Footer from "../../components/Footer";
+import { CV_URL } from "../../lib/constants";
 
 interface Paper {
   id: string;
@@ -24,6 +25,16 @@ interface Paper {
 // Sample papers data
 const papersData: Paper[] = [
   {
+    id: "vgmshield-2024",
+    title: "VGMShield: Mitigating Misuse of Video Generative Models",
+    authors: "Yan Pang, Baicheng Chen, Yang Zhang, Tianhao Wang",
+    venue: "arXiv preprint",
+    year: 2024,
+    description: "",
+    links: { pdf: "https://arxiv.org/pdf/2402.13126", code: "https://github.com/py85252876/MMVGM" },
+    awards: []
+  },
+  {
     id: "fl-brain-2024",
     title: "Federated Learning-Based EfficientNet in Brain Tumor Classification",
     authors: "Baicheng Chen",
@@ -32,7 +43,37 @@ const papersData: Paper[] = [
     description: "",
     links: { pdf: "https://www.scitepress.org/Papers/2024/129509/129509.pdf", code: "#" },
     awards: []
-  }
+  },
+  {
+    id: "deepfakebench-mm-2025",
+    title: "DeepfakeBench-MM: A Comprehensive Benchmark for Multimodal Deepfake Detection",
+    authors: "Kangran Zhao, Yupeng Chen, Xiaoyu Zhang, Yize Chen, Weinan Guan, Baicheng Chen, Chengzhe Sun, Soumyya Kanti Datta, Qingshan Liu, Siwei Lyu, Baoyuan Wu",
+    venue: "arXiv preprint",
+    year: 2025,
+    description: "",
+    links: { pdf: "https://arxiv.org/pdf/2510.22622", code: "#" },
+    awards: []
+  },
+  {
+    id: "adapaction-2026",
+    title: "AdapAction: Adaptive Target Action Backdoor Attack against GUI Agents",
+    authors: "Baicheng Chen, Mingda Zhang, Min Zhang, Haizhou Li, Baoyuan Wu",
+    venue: "CVPR",
+    year: 2026,
+    description: "A novel backdoor attack against LLM-based GUI agents",
+    links: { pdf: "#", code: "#" },
+    awards: []
+  },
+  {
+    id: "virtualcrime-2026",
+    title: "VirtualCrime: Evaluating Criminal Potential of Large Language Models via Sandbox Simulation",
+    authors: "Yilin Tang, Yu Wang, Lanlan Qiu, Wenchang Gao, Yunfei Ma, Baicheng Chen, Tianxing He",
+    venue: "arXiv preprint",
+    year: 2026,
+    description: "",
+    links: { pdf: "https://arxiv.org/pdf/2601.13981", code: "#" },
+    awards: []
+  },
 ];
 
 export default function PapersPage() {
@@ -84,14 +125,14 @@ export default function PapersPage() {
       <div className="border-b border-gray-200 dark:border-gray-700">
         <div className="max-w-6xl mx-auto px-4 py-4">
           <div className="flex justify-between items-center">
-            <h1 className="text-xl md:text-2xl serif dark:text-gray-100">Papers</h1>
+            <h1 className="text-xl md:text-2xl serif dark:text-gray-100 font-bold">Papers</h1>
             <div className="flex items-center space-x-2 md:space-x-4">
               {/* Desktop Navigation */}
               <nav className="hidden md:flex space-x-6 lg:space-x-8">
                 <Link href="/" className="text-gray-600 hover:text-gray-900 dark:text-gray-300 dark:hover:text-gray-100 fancy">Main</Link>
                 <Link href="/papers" className="text-gray-600 hover:text-gray-900 dark:text-gray-300 dark:hover:text-gray-100 fancy">Papers</Link>
                 <Link href="/talks" className="text-gray-600 hover:text-gray-900 dark:text-gray-300 dark:hover:text-gray-100 fancy">Talks</Link>
-                <Link href="https://baichengdanny.github.io/doc/CV_Danny.pdf" className="text-gray-600 hover:text-gray-900 dark:text-gray-300 dark:hover:text-gray-100 fancy">CV</Link>
+                <Link href={CV_URL} className="text-gray-600 hover:text-gray-900 dark:text-gray-300 dark:hover:text-gray-100 fancy">CV</Link>
                 <Link href="/writing" className="text-gray-600 hover:text-gray-900 dark:text-gray-300 dark:hover:text-gray-100 fancy">Writing</Link>
               </nav>
 
@@ -99,7 +140,7 @@ export default function PapersPage() {
               <nav className="flex md:hidden space-x-3 text-sm">
                 <Link href="/" className="text-gray-600 hover:text-gray-900 dark:text-gray-300 dark:hover:text-gray-100 fancy">Main</Link>
                 <Link href="/talks" className="text-gray-600 hover:text-gray-900 dark:text-gray-300 dark:hover:text-gray-100 fancy">Talks</Link>
-                <Link href="https://baichengdanny.github.io/doc/CV_Danny.pdf" className="text-gray-600 hover:text-gray-900 dark:text-gray-300 dark:hover:text-gray-100 fancy">CV</Link>
+                <Link href={CV_URL} className="text-gray-600 hover:text-gray-900 dark:text-gray-300 dark:hover:text-gray-100 fancy">CV</Link>
                 <Link href="/writing" className="text-gray-600 hover:text-gray-900 dark:text-gray-300 dark:hover:text-gray-100 fancy">Writing</Link>
               </nav>
 
@@ -324,7 +365,7 @@ export default function PapersPage() {
           <div className="lg:col-span-3">
             <div className="space-y-8">
               <div>
-                <h1 className="text-lg font-bold serif mb-4">List of Publications</h1>
+                <h1 className="text-lg font-bold serif mb-4">Full List of Papers:</h1>
               </div>
               {filteredPapers.length === 0 ? (
                 <div className="text-center py-12">

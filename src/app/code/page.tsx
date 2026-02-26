@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { CV_URL } from "../../lib/constants";
 
 export const metadata: Metadata = {
   title: "Code | Baicheng Chen",
@@ -18,7 +19,7 @@ export default function CodePage() {
               <Link href="/" className="text-gray-600 hover:text-gray-900 fancy">Main</Link>
               <Link href="/papers" className="text-gray-600 hover:text-gray-900 fancy">Papers</Link>
               <Link href="/talks" className="text-gray-600 hover:text-gray-900 fancy">Talks</Link>
-              <Link href="https://baichengdanny.github.io/doc/CV_Danny.pdf" className="text-gray-600 hover:text-gray-900 fancy">CV</Link>
+              <Link href={CV_URL} className="text-gray-600 hover:text-gray-900 fancy">CV</Link>
               <Link href="/writing" className="text-gray-600 hover:text-gray-900 fancy">Writing</Link>
             </nav>
           </div>

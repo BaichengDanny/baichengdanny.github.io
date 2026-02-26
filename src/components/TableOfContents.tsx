@@ -21,16 +21,31 @@ export function TableOfContents({ content }: TableOfContentsProps) {
     const headingRegex = /^(#{1,6})\s+(.+)$/gm;
     const items: TocItem[] = [];
     let match;
+    const idMap = new Map<string, number>(); // Track duplicate IDs
 
     while ((match = headingRegex.exec(content)) !== null) {
       const level = match[1].length;
       const title = match[2].trim();
-      const id = title
+      let id = title
         .toLowerCase()
         .replace(/[^a-z0-9\s-]/g, '')
         .replace(/\s+/g, '-')
         .replace(/-+/g, '-')
         .replace(/^-|-$/g, '');
+
+      // Ensure id is not empty
+      if (!id) {
+        id = `heading-${items.length}`;
+      }
+
+      // Handle duplicate IDs by appending a number
+      if (idMap.has(id)) {
+        const count = idMap.get(id)! + 1;
+        idMap.set(id, count);
+        id = `${id}-${count}`;
+      } else {
+        idMap.set(id, 0);
+      }
 
       items.push({ id, title, level });
     }
