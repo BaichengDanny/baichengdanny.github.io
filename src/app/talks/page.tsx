@@ -45,8 +45,19 @@ const talksData: Talk[] = [
     year: 2025,
     month: "June",
     description: "An introduction to the Model Context Protocol (MCP), focusing on the basic concepts and comparison with traditional function calling.",
-    links: { slides: "#", video: "#", paper: "#" }
-  }
+    links: { slides: "https://drive.google.com/file/d/1pN31ulZDlV7HWNHjqIDnF6AGyZ3Ba5Q6/view?usp=sharing", video: "#", paper: "#" }
+  },
+  {
+    id: "iam-2026",
+    title: "Introduction to Indentity and Access Management (IAM)",
+    type: "Tutorial",
+    venue: "CSC6202: Selected Topics in CS II (Computer Security)",
+    location: "Shenzhen, China",
+    year: 2026,
+    month: "January",
+    description: "All you need to know about Identity and Access Management (IAM).",
+    links: { slides: "https://drive.google.com/file/d/1CDW0kS0xr6HLESk3q88W3vsb_Jz6Wg9Z/view?usp=sharing", video: "#", paper: "#" }
+  },
 ];
 
 export default function TalksPage() {
