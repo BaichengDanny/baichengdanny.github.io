@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Inter, Libre_Baskerville, Noto_Sans_SC, Noto_Serif_SC } from "next/font/google";
+import { Inter, Libre_Baskerville, Noto_Sans_SC, Noto_Serif_SC, Lato } from "next/font/google";
 import "./globals.css";
 import "katex/dist/katex.min.css";
 import ClientBody from "./ClientBody";
@@ -9,24 +9,35 @@ import { ThemeProvider } from "../components/ThemeProvider";
 const inter = Inter({
   variable: "--font-inter",
   subsets: ["latin"],
+  display: "swap",
+});
+
+const lato = Lato({
+  variable: "--font-lato",
+  subsets: ["latin"],
+  weight: ["300", "400", "700"],
+  display: "swap",
 });
 
 const libreBaskerville = Libre_Baskerville({
   variable: "--font-libre-baskerville",
   subsets: ["latin"],
   weight: ["400", "700"],
+  display: "swap",
 });
 
 const notoSansSC = Noto_Sans_SC({
   variable: "--font-noto-sans-sc",
   subsets: ["latin"],
   weight: ["300", "400", "500", "700"],
+  display: "swap",
 });
 
 const notoSerifSC = Noto_Serif_SC({
   variable: "--font-noto-serif-sc",
   subsets: ["latin"],
   weight: ["400", "500", "600", "700"],
+  display: "swap",
 });
 
 export const metadata: Metadata = {
@@ -61,7 +72,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${inter.variable} ${libreBaskerville.variable} ${notoSansSC.variable} ${notoSerifSC.variable}`} suppressHydrationWarning>
+    <html lang="en" className={`${inter.variable} ${libreBaskerville.variable} ${notoSansSC.variable} ${notoSerifSC.variable} ${lato.variable}`} suppressHydrationWarning>
       <head>
         <Script
           crossOrigin="anonymous"
