@@ -151,7 +151,7 @@ export default function Home() {
             <div className="bg-gray-50 dark:bg-gray-800 p-6 rounded-lg text-center transition-colors">
               <div className="mb-4">
                 <Image
-                  src="https://baichengdanny.github.io/image/danny.jpg"
+                  src="https://baichengdanny.github.io/image/baicheng.jpg"
                   alt="Baicheng Chen"
                   width={200}
                   height={200}
