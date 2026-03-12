@@ -1,7 +1,41 @@
+ 'use client';
+
 import Link from "next/link";
+import { useEffect, useState } from "react";
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
+  const [lastUpdated, setLastUpdated] = useState<string | null>(null);
+
+  useEffect(() => {
+    async function fetchLastUpdated() {
+      try {
+        const res = await fetch(
+          "https://api.github.com/repos/BaichengDanny/baichengdanny.github.io/commits?per_page=1"
+        );
+
+        if (!res.ok) return;
+
+        const data = await res.json();
+        const latest = Array.isArray(data) && data.length > 0 ? data[0] : null;
+        const isoDate: string | undefined = latest?.commit?.committer?.date;
+
+        if (!isoDate) return;
+
+        const formatted = new Date(isoDate).toLocaleDateString("en-US", {
+          year: "numeric",
+          month: "long",
+          day: "numeric",
+        });
+
+        setLastUpdated(formatted);
+      } catch {
+        // Ignore errors; footer will simply omit the date.
+      }
+    }
+
+    fetchLastUpdated();
+  }, []);
 
   return (
     <footer className="mt-16 border-t border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-800/50">
@@ -13,15 +47,17 @@ export default function Footer() {
               © {currentYear} Baicheng Chen. All rights reserved.
             </p>
             <p className="text-xs mt-1 fancy">
-              Built with Next.js, Tailwind CSS, and deployed on GitHub Pages. The website is inspired by the design of <Link href="https://nicholas.carlini.com/" className="text-red-600 hover:text-red-800">Nicholas Carlini</Link>.
+              Built with Next.js, Tailwind CSS, and deployed on GitHub Pages. The website is inspired by the design of{" "}
+              <Link href="https://nicholas.carlini.com/" className="text-red-600 hover:text-red-800">
+                Nicholas Carlini
+              </Link>
+              .
             </p>
-            <p className="text-xs mt-1 fancy">
-              Last updated: {new Date().toLocaleDateString('en-US', {
-                year: 'numeric',
-                month: 'long',
-                day: 'numeric'
-              })}
-            </p>
+            {lastUpdated && (
+              <p className="text-xs mt-1 fancy">
+                Last updated: {lastUpdated}
+              </p>
+            )}
           </div>
 
           {/* External Links */}
