@@ -167,6 +167,8 @@ export default function Home() {
                   <a href="https://github.com/BaichengDanny" className="text-red-600 hover:text-red-800 dark:text-red-400 dark:hover:text-red-300">GitHub</a>
                   <span>|</span> 
                   <a href="#" className="text-red-600 hover:text-red-800 dark:text-red-400 dark:hover:text-red-300">Google Scholar</a>
+                  <span>|</span> 
+                  <a href="https://x.com/dannychen1223" className="text-red-600 hover:text-red-800 dark:text-red-400 dark:hover:text-red-300">X</a>
                 </div>
               </div>
             </div>
