@@ -55,7 +55,7 @@ const newsItems: NewsItem[] = [
 
 const publications: Publication[] = [
   {
-    id: "fl-brain-2024",
+    id: "adapaction-2026",
     authors: "Baicheng Chen*, Mingda Zhang*, Min Zhang, Haizhou Li, Baoyuan Wu",
     title: "AdapAction: Adaptive Target Action Backdoor Attack against GUI Agents",
     venue: "CVPR 2026",
