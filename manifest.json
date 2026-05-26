@@ -1,0 +1,24 @@
+{
+    "name": "Baicheng Chen - Academic Website",
+    "short_name": "Baicheng Chen",
+    "description": "Baicheng Chen is a sophomore student at CUHK-Shenzhen working on Trustworthy AI.",
+    "icons": [
+      {
+        "src": "/head.jpg",
+        "sizes": "any",
+        "type": "image/jpeg"
+      },
+      {
+        "src": "/head.jpg",
+        "sizes": "180x180",
+        "type": "image/jpeg",
+        "purpose": "any maskable"
+      }
+    ],
+    "theme_color": "#3b82f6",
+    "background_color": "#ffffff",
+    "display": "browser",
+    "start_url": "/",
+    "scope": "/"
+  }
+  
