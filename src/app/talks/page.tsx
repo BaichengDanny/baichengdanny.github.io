@@ -376,7 +376,7 @@ export default function TalksPage() {
                             </span>
                           </div>
                           <p className="text-sm text-gray-600 dark:text-gray-400 mb-2">
-                            <strong>{talk.type}</strong> • {talk.venue} • {talk.location} • {talk.month} {talk.year}
+                            <strong>{talk.type}</strong> · {talk.venue} · {talk.location} · {talk.month} {talk.year}
                           </p>
                           <div className="flex flex-wrap items-center gap-2 mb-2">
                             {talk.links.slides && (

@@ -56,11 +56,11 @@ const newsItems: NewsItem[] = [
 const publications: Publication[] = [
   {
     id: "fl-brain-2024",
-    authors: "Baicheng Chen, Mingda Zhang, Min Zhang, Haizhou Li, Baoyuan Wu",
+    authors: "Baicheng Chen*, Mingda Zhang*, Min Zhang, Haizhou Li, Baoyuan Wu",
     title: "AdapAction: Adaptive Target Action Backdoor Attack against GUI Agents",
     venue: "CVPR 2026",
     description: "A novel backdoor attack against LLM-based GUI agents",
-    abstract: "Stay tuned...",
+    abstract: "Autonomous Graphical User Interface (GUI) agents powered by Multimodal Large Language Models (MLLMs) are increasingly vital for complex task automation. However, their capacity for self-driven decision-making introduces significant, yet underexplored, security risks, among which backdoor attacks pose a particularly stealthy and high-impact threat. Prior work has shown GUI agents vulnerable to such attacks, but existing methods rely on static trigger-action mappings that execute fixed, context-agnostic behaviors, making them highly detectable. To address this limitation, we introduce **AdapAction**, a novel backdoor attack that subverts the agent’s decision-making by embedding an **adaptive, context-aware policy**. Unlike traditional approaches, AdapAction enables the agent to autonomously select environmentally coherent malicious actions based on the current GUI state and user instruction, thereby evading detection while preserving functional utility. Extensive experiments on the Android-In-The-Zoo (AitZ) and AndroidControl benchmarks show that AdapAction achieves up to 100% Attack Success Rate (ASR) while preserving benign task utility. More critically, AdapAction consistently evades a multi-principle-based LLM defense evaluating instruction alignment, visual coherence, and safety, whereas traditional fixed-action attacks are easily detected. This resilience stems from AdapAction’s contextually grounded malicious actions, which are semantically and visually indistinguishable from legitimate operations. As a result, AdapAction exhibits exceptional stealth and poses a significantly greater real-world threat to LLM-powered GUI agents.",
     links: {
       paper: "Stay tuned...",
     },
@@ -109,6 +109,21 @@ export default function Home() {
       /Baicheng Chen/g,
       '<strong class="text-base dark:text-gray-100">Baicheng Chen</strong>'
     );
+  };
+
+  const renderMarkdownBold = (text: string) => {
+    const segments = text.split(/(\*\*[^*]+\*\*)/g);
+    return segments.map((seg, i) => {
+      const m = /^\*\*([^*]+)\*\*$/.exec(seg);
+      if (m) {
+        return (
+          <strong key={i} className="font-semibold text-gray-900 dark:text-gray-100">
+            {m[1]}
+          </strong>
+        );
+      }
+      return <span key={i}>{seg}</span>;
+    });
   };
 
   return (
@@ -178,7 +193,7 @@ export default function Home() {
           <div className="prose prose-lg max-w-none fancy">
             <p className="text-lg leading-relaxed dark:text-gray-300">
               Hi!
-              I am Baicheng Chen (Danny), a third-year undergraduate student majoring in Computer Science and Engineering (CSE) at the <a href="https://www.cuhk.edu.cn" className="text-red-600 hover:text-red-800 dark:text-red-400 dark:hover:text-red-300">Chinese University of Hong Kong, Shenzhen</a>.
+              I am Baicheng (Danny) Chen, a third-year undergraduate student majoring in Computer Science and Engineering (CSE) at the <a href="https://www.cuhk.edu.cn" className="text-red-600 hover:text-red-800 dark:text-red-400 dark:hover:text-red-300">Chinese University of Hong Kong, Shenzhen</a>.
             </p>
             <br />
             <p className="text-lg leading-relaxed dark:text-gray-300">
@@ -187,12 +202,12 @@ export default function Home() {
             </p>
             <br />
             <p className="text-lg leading-relaxed dark:text-gray-300">
-              I am fortunate to be advised by <a href="https://sites.google.com/site/baoyuanwu2015/" className="text-red-600 hover:text-red-800 dark:text-red-400 dark:hover:text-red-300">Prof. Baoyuan Wu</a> at CUHK-Shenzhen.
-              And I am also grateful to collaborate with Prof. Tianhao Wang (UVA) and Prof. Tianxing He (IIIS, THU).
+              I am fortunate to be advised by <a href="https://sites.google.com/site/baoyuanwu2015/">Prof. Baoyuan Wu</a> at CUHK-Shenzhen.
+              And I am also grateful to collaborate with <a href="https://tianhao.wang/">Prof. Tianhao Wang</a> (UVA) and <a href="https://cloudygoose.github.io/">Prof. Tianxing He</a> (IIIS, THU).
             </p>
             <br />
             <p className="text-lg leading-relaxed dark:text-gray-300">
-              <b>Currently, I am actively seeking for <span className="text-red-600">summer internship opportunities (2026 Summer)</span> and <span className="text-red-600">PhD positions (2027 Fall)</span> in the field of Trustworthy AI.</b> If you are interested in my research and would like to chat with me further, please <a href="mailto:baichengchen@link.cuhk.edu.cn" className="text-red-600 hover:text-red-800 dark:text-red-400 dark:hover:text-red-300">email me</a>.
+              <b>Currently, I am actively seeking for <span className="text-red-600">PhD positions (2027 Fall)</span> and <span className="text-red-600">internship opportunities</span> in the field of Trustworthy AI.</b> If you are interested in my research and would like to chat with me further, please <a href="mailto:baichengchen@link.cuhk.edu.cn" className="text-red-600 hover:text-red-800 dark:text-red-400 dark:hover:text-red-300">email me</a>.
             </p>
             <p className="text-lg leading-relaxed dark:text-gray-300">I am also open to any kind of collaborations and discussions, please feel free to reach out to me.</p>
           </div>
@@ -313,7 +328,7 @@ export default function Home() {
                 {/* Expanded abstract */}
                 {expandedAbstracts.has(pub.id) && pub.abstract && (
                   <div className="mt-3 p-4 bg-gray-50 dark:bg-gray-800 rounded-lg text-sm leading-relaxed text-gray-700 dark:text-gray-300 border border-gray-200 dark:border-gray-700">
-                    {pub.abstract}
+                    {renderMarkdownBold(pub.abstract)}
                   </div>
                 )}
               </div>
