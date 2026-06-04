@@ -55,6 +55,16 @@ const newsItems: NewsItem[] = [
 
 const publications: Publication[] = [
   {
+    id: "crebench-2026",
+    title: "CREBench: Evaluating Large Language Models in Cryptographic Binary Reverse Engineering",
+    authors: "Baicheng Chen*, Yu Wang*, Ziheng Zhou*, Xiangru Liu, Juanru Li, Yilei Chen, Tianxing He",
+    venue: "arXiv preprint 2026",
+    description: "A benchmark to evaluate LLMs' capabilities in cryptographic binary reverse engineering.",
+    abstract: "Reverse engineering (RE) is central to software security, particularly for cryptographic programs that handle sensitive data and are highly prone to vulnerabilities. It supports critical tasks such as vulnerability discovery and malware analysis. Despite its importance, RE remains labor-intensive and requires substantial expertise, making large language models (LLMs) a potential solution for automating the process. However, their capabilities for RE remain systematically underexplored. To address this gap, we study the cryptographic binary RE capabilities of LLMs and introduce **CREBench**, a benchmark comprising 432 challenges built from 48 standard cryptographic algorithms, 3 insecure crypto key usage scenarios, and 3 difficulty levels. Each challenge follows a Capture-the-Flag (CTF) RE challenge, requiring the model to analyze the underlying cryptographic logic and recover the correct input. We design an evaluation framework comprising four sub-tasks, from algorithm identification to correct flag recovery. We evaluate eight frontier LLMs on CREBench. GPT-5.4, the best-performing model, achieves 64.03 out of 100 and recovers the flag in 59\% of challenges. We also establish a strong human expert baseline of 92.19 points, showing that humans maintain an advantage in cryptographic RE tasks. Our code and dataset are available at https://github.com/wangyu-ovo/CREBench.",
+    links: { paper: "https://arxiv.org/pdf/2604.03750", 
+      code: { url: "https://github.com/wangyu-ovo/CREBench"} },
+  },
+  {
     id: "adapaction-2026",
     authors: "Baicheng Chen*, Mingda Zhang*, Min Zhang, Haizhou Li, Baoyuan Wu",
     title: "AdapAction: Adaptive Target Action Backdoor Attack against GUI Agents",
@@ -64,8 +74,7 @@ const publications: Publication[] = [
     links: {
       paper: "https://openaccess.thecvf.com/content/CVPR2026/papers/Chen_AdapAction_Adaptive_Target_Action_Backdoor_Attack_against_GUI_Agents_CVPR_2026_paper.pdf",
     },
-  },
-  
+  }
 ];
 
 const experiences: Experience[] = [
