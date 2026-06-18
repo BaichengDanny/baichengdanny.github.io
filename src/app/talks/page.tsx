@@ -58,6 +58,17 @@ const talksData: Talk[] = [
     description: "All you need to know about Identity and Access Management (IAM).",
     links: { slides: "https://drive.google.com/file/d/1CDW0kS0xr6HLESk3q88W3vsb_Jz6Wg9Z/view?usp=sharing", video: "#", paper: "#" }
   },
+  {
+    id: "adapaction-2026",
+    title: "GDSIG CVPR Pre-Conference Symposium: AdapAction",
+    type: "Invited Talk",
+    venue: "Sun Yat-sen University",
+    location: "Guangzhou, China",
+    year: 2026,
+    month: "April",
+    description: "Invited talk on AdapAction, a novel backdoor attack against LLM-based GUI agents, accepted by CVPR 2026.",
+    links: { slides: "https://drive.google.com/file/d/1x29KhQDpXOxB7viigM7LKl03ImFNYTBF/view?usp=sharing", video: "#", paper: "https://openaccess.thecvf.com/content/CVPR2026/papers/Chen_AdapAction_Adaptive_Target_Action_Backdoor_Attack_against_GUI_Agents_CVPR_2026_paper.pdf" }
+  },
 ];
 
 export default function TalksPage() {

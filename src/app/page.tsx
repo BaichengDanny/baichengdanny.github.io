@@ -83,7 +83,7 @@ const experiences: Experience[] = [
     logo: "https://baichengdanny.github.io/image/cuhksz.png",
     organization: "The Chinese University of Hong Kong, Shenzhen",
     role: "Undergraduate Student",
-    customContent: "GPA: 3.81/4.0",
+    customContent: "GPA: 3.82/4.0",
     dateRange: "2023.09 - Present",
   },
   {
