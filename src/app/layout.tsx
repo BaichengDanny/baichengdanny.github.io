@@ -45,17 +45,17 @@ export const metadata: Metadata = {
   description: "Baicheng Chen is a sophomore student at CUHK-Shenzhen working on Trustworthy AI.",
   icons: {
     icon: [
-      { url: '/head.jpg', type: 'image/jpeg', sizes: 'any' },
+      { url: '/image/head.jpg', type: 'image/jpeg', sizes: 'any' },
     ],
-    shortcut: '/head.jpg',
+    shortcut: '/image/head.jpg',
     apple: [
-      { url: '/head.jpg', sizes: '180x180', type: 'image/jpeg' },
+      { url: '/image/head.jpg', sizes: '180x180', type: 'image/jpeg' },
     ],
     other: [
       {
         rel: 'icon',
         type: 'image/jpeg',
-        url: '/head.jpg',
+        url: '/image/head.jpg',
       },
       {
         rel: 'manifest',
