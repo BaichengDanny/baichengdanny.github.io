@@ -68,11 +68,22 @@ const papersData: Paper[] = [
     id: "crebench-2026",
     title: "CREBench: Evaluating Large Language Models in Cryptographic Binary Reverse Engineering",
     authors: "Baicheng Chen*, Yu Wang*, Ziheng Zhou*, Xiangru Liu, Juanru Li, Yilei Chen, Tianxing He",
-    venue: "arXiv preprint",
+    venue: "COLM",
     year: 2026,
-    description: "",
+    description: "A benchmark to evaluate LLMs' capabilities in cryptographic binary reverse engineering.",
     abstract: "Reverse engineering (RE) is central to software security, particularly for cryptographic programs that handle sensitive data and are highly prone to vulnerabilities. It supports critical tasks such as vulnerability discovery and malware analysis. Despite its importance, RE remains labor-intensive and requires substantial expertise, making large language models (LLMs) a potential solution for automating the process. However, their capabilities for RE remain systematically underexplored. To address this gap, we study the cryptographic binary RE capabilities of LLMs and introduce **CREBench**, a benchmark comprising 432 challenges built from 48 standard cryptographic algorithms, 3 insecure crypto key usage scenarios, and 3 difficulty levels. Each challenge follows a Capture-the-Flag (CTF) RE challenge, requiring the model to analyze the underlying cryptographic logic and recover the correct input. We design an evaluation framework comprising four sub-tasks, from algorithm identification to correct flag recovery. We evaluate eight frontier LLMs on CREBench. GPT-5.4, the best-performing model, achieves 64.03 out of 100 and recovers the flag in 59\% of challenges. We also establish a strong human expert baseline of 92.19 points, showing that humans maintain an advantage in cryptographic RE tasks. Our code and dataset are available at https://github.com/wangyu-ovo/CREBench.",
     links: { pdf: "https://arxiv.org/pdf/2604.03750", code: "https://github.com/wangyu-ovo/CREBench" },
+    awards: []
+  },
+  {
+    id: "step-level-preference-learning-2026",
+    title: "Step-Level Preference Learning for Generative Agents in Social Simulations",
+    authors: "Wenchang Gao, Pingyue Sheng, Lanlan Qiu, Yunfei Ma, Jian Zhao, Baicheng Chen, Kangda Wang, Yuyang Tian, Shunqiang Mao, Tianxing He",
+    venue: "WAICA",
+    year: 2026,
+    description: "",
+    abstract: "Large language model (LLM)-based generative agents simulate human behavior through long-horizon decision-making processes that comprise intermediate steps such as planning, memory retrieval, reflection, and action selection. However, fine-grained human annotations of these intermediate steps remain scarce, and existing agents are not grounded in human preferences over such intermediate decisions. To address this gap, we introduce **SimPref**, an interactive simulation interface that enables us to collect step-level human preference supervision over agent decision trajectories, leading to a dataset of 57K fine-grained annotations. We conduct step-level preference learning on open-weight language models using supervised finetuning and direct preference optimization on this data, consistently improving simulation fidelity, coordination, and interaction quality, and inducing more socially effective agent behavior. Our results show that step-level human supervision is an effective training signal for improving both local decision quality and long-horizon agent behavior.",
+    links: { pdf: "https://arxiv.org/pdf/2607.14485", code: "https://github.com/W-GaoT/SimPref" },
     awards: []
   },
   {
@@ -92,7 +103,7 @@ const papersData: Paper[] = [
     authors: "Baicheng Chen*, Mingda Zhang*, Min Zhang, Haizhou Li, Baoyuan Wu",
     venue: "CVPR",
     year: 2026,
-    description: "A novel backdoor attack against LLM-based GUI agents",
+    description: "A novel backdoor attack against LLM-based GUI agents.",
     abstract:
       "Autonomous Graphical User Interface (GUI) agents powered by Multimodal Large Language Models (MLLMs) are increasingly vital for complex task automation. However, their capacity for self-driven decision-making introduces significant, yet underexplored, security risks, among which backdoor attacks pose a particularly stealthy and high-impact threat. Prior work has shown GUI agents vulnerable to such attacks, but existing methods rely on static trigger-action mappings that execute fixed, context-agnostic behaviors, making them highly detectable. To address this limitation, we introduce **AdapAction**, a novel backdoor attack that subverts the agent’s decision-making by embedding an **adaptive, context-aware policy**. Unlike traditional approaches, AdapAction enables the agent to autonomously select environmentally coherent malicious actions based on the current GUI state and user instruction, thereby evading detection while preserving functional utility. Extensive experiments on the Android-In-The-Zoo (AitZ) and AndroidControl benchmarks show that AdapAction achieves up to 100% Attack Success Rate (ASR) while preserving benign task utility. More critically, AdapAction consistently evades a multi-principle-based LLM defense evaluating instruction alignment, visual coherence, and safety, whereas traditional fixed-action attacks are easily detected. This resilience stems from AdapAction’s contextually grounded malicious actions, which are semantically and visually indistinguishable from legitimate operations. As a result, AdapAction exhibits exceptional stealth and poses a significantly greater real-world threat to LLM-powered GUI agents.",
     links: { pdf: "https://openaccess.thecvf.com/content/CVPR2026/papers/Chen_AdapAction_Adaptive_Target_Action_Backdoor_Attack_against_GUI_Agents_CVPR_2026_paper.pdf", code: "#" },
@@ -208,7 +219,7 @@ export default function PapersPage() {
       </div>
 
       {/* Main Content */}
-      <div className="max-w-6xl mx-auto px-4 py-8 fancy">
+      <div className="max-w-6xl mx-auto px-4 pt-8 pb-4 fancy">
         {/* Mobile Filter Toggle */}
         <div className="lg:hidden mb-6">
           <button
@@ -481,13 +492,13 @@ export default function PapersPage() {
                             {paper.links.pdf && (
                               <>
                                 {paper.abstract && <span className="text-gray-400">|</span>}
-                                <a href={paper.links.pdf} className="text-red-600 hover:text-red-800 dark:text-red-400 dark:hover:text-red-300 text-sm">PDF</a>
+                                <a href={paper.links.pdf} className="text-red-600 hover:text-red-800 dark:text-red-400 dark:hover:text-red-300 text-sm underline-offset-2 hover:underline">PDF</a>
                               </>
                             )}
                             {paper.links.code && (
                               <>
                                 {(paper.abstract || paper.links.pdf) && <span className="text-gray-400">|</span>}
-                                <a href={paper.links.code} className="text-red-600 hover:text-red-800 dark:text-red-400 dark:hover:text-red-300 text-sm">Code</a>
+                                <a href={paper.links.code} className="text-red-600 hover:text-red-800 dark:text-red-400 dark:hover:text-red-300 text-sm underline-offset-2 hover:underline">Code</a>
                               </>
                             )}
                             {paper.links.demo && (

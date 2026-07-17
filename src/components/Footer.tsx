@@ -38,8 +38,8 @@ export default function Footer() {
   }, []);
 
   return (
-    <footer className="mt-16 border-t border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-800/50">
-      <div className="max-w-6xl mx-auto px-4 py-8">
+    <footer className="mt-8 border-t border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-800/50">
+      <div className="max-w-6xl mx-auto px-4 py-6">
         <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
           {/* Copyright Info */}
           <div className="text-sm text-gray-600 dark:text-gray-400 text-center md:text-left">

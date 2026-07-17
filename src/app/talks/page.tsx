@@ -146,7 +146,7 @@ export default function TalksPage() {
       </div>
 
       {/* Main Content */}
-      <div className="max-w-6xl mx-auto px-4 py-8 fancy">
+      <div className="max-w-6xl mx-auto px-4 pt-8 pb-4 fancy">
         {/* Mobile Filter Toggle */}
         <div className="lg:hidden mb-6">
           <button
@@ -391,18 +391,18 @@ export default function TalksPage() {
                           </p>
                           <div className="flex flex-wrap items-center gap-2 mb-2">
                             {talk.links.slides && (
-                              <a href={talk.links.slides} className="text-red-600 hover:text-red-800 dark:text-red-400 dark:hover:text-red-300 text-sm">Slides</a>
+                              <a href={talk.links.slides} className="text-red-600 hover:text-red-800 dark:text-red-400 dark:hover:text-red-300 text-sm underline-offset-2 hover:underline">Slides</a>
                             )}
                             {talk.links.video && (
                               <>
                                 {talk.links.slides && <span className="text-gray-400">|</span>}
-                                <a href={talk.links.video} className="text-red-600 hover:text-red-800 dark:text-red-400 dark:hover:text-red-300 text-sm">Video</a>
+                                <a href={talk.links.video} className="text-red-600 hover:text-red-800 dark:text-red-400 dark:hover:text-red-300 text-sm underline-offset-2 hover:underline">Video</a>
                               </>
                             )}
                             {talk.links.paper && (
                               <>
                                 {(talk.links.slides || talk.links.video) && <span className="text-gray-400">|</span>}
-                                <a href={talk.links.paper} className="text-red-600 hover:text-red-800 dark:text-red-400 dark:hover:text-red-300 text-sm">Paper</a>
+                                <a href={talk.links.paper} className="text-red-600 hover:text-red-800 dark:text-red-400 dark:hover:text-red-300 text-sm underline-offset-2 hover:underline">Paper</a>
                               </>
                             )}
                           </div>

@@ -117,7 +117,7 @@ export default async function ArticlePage({ params }: { params: Promise<{ id: st
       </div>
 
       {/* Main Content */}
-      <div className="max-w-7xl mx-auto px-4 py-4 md:py-8">
+      <div className="max-w-7xl mx-auto px-4 pt-4 pb-2 md:pt-8 md:pb-4">
         <div className="flex flex-col lg:flex-row gap-6 lg:gap-8">
           {/* Main Article Content */}
           <div className="flex-1 max-w-none lg:max-w-4xl fancy">

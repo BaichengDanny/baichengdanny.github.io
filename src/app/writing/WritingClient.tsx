@@ -104,7 +104,7 @@ export default function WritingClient({ articles }: WritingClientProps) {
   };
 
   return (
-    <div className="max-w-6xl mx-auto px-4 py-8 fancy">
+    <div className="max-w-6xl mx-auto px-4 pt-8 pb-4 fancy">
       {/* Mobile Filter Toggle */}
       <div className="lg:hidden mb-6">
         <button
