@@ -48,7 +48,7 @@ export default function Footer() {
             </p>
             <p className="text-xs mt-1 fancy">
               Built with Next.js, Tailwind CSS, and deployed on GitHub Pages. The website is inspired by the design of{" "}
-              <Link href="https://nicholas.carlini.com/" className="text-red-600 hover:text-red-800">
+              <Link href="https://nicholas.carlini.com/" className="text-blue-600 hover:text-blue-800 dark:text-blue-400 dark:hover:text-blue-300 underline-offset-2 hover:underline">
                 Nicholas Carlini
               </Link>
               .

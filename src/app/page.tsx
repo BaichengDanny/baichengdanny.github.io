@@ -2,10 +2,12 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { useState, type ReactNode } from "react";
+import { useMemo, useState, type ReactNode } from "react";
+import { CodeLinkBadge } from "../components/CodeLinkBadge";
 import { EnlargedImageModal } from "../components/EnlargedImageModal";
 import { ThemeToggle } from "../components/ThemeToggle";
 import Footer from "../components/Footer";
+import { useGitHubStars } from "../hooks/useGitHubStars";
 import { CV_URL } from "../lib/constants";
 
 /* ────────────────────────────────────────────
@@ -29,6 +31,7 @@ interface Publication {
     code?: { url: string; stars?: number };
     website?: string;
     dataset?: string;
+    extra?: { label: string; url: string }[];
   };
 }
 
@@ -55,11 +58,49 @@ const inlineLinkClass =
 const blueLinkClass =
   "text-blue-600 hover:text-blue-800 dark:text-blue-400 dark:hover:text-blue-300 underline-offset-2 hover:underline";
 
+const AWESOME_CYBERSEC_PAPERS_URL =
+  "https://github.com/BaichengDanny/awesome-ai-for-cybersecurity-papers";
+
+function GitHubRepoStars({ url }: { url: string }) {
+  const stars = useGitHubStars([url])[url];
+  if (stars === undefined || stars <= 0) return null;
+
+  return (
+    <span className="ml-0.5 text-sm text-gray-500 dark:text-gray-400 tabular-nums">
+      (⭐ {stars.toLocaleString()})
+    </span>
+  );
+}
+
 /* ────────────────────────────────────────────
    Sample Data — edit these to update the page
    ──────────────────────────────────────────── */
 
 const newsItems: NewsItem[] = [
+  {
+    date: "2026.08:",
+    content: (
+      <>
+        Released <span className="italic">Awesome AI for Cybersecurity Papers</span>
+        {" "}<GitHubRepoStars url={AWESOME_CYBERSEC_PAPERS_URL} />, please{" "}
+        <a href={AWESOME_CYBERSEC_PAPERS_URL} className={inlineLinkClass} target="_blank" rel="noopener noreferrer">
+          check it out
+        </a>! 👀
+      </>
+    ),
+  },
+  {
+    date: "2026.08:",
+    content: (
+      <>
+        Received a sponsored travel grant from{" "}
+        <a href="https://colmweb.org/" className={inlineLinkClass} target="_blank" rel="noopener noreferrer">
+          COLM 2026
+        </a>
+        ! ❤️
+      </>
+    ),
+  },
   {
     date: "2026.07:",
     content: (
@@ -140,6 +181,12 @@ const publications: Publication[] = [
     abstract: "Autonomous Graphical User Interface (GUI) agents powered by Multimodal Large Language Models (MLLMs) are increasingly vital for complex task automation. However, their capacity for self-driven decision-making introduces significant, yet underexplored, security risks, among which backdoor attacks pose a particularly stealthy and high-impact threat. Prior work has shown GUI agents vulnerable to such attacks, but existing methods rely on static trigger-action mappings that execute fixed, context-agnostic behaviors, making them highly detectable. To address this limitation, we introduce **AdapAction**, a novel backdoor attack that subverts the agent’s decision-making by embedding an **adaptive, context-aware policy**. Unlike traditional approaches, AdapAction enables the agent to autonomously select environmentally coherent malicious actions based on the current GUI state and user instruction, thereby evading detection while preserving functional utility. Extensive experiments on the Android-In-The-Zoo (AitZ) and AndroidControl benchmarks show that AdapAction achieves up to 100% Attack Success Rate (ASR) while preserving benign task utility. More critically, AdapAction consistently evades a multi-principle-based LLM defense evaluating instruction alignment, visual coherence, and safety, whereas traditional fixed-action attacks are easily detected. This resilience stems from AdapAction’s contextually grounded malicious actions, which are semantically and visually indistinguishable from legitimate operations. As a result, AdapAction exhibits exceptional stealth and poses a significantly greater real-world threat to LLM-powered GUI agents.",
     links: {
       paper: "https://openaccess.thecvf.com/content/CVPR2026/papers/Chen_AdapAction_Adaptive_Target_Action_Backdoor_Attack_against_GUI_Agents_CVPR_2026_paper.pdf",
+      extra: [
+        {
+          label: "Supplemental",
+          url: "https://openaccess.thecvf.com/content/CVPR2026/supplemental/Chen_AdapAction_Adaptive_Target_CVPR_2026_supplemental.pdf",
+        },
+      ],
       poster: "/image/papers/adapaction-2026-poster.png",
     },
   }
@@ -150,15 +197,40 @@ const experiences: Experience[] = [
     id: "cuhk-sds",
     logo: "https://baichengdanny.github.io/image/cuhksz.png",
     organization: "The Chinese University of Hong Kong, Shenzhen",
-    role: "Undergraduate Student",
+    role: "Undergraduate Student @ School of Data Science",
+    advisors: [{ name: "Prof. Baoyuan Wu", url: "https://sites.google.com/site/baoyuanwu2015" }],
     customContent: "GPA: 3.82/4.0",
     dateRange: "2023.09 – Present",
+  },
+  {
+    id: "umd-intern",
+    logo: "https://baichengdanny.github.io/image/umd.svg",
+    organization: "University of Maryland, College Park",
+    role: "Summer Intern @ CS",
+    advisors: [{ name: "Prof. Furong Huang", url: "https://furong-huang.com/" }],
+    dateRange: "2026.05 – Present",
+  },
+  {
+    id: "tsinghua-iiis",
+    logo: "https://baichengdanny.github.io/image/iiis.png",
+    organization: "Tsinghua University",
+    role: "Research Intern @ IIIS (a.k.a. Yao Class) & Shanghai Qi Zhi Institute",
+    advisors: [{ name: "Prof. Tianxing He", url: "https://cloudygoose.github.io/" }, { name: "Prof. Yilei Chen", url: "http://www.chenyilei.net/" }],
+    dateRange: "2025.09 – Present",
+  },
+  {
+    id: "uva-intern",
+    logo: "https://baichengdanny.github.io/image/uva_logo.svg",
+    organization: "University of Virginia",
+    role: "Research Intern @ CS",
+    advisors: [{ name: "Prof. Tianhao Wang", url: "https://tianhao.wang/" }],
+    dateRange: "2025.01 – 2025.09",
   },
   {
     id: "ucb-summer",
     logo: "https://baichengdanny.github.io/image/ucb.jpg",
     organization: "University of California, Berkeley",
-    role: "Visiting Student",
+    role: "Visiting Student @ EECS",
     customContent: "GPA: 4.0/4.0",
     dateRange: "2024.06 – 2024.08",
   },
@@ -176,6 +248,15 @@ export default function Home() {
     alt: string;
     variant?: "default" | "compact";
   } | null>(null);
+
+  const codeUrls = useMemo(
+    () =>
+      publications
+        .map((pub) => pub.links.code?.url)
+        .filter((url): url is string => Boolean(url)),
+    []
+  );
+  const githubStars = useGitHubStars(codeUrls);
 
   const toggleAbstract = (id: string) => {
     setExpandedAbstracts((prev) => {
@@ -280,14 +361,14 @@ export default function Home() {
                   id="profile-card-details"
                   className={`space-y-2 mt-2 ${profileCardExpanded ? "block" : "hidden md:block"}`}
                 >
-                  <div className="dark:text-gray-300">3rd undergrad, CUHK-Shenzhen</div>
+                  <div className="dark:text-gray-300">Y4 undergrad, CUHK-Shenzhen</div>
                   <div className="text-sm dark:text-gray-400">baichengchen [at] link [dot] cuhk [dot] edu [dot] cn (preferred)</div>
                   <div className="text-sm dark:text-gray-400">dannybaicheng [at] gmail [dot] com</div>
                   <div className="flex flex-col items-center gap-2 text-sm pt-1">
                     <div className="flex justify-center space-x-2">
                       <a href="https://github.com/BaichengDanny" className={inlineLinkClass}>GitHub</a>
                       <span>|</span>
-                      <a href="#" className={inlineLinkClass}>Google Scholar</a>
+                      <a href="https://scholar.google.com/citations?hl=en&user=qWXaUi0AAAAJ" className={inlineLinkClass}>Google Scholar</a>
                       <span>|</span>
                       <a href="https://x.com/dannychen1223" className={inlineLinkClass}>X</a>
                     </div>
@@ -314,17 +395,17 @@ export default function Home() {
           <div className="prose prose-lg max-w-none fancy">
             <p className="text-lg leading-relaxed dark:text-gray-300">
               Hi!
-              I am Baicheng (Danny) Chen, a third-year undergraduate student majoring in Computer Science and Engineering (CSE) at the <a href="https://www.cuhk.edu.cn" className={inlineLinkClass}>Chinese University of Hong Kong, Shenzhen</a>.
+              I am Baicheng (Danny) Chen, a senior undergraduate student majoring in Computer Science and Engineering (CSE) at the <a href="https://www.cuhk.edu.cn" className={inlineLinkClass}>Chinese University of Hong Kong, Shenzhen</a>.
             </p>
             <br />
             <p className="text-lg leading-relaxed dark:text-gray-300">
-              My research interests lie in the intersection of Trustworthy AI and Computer Security, focusing on the dual challenge of ensuring AI security while leveraging it for specialized security applications.
+              My <a href="#research-interests" className={inlineLinkClass}>research interests</a> lie in the intersection of Trustworthy AI and Computer Security, focusing on the dual challenge of ensuring AI security while leveraging it for specialized security applications.
               Currently, I am working on Agentic AI security and the application of agent in cryptography.
             </p>
             <br />
             <p className="text-lg leading-relaxed dark:text-gray-300">
               I am fortunate to be advised by <a href="https://sites.google.com/site/baoyuanwu2015/" className={blueLinkClass}>Prof. Baoyuan Wu</a> at CUHK-Shenzhen.
-              And I am also grateful to collaborate with <a href="https://cloudygoose.github.io/" className={blueLinkClass}>Prof. Tianxing He</a> (IIIS, THU) and <a href="https://tianhao.wang/" className={blueLinkClass}>Prof. Tianhao Wang</a> (UVA).
+              And I am also grateful to collaborate with <a href="https://furong-huang.com/" className={blueLinkClass}>Prof. Furong Huang</a> (UMD), <a href="https://cloudygoose.github.io/" className={blueLinkClass}>Prof. Tianxing He</a> (IIIS, THU) and <a href="https://tianhao.wang/" className={blueLinkClass}>Prof. Tianhao Wang</a> (UVA) along my research journey.
             </p>
             <br />
             <p className="text-lg leading-relaxed dark:text-gray-300">
@@ -336,7 +417,7 @@ export default function Home() {
           {/* ═══════ 2. News (wraps around photo too) ═══════ */}
           <div className="mt-10 fancy">
             <h2 className="text-2xl font-bold serif mb-6 dark:text-gray-100 underline decoration-2 underline-offset-8">🔥 News</h2>
-            <div className="max-h-52 overflow-y-auto pr-2 scrollbar-thin">
+            <div className="max-h-52 overflow-y-auto pr-2">
               <div className="space-y-3">
                 {newsItems.map((item, index) => (
                   <div key={index} className="flex items-start">
@@ -350,14 +431,100 @@ export default function Home() {
             </div>
           </div>
 
-          {/* ═══════ 3. Selected Publications ═══════ */}
+          {/* ═══════ 3. Research Interests ═══════ */}
+          <div id="research-interests" className="mt-10 fancy scroll-mt-8">
+            <h2 className="text-2xl font-bold serif mb-6 dark:text-gray-100 underline decoration-2 underline-offset-8">
+              Research Interests
+            </h2>
+            <p className="text-lg leading-relaxed dark:text-gray-300 mb-4">
+              My research goal is to build AI systems that remain secure as they become increasingly autonomous
+              in real world environments. I work at the intersection of{" "}
+              <strong>AI and Security</strong>, studying how agentic deployment changes existing security assumptions,
+              how to build safeguards that remain effective in practice, and how increasingly capable AI systems
+              reshape both security risks and capabilities.
+            </p>
+            <p className="text-lg leading-relaxed dark:text-gray-300 mb-4">My recent research topics include:</p>
+            <ul className="list-disc space-y-3 pl-6 text-lg leading-relaxed dark:text-gray-300">
+              <li>
+                <strong>Security gaps in modern agentic AI deployments:</strong>{" "}
+                [
+                <a
+                  href="https://openaccess.thecvf.com/content/CVPR2026/papers/Chen_AdapAction_Adaptive_Target_Action_Backdoor_Attack_against_GUI_Agents_CVPR_2026_paper.pdf"
+                  className={inlineLinkClass}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  AdapAction
+                </a>
+                ]{" "}
+                [
+                <a
+                  href="https://arxiv.org/pdf/2608.21544"
+                  className={inlineLinkClass}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  ATU
+                </a>
+                ]
+              </li>
+              <li>
+                <strong>Scalable safeguards and accountability mechanisms for AI systems:</strong>{" "}
+                [
+                <a
+                  href="https://arxiv.org/pdf/2402.13126"
+                  className={inlineLinkClass}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  VGMShield
+                </a>
+                ]{" "}
+                [
+                <a
+                  href="https://arxiv.org/pdf/2608.21544"
+                  className={inlineLinkClass}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  ATU
+                </a>
+                ]
+              </li>
+              <li>
+                <strong>AI&apos;s broader security and societal impact:</strong>{" "}
+                [
+                <a
+                  href="https://jams-zhou-james.github.io/CREBench/"
+                  className={inlineLinkClass}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  CREBench
+                </a>
+                ]{" "}
+                [
+                <a
+                  href="https://arxiv.org/pdf/2601.13981"
+                  className={inlineLinkClass}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  VirtualCrime
+                </a>
+                ]
+              </li>
+            </ul>
+          </div>
+
+          {/* ═══════ 4. Selected Publications ═══════ */}
           <div className="mt-10 fancy">
             <h2 className="text-2xl font-bold serif mb-2 dark:text-gray-100 underline decoration-2 underline-offset-8">Selected Publications</h2>
             <p className="text-gray-500 dark:text-gray-400 mt-4 mb-1">
               Only some of my papers are listed. See more on the{" "}
               <Link href="/papers" className={inlineLinkClass}>Papers</Link>{" "}
               page or{" "}
-              <a href="#" className={inlineLinkClass}>Google Scholar</a>.
+              <a href="https://scholar.google.com/citations?hl=en&user=qWXaUi0AAAAJ" className={inlineLinkClass}>Google Scholar</a>.
             </p>
             <p className="text-gray-400 dark:text-gray-500 text-sm mb-8">(* indicates equal contribution)</p>
 
@@ -416,14 +583,10 @@ export default function Home() {
                     </button>
                   )}
                   {pub.links.code && (
-                    <a
+                    <CodeLinkBadge
                       href={pub.links.code.url}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-block px-3 py-1 text-sm border border-gray-300 dark:border-gray-600 rounded-md hover:bg-gray-100 dark:hover:bg-gray-800 text-gray-700 dark:text-gray-300 transition-colors"
-                    >
-                      Code{pub.links.code.stars !== undefined && pub.links.code.stars > 0 ? ` ★ ${pub.links.code.stars}` : ""}
-                    </a>
+                      stars={pub.links.code.stars ?? githubStars[pub.links.code.url]}
+                    />
                   )}
                   {pub.links.project && (
                     <a
@@ -455,6 +618,17 @@ export default function Home() {
                       Dataset
                     </a>
                   )}
+                  {pub.links.extra?.map((link) => (
+                    <a
+                      key={`${pub.id}-${link.label}`}
+                      href={link.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-block px-3 py-1 text-sm border border-gray-300 dark:border-gray-600 rounded-md hover:bg-gray-100 dark:hover:bg-gray-800 text-gray-700 dark:text-gray-300 transition-colors"
+                    >
+                      {link.label}
+                    </a>
+                  ))}
                   {pub.links.poster && (
                     <button
                       type="button"
@@ -507,7 +681,7 @@ export default function Home() {
             </div>
           </div>
 
-          {/* ═══════ 4. Experiences ═══════ */}
+          {/* ═══════ 5. Experiences ═══════ */}
           <div className="mt-10 fancy">
             <h2 className="text-2xl font-bold serif mb-8 dark:text-gray-100 underline decoration-2 underline-offset-8">Experiences</h2>
 
@@ -515,7 +689,7 @@ export default function Home() {
               {experiences.map((exp) => (
                 <div key={exp.id} className="flex items-start gap-5">
                   {/* Logo */}
-                  <div className="flex-shrink-0 w-14 h-14 rounded-md overflow-hidden bg-gray-100 dark:bg-gray-800 flex items-center justify-center">
+                  <div className="flex-shrink-0 w-14 h-14 flex items-center justify-center">
                     <Image
                       src={exp.logo}
                       alt={exp.organization}
@@ -539,7 +713,7 @@ export default function Home() {
                                 {i > 0 && ` ${exp.advisorConnector || "and"} `}
                                 <a
                                   href={a.url || "#"}
-                                  className={inlineLinkClass}
+                                  className={blueLinkClass}
                                 >
                                   {a.name}
                                 </a>
@@ -567,6 +741,58 @@ export default function Home() {
                 </div>
               ))}
             </div>
+          </div>
+
+          {/* ═══════ 6. Services ═══════ */}
+          <div className="mt-10 fancy">
+            <h2 className="text-2xl font-bold serif mb-4 dark:text-gray-100 underline decoration-2 underline-offset-8">
+              Services
+            </h2>
+            <ul className="list-disc space-y-1 pl-6 text-lg leading-relaxed text-gray-900 dark:text-gray-100">
+              <li>Reviewer: COLM 2026, AAAI 2027, ARR August 2026</li>
+              <li>
+                <a
+                  href="https://mp.weixin.qq.com/s/ZLxwiBmkNFybyzaOxEeudg"
+                  className={inlineLinkClass}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Peer Advisor
+                </a>
+                , School of Data Science, CUHK-Shenzhen (2024 – 2025, 2025 – 2026, 2026 – 2027)
+              </li>
+         
+            </ul>
+          </div>
+
+          {/* ═══════ 7. Miscellaneous ═══════ */}
+          <div className="mt-10 fancy">
+            <h2 className="text-2xl font-bold serif mb-4 dark:text-gray-100 underline decoration-2 underline-offset-8">
+              Miscellaneous
+            </h2>
+            <ul className="list-disc space-y-2 pl-6 text-lg leading-relaxed dark:text-gray-300">
+              <li>
+                I am passionate about video editing and color grading 🎬. Selected work is available on Bilibili channels of{" "}
+                <a
+                  href="https://space.bilibili.com/668422989"
+                  className={inlineLinkClass}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Qingjiu TV Station
+                </a>{" "}
+                and the{" "}
+                <a
+                  href="https://space.bilibili.com/508002687"
+                  className={inlineLinkClass}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  CUHK-Shenzhen Student Union
+                </a>
+                .
+              </li>
+            </ul>
           </div>
 
           {/* Clear float */}

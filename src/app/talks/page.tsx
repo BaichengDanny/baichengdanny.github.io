@@ -1,11 +1,19 @@
 'use client';
 
-import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import { useState, useMemo } from "react";
+import { EnlargedImageModal } from "../../components/EnlargedImageModal";
 import { ThemeToggle } from "../../components/ThemeToggle";
 import Footer from "../../components/Footer";
 import { CV_URL } from "../../lib/constants";
+
+const talkLinkClass =
+  "text-red-600 hover:text-red-800 dark:text-red-400 dark:hover:text-red-300 text-sm underline-offset-2 hover:underline";
+
+function isValidLink(url?: string) {
+  return Boolean(url && url.trim() !== "" && url !== "#");
+}
 
 interface Talk {
   id: string;
@@ -15,12 +23,27 @@ interface Talk {
   location: string;
   year: number;
   month: string;
-  description: string;
+  description?: string;
+  photo?: string;
+  photoAlt?: string;
   links: {
     slides?: string;
     video?: string;
     paper?: string;
   };
+}
+
+function getTalkLinks(talk: Talk) {
+  return [
+    isValidLink(talk.links.slides) ? { label: "Slides", href: talk.links.slides! } : null,
+    isValidLink(talk.links.video) ? { label: "Video", href: talk.links.video! } : null,
+    isValidLink(talk.links.paper) ? { label: "Paper", href: talk.links.paper! } : null,
+  ].filter((link): link is { label: string; href: string } => link !== null);
+}
+
+function getTalkTitleHref(talk: Talk) {
+  const links = getTalkLinks(talk);
+  return links[0]?.href;
 }
 
 // Sample talks data
@@ -48,6 +71,18 @@ const talksData: Talk[] = [
     links: { slides: "https://drive.google.com/file/d/1pN31ulZDlV7HWNHjqIDnF6AGyZ3Ba5Q6/view?usp=sharing", video: "#", paper: "#" }
   },
   {
+    id: "crebench-2026",
+    title: "IIIS AI Safety Lunch: CREBench",
+    type: "Invited Talk",
+    venue: "IIIS, Tsinghua University",
+    location: "Beijing, China",
+    year: 2026,
+    month: "September",
+    description: "Invited talk on CREBench, a benchmark for evaluating LLM's capability of cryptographic binary reverse engineering (COLM 2026).",
+    links: { slides: "https://drive.google.com/file/d/1sp5C4ChqoXHI28QJgttKHIr7f6_g51w5/view?usp=sharing", video: "#", paper: "https://arxiv.org/pdf/2604.03750" },
+    photo: "/image/iiis_safety_lunch.jpg",
+  },
+  {
     id: "adapaction-2026",
     title: "GDSIG CVPR Pre-Conference Symposium: AdapAction",
     type: "Invited Talk",
@@ -56,7 +91,8 @@ const talksData: Talk[] = [
     year: 2026,
     month: "April",
     description: "Invited talk on AdapAction, a novel backdoor attack against LLM-based GUI agents (CVPR 2026).",
-    links: { slides: "https://drive.google.com/file/d/1x29KhQDpXOxB7viigM7LKl03ImFNYTBF/view?usp=sharing", video: "#", paper: "https://openaccess.thecvf.com/content/CVPR2026/papers/Chen_AdapAction_Adaptive_Target_Action_Backdoor_Attack_against_GUI_Agents_CVPR_2026_paper.pdf" }
+    links: { slides: "https://drive.google.com/file/d/1x29KhQDpXOxB7viigM7LKl03ImFNYTBF/view?usp=sharing", video: "https://www.wizsci.com/live/yr0bGP5", paper: "https://openaccess.thecvf.com/content/CVPR2026/papers/Chen_AdapAction_Adaptive_Target_Action_Backdoor_Attack_against_GUI_Agents_CVPR_2026_paper.pdf" },
+    photo: "/image/GDSIG.jpg",
   },
   {
     id: "iam-2026",
@@ -75,6 +111,7 @@ export default function TalksPage() {
   const [selectedType, setSelectedType] = useState<string>('all');
   const [selectedYear, setSelectedYear] = useState<number | 'all'>('all');
   const [showMobileFilters, setShowMobileFilters] = useState(false);
+  const [enlargedImage, setEnlargedImage] = useState<{ src: string; alt: string } | null>(null);
 
   // Get all unique types and years
   const allTypes = useMemo(() => {
@@ -374,43 +411,77 @@ export default function TalksPage() {
                   <div key={year} id={year.toString()}>
                     <h2 className="text-xl font-bold serif mb-4 dark:text-gray-100">{year}</h2>
                     <div className="space-y-6">
-                      {groupedTalks[year].map(talk => (
+                      {groupedTalks[year].map(talk => {
+                        const talkLinks = getTalkLinks(talk);
+                        const titleHref = getTalkTitleHref(talk);
+
+                        return (
                         <div key={talk.id} className="border-l-2 border-gray-100 dark:border-gray-700 pl-4">
-                          <div className="flex flex-wrap items-start justify-between gap-2 mb-2">
-                            <h3 className="text-lg text-red-600 hover:text-red-800 dark:text-red-400 dark:hover:text-red-300">
-                              <a href={talk.links.slides || talk.links.video || "#"}>
-                                {talk.title}
-                              </a>
-                            </h3>
-                            <span className="px-2 py-1 text-xs bg-green-100 dark:bg-green-900 text-green-800 dark:text-green-200 rounded-full font-medium">
-                              {talk.type}
-                            </span>
+                          <div className="flex flex-col sm:flex-row sm:items-start gap-4">
+                            <div className="flex-1 min-w-0">
+                              <div className="flex flex-wrap items-start justify-between gap-2 mb-2">
+                                <h3 className="text-lg text-red-600 dark:text-red-400">
+                                  {titleHref ? (
+                                    <a href={titleHref} className="hover:text-red-800 dark:hover:text-red-300">
+                                      {talk.title}
+                                    </a>
+                                  ) : (
+                                    <span className="text-gray-900 dark:text-gray-100">{talk.title}</span>
+                                  )}
+                                </h3>
+                                <span className="px-2 py-1 text-xs bg-green-100 dark:bg-green-900 text-green-800 dark:text-green-200 rounded-full font-medium">
+                                  {talk.type}
+                                </span>
+                              </div>
+                              <p className="text-sm text-gray-600 dark:text-gray-400 mb-2">
+                                <strong>{talk.type}</strong> · {talk.venue} · {talk.location} · {talk.month} {talk.year}
+                              </p>
+                              {talkLinks.length > 0 && (
+                                <div className="flex flex-wrap items-center gap-2 mb-2">
+                                  {talkLinks.map((link, index) => (
+                                    <span key={link.label} className="inline-flex items-center gap-2">
+                                      {index > 0 && <span className="text-gray-400">|</span>}
+                                      <a href={link.href} className={talkLinkClass}>
+                                        {link.label}
+                                      </a>
+                                    </span>
+                                  ))}
+                                </div>
+                              )}
+                              {talk.description && (
+                                <p className="text-gray-700 dark:text-gray-300 leading-relaxed">
+                                  {talk.description}
+                                </p>
+                              )}
+                            </div>
+
+                            {talk.photo && (
+                              <div className="shrink-0 w-full sm:w-44 md:w-52">
+                                <button
+                                  type="button"
+                                  onClick={() =>
+                                    setEnlargedImage({
+                                      src: talk.photo!,
+                                      alt: talk.photoAlt ?? `${talk.title} photo`,
+                                    })
+                                  }
+                                  className="block w-full cursor-zoom-in rounded-md focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500"
+                                  aria-label={`Enlarge photo for ${talk.title}`}
+                                >
+                                  <Image
+                                    src={talk.photo}
+                                    alt={talk.photoAlt ?? `${talk.title} photo`}
+                                    width={208}
+                                    height={156}
+                                    className="w-full h-auto rounded-md border border-gray-200 dark:border-gray-700 shadow-sm transition-transform hover:scale-[1.02]"
+                                  />
+                                </button>
+                              </div>
+                            )}
                           </div>
-                          <p className="text-sm text-gray-600 dark:text-gray-400 mb-2">
-                            <strong>{talk.type}</strong> · {talk.venue} · {talk.location} · {talk.month} {talk.year}
-                          </p>
-                          <div className="flex flex-wrap items-center gap-2 mb-2">
-                            {talk.links.slides && (
-                              <a href={talk.links.slides} className="text-red-600 hover:text-red-800 dark:text-red-400 dark:hover:text-red-300 text-sm underline-offset-2 hover:underline">Slides</a>
-                            )}
-                            {talk.links.video && (
-                              <>
-                                {talk.links.slides && <span className="text-gray-400">|</span>}
-                                <a href={talk.links.video} className="text-red-600 hover:text-red-800 dark:text-red-400 dark:hover:text-red-300 text-sm underline-offset-2 hover:underline">Video</a>
-                              </>
-                            )}
-                            {talk.links.paper && (
-                              <>
-                                {(talk.links.slides || talk.links.video) && <span className="text-gray-400">|</span>}
-                                <a href={talk.links.paper} className="text-red-600 hover:text-red-800 dark:text-red-400 dark:hover:text-red-300 text-sm underline-offset-2 hover:underline">Paper</a>
-                              </>
-                            )}
-                          </div>
-                          <p className="text-gray-700 dark:text-gray-300 leading-relaxed">
-                            {talk.description}
-                          </p>
                         </div>
-                      ))}
+                        );
+                      })}
                     </div>
                   </div>
                 ))
@@ -420,6 +491,16 @@ export default function TalksPage() {
         </div>
       </div>
       <Footer />
+
+      {enlargedImage && (
+        <EnlargedImageModal
+          src={enlargedImage.src}
+          alt={enlargedImage.alt}
+          variant="fit"
+          showHint={false}
+          onClose={() => setEnlargedImage(null)}
+        />
+      )}
     </div>
   );
 }

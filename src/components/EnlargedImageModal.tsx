@@ -7,7 +7,8 @@ interface EnlargedImageModalProps {
   src: string;
   alt: string;
   onClose: () => void;
-  variant?: "default" | "compact";
+  variant?: "default" | "compact" | "fit";
+  showHint?: boolean;
 }
 
 const MIN_SCALE = 0.5;
@@ -17,8 +18,16 @@ function clampScale(value: number) {
   return Math.min(MAX_SCALE, Math.max(MIN_SCALE, value));
 }
 
-export function EnlargedImageModal({ src, alt, onClose, variant = "default" }: EnlargedImageModalProps) {
+export function EnlargedImageModal({
+  src,
+  alt,
+  onClose,
+  variant = "default",
+  showHint = true,
+}: EnlargedImageModalProps) {
   const isCompact = variant === "compact";
+  const isFit = variant === "fit";
+  const isInteractive = variant === "default" || variant === "fit";
   const [scale, setScale] = useState(1);
   const [position, setPosition] = useState({ x: 0, y: 0 });
   const viewportRef = useRef<HTMLDivElement>(null);
@@ -45,7 +54,7 @@ export function EnlargedImageModal({ src, alt, onClose, variant = "default" }: E
   }, [onClose]);
 
   useEffect(() => {
-    if (isCompact) return;
+    if (!isInteractive) return;
 
     const viewport = viewportRef.current;
     if (!viewport) return;
@@ -58,7 +67,7 @@ export function EnlargedImageModal({ src, alt, onClose, variant = "default" }: E
 
     viewport.addEventListener("wheel", handleWheel, { passive: false });
     return () => viewport.removeEventListener("wheel", handleWheel);
-  }, [src, isCompact]);
+  }, [src, isInteractive]);
 
   useEffect(() => {
     const stopDragging = () => {
@@ -112,16 +121,22 @@ export function EnlargedImageModal({ src, alt, onClose, variant = "default" }: E
       />
 
       <div
-        className={`relative z-10 flex max-h-[96vh] w-full flex-col ${
-          isCompact ? "max-w-[min(92vw,360px)]" : "max-w-[min(98vw,1400px)]"
+        className={`relative z-10 ${
+          isFit
+            ? "flex w-fit max-w-[min(96vw,1400px)] flex-col"
+            : `flex max-h-[96vh] flex-col ${
+                isCompact ? "w-full max-w-[min(92vw,360px)]" : "w-full max-w-[min(98vw,1400px)]"
+              }`
         }`}
       >
-        <div className="mb-2 flex items-center justify-between gap-3">
-          <p className="text-xs text-white/75 sm:text-sm">
-            {isCompact ? "Scan to add on WeChat" : "Scroll to zoom · Drag to pan · Double-click to reset"}
-          </p>
+        <div className={`mb-2 flex items-center gap-3 ${showHint ? "justify-between" : "justify-end"}`}>
+          {showHint && (
+            <p className="text-xs text-white/75 sm:text-sm">
+              {isCompact ? "Scan to add on WeChat" : "Scroll to zoom · Drag to pan · Double-click to reset"}
+            </p>
+          )}
           <div className="flex items-center gap-1">
-            {!isCompact && (
+            {isInteractive && (
               <>
                 <button
                   type="button"
@@ -163,36 +178,42 @@ export function EnlargedImageModal({ src, alt, onClose, variant = "default" }: E
 
         <div
           ref={viewportRef}
-          className="flex min-h-0 flex-1 items-center justify-center overflow-hidden rounded-lg bg-black/20"
-          onMouseDown={isCompact ? undefined : handleMouseDown}
-          onMouseMove={isCompact ? undefined : handleMouseMove}
+          className={
+            isFit
+              ? "relative overflow-hidden"
+              : "flex min-h-0 flex-1 items-center justify-center overflow-hidden"
+          }
+          onMouseDown={isInteractive ? handleMouseDown : undefined}
+          onMouseMove={isInteractive ? handleMouseMove : undefined}
           onMouseUp={
-            isCompact
-              ? undefined
-              : () => {
+            isInteractive
+              ? () => {
                   dragging.current = false;
                 }
+              : undefined
           }
-          onDoubleClick={isCompact ? undefined : resetView}
+          onDoubleClick={isInteractive ? resetView : undefined}
         >
           <Image
             src={src}
             alt={alt}
-            width={isCompact ? 360 : 1400}
-            height={isCompact ? 480 : 1050}
+            width={isCompact ? 360 : isFit ? 1400 : 2000}
+            height={isCompact ? 480 : isFit ? 1050 : 2000}
             draggable={false}
-            className={`w-auto h-auto rounded-lg border border-gray-200 bg-white shadow-2xl dark:border-gray-700 dark:bg-gray-900 ${
+            className={`block w-auto h-auto max-w-full object-contain ${
               isCompact
-                ? "max-h-[min(70vh,480px)] max-w-full"
-                : `max-h-[88vh] ${scale > 1 ? "cursor-grab active:cursor-grabbing" : "cursor-zoom-in"}`
+                ? "max-h-[min(70vh,480px)]"
+                : isFit
+                  ? `max-h-[88vh] max-w-[min(96vw,1400px)] ${scale > 1 ? "cursor-grab active:cursor-grabbing" : "cursor-zoom-in"}`
+                  : `max-h-[88vh] max-w-[min(98vw,1400px)] ${scale > 1 ? "cursor-grab active:cursor-grabbing" : "cursor-zoom-in"}`
             }`}
             style={
-              isCompact
-                ? undefined
-                : {
+              isInteractive
+                ? {
                     transform: `translate(${position.x}px, ${position.y}px) scale(${scale})`,
                     transformOrigin: "center center",
                   }
+                : undefined
             }
           />
         </div>
