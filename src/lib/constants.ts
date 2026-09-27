@@ -4,3 +4,6 @@
  */
 export const CV_URL =
   "#";
+
+export const personLinkClass =
+  "underline underline-offset-2 text-inherit hover:opacity-80";
