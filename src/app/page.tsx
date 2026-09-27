@@ -8,7 +8,7 @@ import { EnlargedImageModal } from "../components/EnlargedImageModal";
 import { ThemeToggle } from "../components/ThemeToggle";
 import Footer from "../components/Footer";
 import { useGitHubStars } from "../hooks/useGitHubStars";
-import { CV_URL } from "../lib/constants";
+import { CV_URL, personLinkClass } from "../lib/constants";
 
 /* ────────────────────────────────────────────
    Data Types
@@ -54,9 +54,6 @@ interface NewsItem {
 
 const inlineLinkClass =
   "text-red-600 hover:text-red-800 dark:text-red-400 dark:hover:text-red-300 underline-offset-2 hover:underline";
-
-const blueLinkClass =
-  "text-blue-600 hover:text-blue-800 dark:text-blue-400 dark:hover:text-blue-300 underline-offset-2 hover:underline";
 
 const AWESOME_CYBERSEC_PAPERS_URL =
   "https://github.com/BaichengDanny/awesome-ai-for-cybersecurity-papers";
@@ -399,13 +396,17 @@ export default function Home() {
             </p>
             <br />
             <p className="text-lg leading-relaxed dark:text-gray-300">
-              My <a href="#research-interests" className={inlineLinkClass}>research interests</a> lie in the intersection of Trustworthy AI and Computer Security, focusing on the dual challenge of ensuring AI security while leveraging it for specialized security applications.
+              My research interests lie in the intersection of{" "}
+              <a href="#research-interests" className={inlineLinkClass}>
+                Trustworthy AI and Computer Security
+              </a>
+              , focusing on the dual challenge of ensuring AI security while leveraging it for specialized security applications.
               Currently, I am working on Agentic AI security and the application of agent in cryptography.
             </p>
             <br />
             <p className="text-lg leading-relaxed dark:text-gray-300">
-              I am fortunate to be advised by <a href="https://sites.google.com/site/baoyuanwu2015/" className={blueLinkClass}>Prof. Baoyuan Wu</a> at CUHK-Shenzhen.
-              And I am also grateful to collaborate with <a href="https://furong-huang.com/" className={blueLinkClass}>Prof. Furong Huang</a> (UMD), <a href="https://cloudygoose.github.io/" className={blueLinkClass}>Prof. Tianxing He</a> (IIIS, THU) and <a href="https://tianhao.wang/" className={blueLinkClass}>Prof. Tianhao Wang</a> (UVA) along my research journey.
+              I am fortunate to be advised by <a href="https://sites.google.com/site/baoyuanwu2015/" className={personLinkClass}>Prof. Baoyuan Wu</a> at CUHK-Shenzhen.
+              And I am also grateful to collaborate with <a href="https://furong-huang.com/" className={personLinkClass}>Prof. Furong Huang</a> (UMD), <a href="https://cloudygoose.github.io/" className={personLinkClass}>Prof. Tianxing He</a> (IIIS, THU) and <a href="https://tianhao.wang/" className={personLinkClass}>Prof. Tianhao Wang</a> (UVA) along my research journey.
             </p>
             <br />
             <p className="text-lg leading-relaxed dark:text-gray-300">
@@ -713,7 +714,7 @@ export default function Home() {
                                 {i > 0 && ` ${exp.advisorConnector || "and"} `}
                                 <a
                                   href={a.url || "#"}
-                                  className={blueLinkClass}
+                                  className={personLinkClass}
                                 >
                                   {a.name}
                                 </a>
