@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { useEffect, useState } from "react";
+import { personLinkClass } from "../lib/constants";
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
@@ -48,7 +49,7 @@ export default function Footer() {
             </p>
             <p className="text-xs mt-1 fancy">
               Built with Next.js, Tailwind CSS, and deployed on GitHub Pages. The website is inspired by the design of{" "}
-              <Link href="https://nicholas.carlini.com/" className="text-blue-600 hover:text-blue-800 dark:text-blue-400 dark:hover:text-blue-300 underline-offset-2 hover:underline">
+              <Link href="https://nicholas.carlini.com/" className={personLinkClass}>
                 Nicholas Carlini
               </Link>
               .

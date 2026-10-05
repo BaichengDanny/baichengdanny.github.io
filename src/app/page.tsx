@@ -163,9 +163,12 @@ const publications: Publication[] = [
     teaserImageAlt: "CREBench overview figure",
     description: "A benchmark to evaluate LLMs' capabilities in cryptographic binary reverse engineering.",
     abstract: "Reverse engineering (RE) is central to software security, particularly for cryptographic programs that handle sensitive data and are highly prone to vulnerabilities. It supports critical tasks such as vulnerability discovery and malware analysis. Despite its importance, RE remains labor-intensive and requires substantial expertise, making large language models (LLMs) a potential solution for automating the process. However, their capabilities for RE remain systematically underexplored. To address this gap, we study the cryptographic binary RE capabilities of LLMs and introduce **CREBench**, a benchmark comprising 432 challenges built from 48 standard cryptographic algorithms, 3 insecure crypto key usage scenarios, and 3 difficulty levels. Each challenge follows a Capture-the-Flag (CTF) RE challenge, requiring the model to analyze the underlying cryptographic logic and recover the correct input. We design an evaluation framework comprising four sub-tasks, from algorithm identification to correct flag recovery. We evaluate eight frontier LLMs on CREBench. GPT-5.4, the best-performing model, achieves 64.03 out of 100 and recovers the flag in 59\% of challenges. We also establish a strong human expert baseline of 92.19 points, showing that humans maintain an advantage in cryptographic RE tasks. Our code and dataset are available at https://github.com/wangyu-ovo/CREBench.",
-    links: { paper: "https://arxiv.org/pdf/2604.03750", 
+    links: {
+      paper: "https://arxiv.org/pdf/2604.03750",
       project: "https://jams-zhou-james.github.io/CREBench/",
-      code: { url: "https://github.com/wangyu-ovo/CREBench"} },
+      code: { url: "https://github.com/wangyu-ovo/CREBench" },
+      poster: "/image/papers/crebench-2026-poster.jpg",
+    },
   },
   {
     id: "adapaction-2026",
