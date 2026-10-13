@@ -94,7 +94,7 @@ const newsItems: NewsItem[] = [
         <a href="https://colmweb.org/" className={inlineLinkClass} target="_blank" rel="noopener noreferrer">
           COLM 2026
         </a>
-        (73/327 = 22.3%)! ❤️
+        {" "}(73/327 = 22.3%)! ❤️
       </>
     ),
   },
