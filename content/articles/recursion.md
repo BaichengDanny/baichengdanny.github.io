@@ -1,7 +1,6 @@
 ---
 title: "Recursion (Chinese Version)"
 date: "2023-10-01"
-year: 2023
 description: "An introduction to Recursion."
 category: "Tutorial"
 tags: ["algorithm", "data structure", "CUHK-Shenzhen"]

@@ -1,10 +1,11 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Inter, Libre_Baskerville, Noto_Sans_SC, Noto_Serif_SC, Lato } from "next/font/google";
 import "./globals.css";
 import "katex/dist/katex.min.css";
 import ClientBody from "./ClientBody";
 import Script from "next/script";
 import { ThemeProvider } from "../components/ThemeProvider";
+import { SITE_NAME, SITE_URL } from "../lib/constants";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -41,8 +42,21 @@ const notoSerifSC = Noto_Serif_SC({
 });
 
 export const metadata: Metadata = {
-  title: "Baicheng Chen",
+  metadataBase: new URL(SITE_URL),
+  title: {
+    default: SITE_NAME,
+    template: `%s | ${SITE_NAME}`,
+  },
   description: "",
+  alternates: {
+    types: {
+      "application/rss+xml": [{ url: "/feed.xml", title: `${SITE_NAME} — Writing` }],
+    },
+  },
+  openGraph: {
+    siteName: SITE_NAME,
+    images: ["/image/head.jpg"],
+  },
   icons: {
     icon: [
       { url: '/image/head.jpg', type: 'image/jpeg', sizes: 'any' },
@@ -63,6 +77,9 @@ export const metadata: Metadata = {
       },
     ],
   },
+};
+
+export const viewport: Viewport = {
   themeColor: '#3b82f6',
 };
 

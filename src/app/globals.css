@@ -100,4 +100,114 @@
   nav a.fancy {
     @apply text-base md:text-lg;
   }
+
+  .katex-display {
+    overflow-x: auto;
+    overflow-y: hidden;
+    padding: 0.25rem 0;
+  }
 }
+
+/* Citations rendered from markdown footnotes (`[^id]`). Selectors are more
+   specific than the per-element utility classes in ArticleBody on purpose. */
+.footnotes li,
+.footnotes li p {
+  font-size: 0.875rem;
+  line-height: 1.5rem;
+  margin-bottom: 0.25rem;
+}
+.footnotes li {
+  scroll-margin-top: 1rem;
+  border-radius: 0.25rem;
+  transition: background-color 0.3s;
+}
+.footnotes li:target {
+  background-color: rgb(254 242 242);
+}
+.dark .footnotes li:target {
+  background-color: rgb(127 29 29 / 0.3);
+}
+.footnote-ref {
+  font-size: 0.75em;
+  scroll-margin-top: 1rem;
+}
+
+/* Syntax highlighting for article code blocks (Prism token classes).
+   Light: GitHub-like; dark: Tomorrow Night. */
+.code-block pre {
+  margin: 0;
+  background: #fafafa;
+  color: #24292f;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  tab-size: 4;
+}
+.code-block pre code {
+  background: none;
+  padding: 0;
+  font-family: inherit;
+  font-size: inherit;
+  white-space: pre;
+}
+.code-block .token.comment,
+.code-block .token.prolog,
+.code-block .token.doctype,
+.code-block .token.cdata { color: #6e7781; font-style: italic; }
+.code-block .token.punctuation { color: #57606a; }
+.code-block .token.property,
+.code-block .token.tag,
+.code-block .token.boolean,
+.code-block .token.number,
+.code-block .token.constant,
+.code-block .token.symbol,
+.code-block .token.deleted { color: #0550ae; }
+.code-block .token.selector,
+.code-block .token.attr-name,
+.code-block .token.string,
+.code-block .token.char,
+.code-block .token.builtin,
+.code-block .token.inserted { color: #0a3069; }
+.code-block .token.operator,
+.code-block .token.entity,
+.code-block .token.url { color: #cf222e; }
+.code-block .token.atrule,
+.code-block .token.attr-value,
+.code-block .token.keyword { color: #cf222e; }
+.code-block .token.function,
+.code-block .token.class-name { color: #8250df; }
+.code-block .token.regex,
+.code-block .token.important,
+.code-block .token.variable { color: #953800; }
+.code-block .token.bold,
+.code-block .token.important { font-weight: bold; }
+.code-block .token.italic { font-style: italic; }
+
+.dark .code-block pre { background: #1d1f21; color: #c5c8c6; }
+.dark .code-block .token.comment,
+.dark .code-block .token.prolog,
+.dark .code-block .token.doctype,
+.dark .code-block .token.cdata { color: #969896; }
+.dark .code-block .token.punctuation { color: #c5c8c6; }
+.dark .code-block .token.property,
+.dark .code-block .token.tag,
+.dark .code-block .token.boolean,
+.dark .code-block .token.number,
+.dark .code-block .token.constant,
+.dark .code-block .token.symbol,
+.dark .code-block .token.deleted { color: #de935f; }
+.dark .code-block .token.selector,
+.dark .code-block .token.attr-name,
+.dark .code-block .token.string,
+.dark .code-block .token.char,
+.dark .code-block .token.builtin,
+.dark .code-block .token.inserted { color: #b5bd68; }
+.dark .code-block .token.operator,
+.dark .code-block .token.entity,
+.dark .code-block .token.url { color: #8abeb7; }
+.dark .code-block .token.atrule,
+.dark .code-block .token.attr-value,
+.dark .code-block .token.keyword { color: #b294bb; }
+.dark .code-block .token.function,
+.dark .code-block .token.class-name { color: #81a2be; }
+.dark .code-block .token.regex,
+.dark .code-block .token.important,
+.dark .code-block .token.variable { color: #f0c674; }

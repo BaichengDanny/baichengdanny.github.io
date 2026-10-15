@@ -1,81 +1,100 @@
-import ReactMarkdown from "react-markdown";
-import remarkGfm from "remark-gfm";
-import remarkMath from "remark-math";
-import rehypeKatex from "rehype-katex";
-import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
-import { tomorrow } from 'react-syntax-highlighter/dist/esm/styles/prism';
+import type { Metadata } from "next";
 import Link from "next/link";
+import { notFound } from "next/navigation";
 import { TableOfContents } from "../../../components/TableOfContents";
-import { ThemeToggle } from "../../../components/ThemeToggle";
 import Comments from "../../../components/Comments";
 import Footer from "../../../components/Footer";
-import { CV_URL } from "../../../lib/constants";
-import { calculateReadingTime, formatReadingTime } from "../../../utils/readingTime";
-import { notFound } from "next/navigation";
-import fs from 'node:fs';
-import path from 'node:path';
-import matter from 'gray-matter';
+import SiteHeader from "../../../components/SiteHeader";
+import { ArrowLeft, ChevronLeft, ChevronRight } from "lucide-react";
+import ArticleBody from "../../../components/article/ArticleBody";
+import ReadingProgress from "../../../components/article/ReadingProgress";
+import { AUTHOR_NAME, SITE_NAME } from "../../../lib/constants";
+import { formatReadingTime } from "../../../utils/readingTime";
+import { formatDate } from "../../../utils/date";
+import {
+  getAdjacentArticles,
+  getAllArticles,
+  getArticle,
+  getRelatedArticles,
+  htmlLang,
+  type ArticleMeta,
+} from "../../../lib/articles";
 
-interface Article {
-  id: string;
-  title: string;
-  year: number;
-  description: string;
-  date: string;
-  content: string;
-  tags: string[];
-  category: string;
+type PageProps = { params: Promise<{ id: string }> };
+
+export const dynamicParams = false;
+
+export function generateStaticParams() {
+  return getAllArticles().map(({ id }) => ({ id }));
 }
 
-// Get all article IDs from the articles directory
-function getArticleIds(): string[] {
-  const articlesDirectory = path.join(process.cwd(), 'public', 'articles');
+export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
+  const { id } = await params;
+  const article = getArticle(id);
+  if (!article) return {};
 
-  if (!fs.existsSync(articlesDirectory)) {
-    return [];
-  }
-
-  const filenames = fs.readdirSync(articlesDirectory);
-  return filenames
-    .filter(name => name.endsWith('.md'))
-    .map(name => name.replace(/\.md$/, ''));
+  const url = `/writing/${article.id}/`;
+  return {
+    title: article.title,
+    description: article.description || undefined,
+    keywords: article.tags,
+    authors: [{ name: AUTHOR_NAME }],
+    alternates: { canonical: url },
+    robots: article.draft ? { index: false, follow: false } : undefined,
+    openGraph: {
+      type: "article",
+      url,
+      siteName: SITE_NAME,
+      images: ["/image/head.jpg"],
+      title: article.title,
+      description: article.description || undefined,
+      publishedTime: article.date,
+      modifiedTime: article.updated ?? article.date,
+      authors: [AUTHOR_NAME],
+      tags: article.tags,
+      locale: article.lang === "zh" ? "zh_CN" : "en_US",
+    },
+    twitter: {
+      card: "summary",
+      title: article.title,
+      description: article.description || undefined,
+    },
+  };
 }
 
-// Read and parse a single article
-function getArticle(id: string): Article | null {
-  try {
-    const articlesDirectory = path.join(process.cwd(), 'public', 'articles');
-    const fullPath = path.join(articlesDirectory, `${id}.md`);
+const tagLinkClass =
+  "px-2 py-1 text-sm bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-400 rounded-full hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors";
 
-    if (!fs.existsSync(fullPath)) {
-      return null;
-    }
-
-    const fileContents = fs.readFileSync(fullPath, 'utf8');
-    const { data, content } = matter(fileContents);
-
-    return {
-      id,
-      title: data.title || id,
-      year: data.year || new Date().getFullYear(),
-      description: data.description || '',
-      date: data.date || new Date().toISOString().split('T')[0],
-      content,
-      tags: data.tags || [],
-      category: data.category || 'Uncategorized'
-    };
-  } catch (error) {
-    console.error(`Error reading article ${id}:`, error);
-    return null;
-  }
+// Plain <a> (full page load) so the list page reads the filter from the URL on mount.
+function filterHref(key: "tag" | "category", value: string) {
+  return `/writing/?${key}=${encodeURIComponent(value)}`;
 }
 
-export async function generateStaticParams() {
-  const articleIds = getArticleIds();
-  return articleIds.map((id) => ({ id }));
+function ArticleNavCard({ article, direction }: { article: ArticleMeta; direction: "previous" | "next" }) {
+  const isNext = direction === "next";
+  const Icon = isNext ? ChevronRight : ChevronLeft;
+  return (
+    <Link
+      href={`/writing/${article.id}`}
+      className={`group flex items-center gap-3 rounded-lg border border-gray-200 dark:border-gray-700 p-4 hover:border-red-300 dark:hover:border-red-700 transition-colors ${
+        isNext ? "flex-row-reverse text-right" : ""
+      }`}
+    >
+      <Icon
+        aria-hidden="true"
+        className={`h-5 w-5 flex-shrink-0 text-gray-400 transition-transform group-hover:text-red-600 dark:group-hover:text-red-400 ${
+          isNext ? "group-hover:translate-x-0.5" : "group-hover:-translate-x-0.5"
+        }`}
+      />
+      <div className="min-w-0">
+        <div className="text-xs text-gray-500 dark:text-gray-400 mb-1">{isNext ? "Next" : "Previous"}</div>
+        <div className="text-red-600 dark:text-red-400 font-medium break-words">{article.title}</div>
+      </div>
+    </Link>
+  );
 }
 
-export default async function ArticlePage({ params }: { params: Promise<{ id: string }> }) {
+export default async function ArticlePage({ params }: PageProps) {
   const { id } = await params;
   const article = getArticle(id);
 
@@ -83,159 +102,133 @@ export default async function ArticlePage({ params }: { params: Promise<{ id: st
     notFound();
   }
 
-  const readingStats = calculateReadingTime(article.content);
+  const { newer, older } = getAdjacentArticles(article.id);
+  const related = getRelatedArticles(article);
+  const lang = htmlLang(article.lang);
 
   return (
     <div className="min-h-screen bg-white dark:bg-gray-900 transition-colors">
-      {/* Header */}
-      <div className="border-b border-gray-200 dark:border-gray-700">
-      <div className="max-w-6xl mx-auto px-4 py-4">
-        <div className="flex justify-between items-center">
-          <h1 className="text-xl md:text-2xl serif dark:text-gray-100">Writing</h1>
-          <div className="flex items-center space-x-2 md:space-x-4">
-            {/* Desktop Navigation */}
-            <nav className="hidden md:flex space-x-6 lg:space-x-8">
-              <Link href="/" className="text-gray-600 hover:text-gray-900 dark:text-gray-300 dark:hover:text-gray-100 fancy">Main</Link>
-              <Link href="/papers" className="text-gray-600 hover:text-gray-900 dark:text-gray-300 dark:hover:text-gray-100 fancy">Papers</Link>
-              <Link href="/talks" className="text-gray-600 hover:text-gray-900 dark:text-gray-300 dark:hover:text-gray-100 fancy">Talks</Link>
-              <Link href={CV_URL} className="text-gray-600 hover:text-gray-900 dark:text-gray-300 dark:hover:text-gray-100 fancy">CV</Link>
-              <Link href="/writing" className="text-gray-600 hover:text-gray-900 dark:text-gray-300 dark:hover:text-gray-100 fancy">Writing</Link>
-            </nav>
+      <ReadingProgress targetId="article-body" />
+      <SiteHeader title="Writing" current="writing" titleAs="p" />
 
-            {/* Mobile Navigation */}
-            <nav className="flex md:hidden space-x-3 text-sm">
-              <Link href="/" className="text-gray-600 hover:text-gray-900 dark:text-gray-300 dark:hover:text-gray-100 fancy">Main</Link>
-              <Link href="/papers" className="text-gray-600 hover:text-gray-900 dark:text-gray-300 dark:hover:text-gray-100 fancy">Papers</Link>
-              <Link href="/talks" className="text-gray-600 hover:text-gray-900 dark:text-gray-300 dark:hover:text-gray-100 fancy">Talks</Link>
-              <Link href={CV_URL} className="text-gray-600 hover:text-gray-900 dark:text-gray-300 dark:hover:text-gray-100 fancy">CV</Link>
-            </nav>
-
-            <ThemeToggle />
-          </div>
-        </div>
-      </div>
-      </div>
-
-      {/* Main Content */}
-      <div className="max-w-7xl mx-auto px-4 pt-4 pb-2 md:pt-8 md:pb-4">
+      <div className="max-w-6xl mx-auto px-4 pt-4 pb-2 md:pt-8 md:pb-4">
         <div className="flex flex-col lg:flex-row gap-6 lg:gap-8">
-          {/* Main Article Content */}
-          <div className="flex-1 max-w-none lg:max-w-4xl fancy">
+          <div className="flex-1 min-w-0 max-w-none lg:max-w-4xl fancy">
             <div className="mb-4 md:mb-6">
-              <Link href="/writing" className="text-red-600 hover:text-red-800 dark:text-red-400 dark:hover:text-red-300 text-sm">← Back to Writing</Link>
+              <Link href="/writing" className="group inline-flex items-center gap-1 text-red-600 hover:text-red-800 dark:text-red-400 dark:hover:text-red-300 text-sm">
+                <ArrowLeft aria-hidden="true" className="h-4 w-4 transition-transform group-hover:-translate-x-0.5" />
+                Back to Writing
+              </Link>
             </div>
 
             {/* Article Header */}
-            <div className="mb-6 md:mb-8 pb-4 border-b border-gray-200 dark:border-gray-700">
-              <h1 className="text-2xl md:text-3xl lg:text-4xl font-bold serif mb-3 md:mb-4 dark:text-gray-100 break-words leading-tight">{article.title}</h1>
+            <header lang={lang} className="mb-6 md:mb-8 pb-4 border-b border-gray-200 dark:border-gray-700">
+              {article.draft && (
+                <span className="inline-block mb-3 px-2 py-0.5 text-xs font-medium rounded bg-yellow-100 text-yellow-800 dark:bg-yellow-900 dark:text-yellow-200">
+                  Draft — hidden in production
+                </span>
+              )}
+              <h1 className={`text-2xl md:text-3xl lg:text-4xl font-bold serif dark:text-gray-100 break-words leading-tight ${article.subtitle ? "mb-1 md:mb-2" : "mb-3 md:mb-4"}`}>{article.title}</h1>
+              {article.subtitle && (
+                <p className="mb-3 md:mb-4 text-lg md:text-xl italic text-gray-600 dark:text-gray-300 leading-snug">{article.subtitle}</p>
+              )}
               <div className="flex flex-wrap items-center gap-2 md:gap-4 text-xs md:text-sm text-gray-600 dark:text-gray-400">
-                <span>{article.date}</span>
+                <time dateTime={article.date}>{formatDate(article.date)}</time>
+                {article.updated && article.updated !== article.date && (
+                  <>
+                    <span>•</span>
+                    <span>Updated <time dateTime={article.updated}>{formatDate(article.updated)}</time></span>
+                  </>
+                )}
                 <span>•</span>
-                <span>{formatReadingTime(readingStats.minutes)}</span>
+                <span>{formatReadingTime(article.readingMinutes)}</span>
                 <span>•</span>
-                <span>{readingStats.words} words</span>
+                <span>{article.words} words</span>
               </div>
-              {article.description && (
+              {article.description && article.description !== article.subtitle && (
                 <p className="mt-2 md:mt-3 text-base md:text-lg text-gray-700 dark:text-gray-300 italic leading-relaxed">{article.description}</p>
               )}
 
-              {/* Category and Tags */}
               <div className="flex flex-wrap items-center gap-2 md:gap-4 mt-3 md:mt-4">
                 {article.category && (
                   <div className="flex items-center gap-2">
                     <span className="text-sm text-gray-600 dark:text-gray-400">Category:</span>
-                    <span className="px-3 py-1 text-sm bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 rounded-full font-medium">
+                    <a
+                      href={filterHref("category", article.category)}
+                      className="px-3 py-1 text-sm bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 rounded-full font-medium hover:bg-blue-200 dark:hover:bg-blue-800 transition-colors"
+                    >
                       {article.category}
-                    </span>
+                    </a>
                   </div>
                 )}
 
-                {article.tags && article.tags.length > 0 && (
+                {article.tags.length > 0 && (
                   <div className="flex items-center gap-2">
                     <span className="text-sm text-gray-600 dark:text-gray-400">Tags:</span>
                     <div className="flex flex-wrap gap-2">
                       {article.tags.map(tag => (
-                        <span
-                          key={tag}
-                          className="px-2 py-1 text-sm bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-400 rounded-full"
-                        >
+                        <a key={tag} href={filterHref("tag", tag)} className={tagLinkClass}>
                           #{tag}
-                        </span>
+                        </a>
                       ))}
                     </div>
                   </div>
                 )}
               </div>
+            </header>
+
+            <div className="lg:hidden">
+              <TableOfContents items={article.headings} variant="inline" />
             </div>
 
-            <article className="prose max-w-none">
-          <ReactMarkdown
-            remarkPlugins={[remarkGfm, remarkMath]}
-            rehypePlugins={[[rehypeKatex, { strict: false }]]}
-            components={{
-              h1: ({children}) => {
-                const id = String(children).toLowerCase().replace(/[^a-z0-9\s-]/g, '').replace(/\s+/g, '-').replace(/-+/g, '-').replace(/^-|-$/g, '');
-                return <h1 id={id} className="text-xl md:text-2xl lg:text-3xl font-bold serif mb-4 md:mb-6 dark:text-gray-100 break-words">{children}</h1>;
-              },
-              h2: ({children}) => {
-                const id = String(children).toLowerCase().replace(/[^a-z0-9\s-]/g, '').replace(/\s+/g, '-').replace(/-+/g, '-').replace(/^-|-$/g, '');
-                return <h2 id={id} className="text-lg md:text-xl lg:text-2xl font-bold serif mt-6 md:mt-8 mb-3 md:mb-4 dark:text-gray-100 break-words">{children}</h2>;
-              },
-              h3: ({children}) => {
-                const id = String(children).toLowerCase().replace(/[^a-z0-9\s-]/g, '').replace(/\s+/g, '-').replace(/-+/g, '-').replace(/^-|-$/g, '');
-                return <h3 id={id} className="text-base md:text-lg lg:text-xl font-bold serif mt-4 md:mt-6 mb-2 md:mb-3 dark:text-gray-100 break-words">{children}</h3>;
-              },
-              p: ({children}) => <p className="text-sm md:text-base lg:text-lg leading-relaxed mb-3 md:mb-4 dark:text-gray-300 break-words">{children}</p>,
-              a: ({href, children}) => (
-                <a href={href} className="text-red-600 hover:text-red-800 dark:text-red-400 dark:hover:text-red-300 break-words">{children}</a>
-              ),
-              ul: ({children}) => <ul className="list-disc list-inside mb-3 md:mb-4 space-y-1 md:space-y-2 dark:text-gray-300">{children}</ul>,
-              ol: ({children}) => <ol className="list-decimal list-inside mb-3 md:mb-4 space-y-1 md:space-y-2 dark:text-gray-300">{children}</ol>,
-              li: ({children}) => <li className="text-sm md:text-base lg:text-lg leading-relaxed dark:text-gray-300 break-words">{children}</li>,
-              blockquote: ({children}) => (
-                <blockquote className="border-l-4 border-gray-300 dark:border-gray-600 pl-3 md:pl-4 italic my-3 md:my-4 dark:text-gray-300 text-sm md:text-base break-words">{children}</blockquote>
-              ),
-              code: ({children, className}) => {
-                const match = /language-(\w+)/.exec(className || '');
-                const language = match ? match[1] : '';
-
-                if (!match) {
-                  return <code className="bg-gray-100 dark:bg-gray-800 px-1 rounded font-mono text-xs md:text-sm dark:text-gray-300 break-words">{children}</code>;
-                }
-
-                return (
-                  <div className="overflow-x-auto">
-                    <SyntaxHighlighter
-                      style={tomorrow}
-                      language={language}
-                      PreTag="div"
-                      className="rounded-lg my-3 md:my-4 text-xs md:text-sm"
-                      wrapLongLines={true}
-                    >
-                      {String(children).replace(/\n$/, '')}
-                    </SyntaxHighlighter>
-                  </div>
-                );
-              }
-            }}
-          >
-            {article.content}
-          </ReactMarkdown>
+            <article
+              id="article-body"
+              lang={lang}
+              className="article-prose article-prose-gray dark:article-prose-invert max-w-none article-prose-code:before:content-none article-prose-code:after:content-none article-prose-img:my-4"
+            >
+              <ArticleBody content={article.content} bibliography={article.bibliography} />
             </article>
 
             <div className="mt-6 md:mt-8 pt-4 md:pt-6 border-t border-gray-200 dark:border-gray-700 text-xs md:text-sm text-gray-500 dark:text-gray-400">
-              <p>Published: {article.date} | Year: {article.year}</p>
+              <p>
+                Published: <time dateTime={article.date}>{formatDate(article.date)}</time>
+                {article.updated && article.updated !== article.date && (
+                  <> | Last updated: <time dateTime={article.updated}>{formatDate(article.updated)}</time></>
+                )}
+              </p>
             </div>
-            
-            {/* Comments Section */}
-            <Comments articleId={article.id} />
-            
+
+            {(newer || older) && (
+              <nav aria-label="More articles" className="mt-8 grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div>{older && <ArticleNavCard article={older} direction="previous" />}</div>
+                <div>{newer && <ArticleNavCard article={newer} direction="next" />}</div>
+              </nav>
+            )}
+
+            {related.length > 0 && (
+              <section className="mt-10">
+                <h2 className="text-lg md:text-xl font-bold serif dark:text-gray-100 mb-4">Related Articles</h2>
+                <ul className="space-y-3">
+                  {related.map(item => (
+                    <li key={item.id} className="border-l-2 border-gray-100 dark:border-gray-700 pl-4">
+                      <Link href={`/writing/${item.id}`} className="text-red-600 hover:text-red-800 dark:text-red-400 dark:hover:text-red-300">
+                        {item.title}
+                      </Link>
+                      <div className="text-xs text-gray-500 dark:text-gray-400 mt-0.5">
+                        {formatDate(item.date)} · {item.category}
+                      </div>
+                    </li>
+                  ))}
+                </ul>
+              </section>
+            )}
+
+            <Comments articleId={article.id} lang={lang} />
           </div>
 
-          {/* Table of Contents Sidebar */}
-          <div className="hidden lg:block w-64 flex-shrink-0">
-            <TableOfContents content={article.content} />
-          </div>
+          <aside className="hidden lg:block w-64 flex-shrink-0">
+            <TableOfContents items={article.headings} />
+          </aside>
         </div>
       </div>
       <Footer />

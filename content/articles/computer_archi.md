@@ -1,7 +1,6 @@
 ---
 title: "Notes for Computer Architecture"
-date: "2025-5-11"
-year: 2025
+date: "2025-05-11"
 description: "This is my personal notes for the course CSC3050: Computer Architecture in CUHK-Shenzhen, including RISC-V ISA, Pipelining, Memory, etc."
 category: "Notes"
 tags: ["computer architecture", "course note", "CUHK-Shenzhen", "exam preparation"]

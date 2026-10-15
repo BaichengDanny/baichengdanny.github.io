@@ -1,10 +1,9 @@
 ---
 title: "Neural Network Security: Attack Vectors and Defense Strategies"
 date: "2024-12-20"
-year: 2024
 description: "An exploration of various attack vectors against neural networks and the defense mechanisms being developed to counter them."
 category: "Security Research"
-tags: ["neural networks", "security", "adversarial attacks", "machine learning", "cybersecurity"]
+tags: ["neural networks", "AI security", "adversarial attacks", "machine learning", "cybersecurity"]
 ---
 
 # Neural Network Security: Attack Vectors and Defense Strategies

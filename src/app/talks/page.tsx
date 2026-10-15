@@ -1,12 +1,10 @@
 'use client';
 
 import Image from "next/image";
-import Link from "next/link";
 import { useState, useMemo } from "react";
 import { EnlargedImageModal } from "../../components/EnlargedImageModal";
-import { ThemeToggle } from "../../components/ThemeToggle";
+import SiteHeader from "../../components/SiteHeader";
 import Footer from "../../components/Footer";
-import { CV_URL } from "../../lib/constants";
 
 const talkLinkClass =
   "text-red-600 hover:text-red-800 dark:text-red-400 dark:hover:text-red-300 text-sm underline-offset-2 hover:underline";
@@ -153,34 +151,7 @@ export default function TalksPage() {
 
   return (
     <div className="min-h-screen bg-white dark:bg-gray-900 transition-colors">
-      {/* Header */}
-      <div className="border-b border-gray-200 dark:border-gray-700">
-        <div className="max-w-6xl mx-auto px-4 py-4">
-          <div className="flex justify-between items-center">
-            <h1 className="text-xl md:text-2xl serif dark:text-gray-100 font-bold">Talks</h1>
-            <div className="flex items-center space-x-2 md:space-x-4">
-              {/* Desktop Navigation */}
-              <nav className="hidden md:flex space-x-6 lg:space-x-8">
-                <Link href="/" className="text-gray-600 hover:text-gray-900 dark:text-gray-300 dark:hover:text-gray-100 fancy">Main</Link>
-                <Link href="/papers" className="text-gray-600 hover:text-gray-900 dark:text-gray-300 dark:hover:text-gray-100 fancy">Papers</Link>
-                <Link href="/talks" className="text-gray-600 hover:text-gray-900 dark:text-gray-300 dark:hover:text-gray-100 fancy">Talks</Link>
-                <Link href={CV_URL} className="text-gray-600 hover:text-gray-900 dark:text-gray-300 dark:hover:text-gray-100 fancy">CV</Link>
-                <Link href="/writing" className="text-gray-600 hover:text-gray-900 dark:text-gray-300 dark:hover:text-gray-100 fancy">Writing</Link>
-              </nav>
-
-              {/* Mobile Navigation */}
-              <nav className="flex md:hidden space-x-3 text-sm">
-                <Link href="/" className="text-gray-600 hover:text-gray-900 dark:text-gray-300 dark:hover:text-gray-100 fancy">Main</Link>
-                <Link href="/papers" className="text-gray-600 hover:text-gray-900 dark:text-gray-300 dark:hover:text-gray-100 fancy">Papers</Link>
-                <Link href={CV_URL} className="text-gray-600 hover:text-gray-900 dark:text-gray-300 dark:hover:text-gray-100 fancy">CV</Link>
-                <Link href="/writing" className="text-gray-600 hover:text-gray-900 dark:text-gray-300 dark:hover:text-gray-100 fancy">Writing</Link>
-              </nav>
-
-              <ThemeToggle />
-            </div>
-          </div>
-        </div>
-      </div>
+      <SiteHeader title="Talks" current="talks" />
 
       {/* Main Content */}
       <div className="max-w-6xl mx-auto px-4 pt-8 pb-4 fancy">

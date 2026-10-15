@@ -1,7 +1,6 @@
 ---
 title: "Pytorch 101: Getting Started with PyTorch"
 date: "2024-09-10"
-year: 2024
 description: "A comprehensive beginner's guide to PyTorch, notes and implementation of the Assignment 1 of EECS498 from UMich."
 category: "Tutorial"
 tags: ["PyTorch", "deep learning", "tutorial", "python", "EECS498", "course note"]

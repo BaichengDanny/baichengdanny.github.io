@@ -1,8 +1,8 @@
 ---
 title: "Code Highlighting and Math Test"
 date: "2025-01-05"
-year: 2025
 description: "Testing syntax highlighting for code blocks and mathematical formula rendering together"
+draft: true
 category: "Technical"
 tags: ["programming", "mathematics", "syntax highlighting", "testing", "algorithms"]
 ---
